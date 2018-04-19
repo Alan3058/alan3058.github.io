@@ -24,6 +24,9 @@ author:
   github: alan3058
   bio: just do it!
 
+rss_path: feed.xml
+categories_path: categories.html
+tags_path: tags.html
 
 BASE_PATH:
 
