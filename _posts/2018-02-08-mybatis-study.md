@@ -41,6 +41,7 @@ fullview: false
 11. cache module？  
    mybatis提供了Cache接口去实现缓存，并且提供了一个默认缓存实现PerpetualCache，它内部使用一个map变量去缓存数据。不仅如此，mybatis还提供了CacheKey去支持缓存key的实现。根据缓存的特性，mybatis还提供了一系列装饰器Cache实现类去加强Cache的功能，这些类都在decorators包中，比如LruCache、FifoCache、BlockingCache等（从名字上可以知道他们的作用）。  
    再有了缓存实现的类的情况下，mybatis支持两个纬度的缓存，一个是SqlSession级别，另一个是SqlSessionFactory级别。分别表示同一个SqlSession下的相同MappedStatement和参数执行多次，实际只会执行一条sql;同一个SqlSessionFactory下的相同MappedStatement和参数执行多次，最终只会执行一条sql。
+
 #  mybatis例子
 
 ```java 
