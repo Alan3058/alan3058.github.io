@@ -5,15 +5,15 @@ categories: [mybatis]
 tags: [mybatis]
 fullview: false
 ---
-### 版本
+# 版本
 3.4.5
 
-### mybatis问题
+# mybatis问题
 
 1. mybatis xml配置文件处理？  
    xml配置文件解析入口类是XMLConfigBuilder，它只提供一个parse公有方法，parse方法调用parseConfiguration方法，在该方法中会对配置文件的各个元素节点进行解析，最后将值设置到Configuration等实例中。
    mybatis使用jdk xpath方式解析xml配置文件，mybatis入口类是XPathParser。XPathParser内有一个Document对象和XPath解析对象，通过XPath将对应节点解析成Node，然后将Node封装成mybatis的XNode对象。XNode提供了一系列访问xml元素属性、内容、子节点的接口。  
-   XMLConfigBuilder->XPathParser->XNode->Node(W3c node解析)
+   `XMLConfigBuilder->XPathParser->XNode->Node(W3c node解析)`
 2. mapper xml process？  
    ​mapper xml文件解析入口类是XMLMapperBuilder，它同样提供了一个parse公有方法去解析，它解析xml方式和配置文件的解析一样，都是使用XNode访问xml元素。主要解析cache、parameterMap、resultMap、sql、select、insert、update、delete节点。其中select|insert|update|delete都交由XMLStatementBuilder解析，每个节点对应一个MappedStatement实例。MappedStatement表示一个完整的sql块，它包含sql命令类型、sql源、参数类型、结果集映射、缓存等信息。一般实现自定义分页插件时，可以构造一个MappedStatement去查询总记录数。
 
@@ -34,16 +34,17 @@ fullview: false
 8. exception process？  
    mybatis定义了PersistenceException异常基类，并且在每个包（模块）中都定义了对应的异常，它们都是PersistenceException的子类。同时mybatis提供了ExceptionFactory工厂类，该类只有一个公有静态方法wrapException，它的作用是将各种异常包装统一包装成PersistenceException实例。
 9. logging process？  
-  mybatis提供了统一的Log日志接口，并且支持四种日志级别（error、debug、trace、warn），通过**适配器模式**去适配目前市面上大部分主流的日志框架。其实现原理是在应用启动时去加载各个日志框架的实现类，如果加载成功，则表示使用该日志框架，其加载顺序是slf4j->commonslogging->log4j2->log4j->jdklog->nolog。入口类LogFactory。  
+  mybatis提供了统一的Log日志接口，并且支持四种日志级别（error、debug、trace、warn），通过**适配器模式**去适配目前市面上大部分主流的日志框架。其实现原理是在应用启动时去加载各个日志框架的实现类，如果加载成功，则表示使用该日志框架，其加载顺序是`slf4j->commonslogging->log4j2->log4j->jdklog->nolog`。入口类LogFactory。  
   有了日志工厂类，mybatis对jdbc的Connection、Statement、PreparedStatement、ResultSet接口进行动态代理，并为它们增加日志记录功能。详见代理实现类是ConnectionLogger、StatementLogger、PreparedStatementLogger、ResultSetLogger。
 10. annotation？  
    在配置了扫描mapperClass类或者package时，mybatis会去扫描对应java类或者package，然后调用XMLAnnotationBuilder去扫描对应的Mapper类并解析。调用入口是XMLConfigBuilder的mapperElement方法，主要通过反射获取注解及注解上的信息。比如Select注解（它的value值就是sql），mybatis会将sql值解析到MappedStatement对象中。
 11. cache module？  
    mybatis提供了Cache接口去实现缓存，并且提供了一个默认缓存实现PerpetualCache，它内部使用一个map变量去缓存数据。不仅如此，mybatis还提供了CacheKey去支持缓存key的实现。根据缓存的特性，mybatis还提供了一系列装饰器Cache实现类去加强Cache的功能，这些类都在decorators包中，比如LruCache、FifoCache、BlockingCache等（从名字上可以知道他们的作用）。  
    再有了缓存实现的类的情况下，mybatis支持两个纬度的缓存，一个是SqlSession级别，另一个是SqlSessionFactory级别。分别表示同一个SqlSession下的相同MappedStatement和参数执行多次，实际只会执行一条sql;同一个SqlSessionFactory下的相同MappedStatement和参数执行多次，最终只会执行一条sql。
-###  mybatis例子
+#  mybatis例子
 
-``` // 指定MyBatis配置文件
+```java 
+// 指定MyBatis配置文件
 String configFile = "mybatis-config.xml";
 // 1、指定MyBaties配置文件
 InputStream inputStream = Resources.getResourceAsStream(configFile);
@@ -69,7 +70,7 @@ try {
 }
 ```
 
-###  mybatis处理流程
+#  mybatis处理流程
 * SqlSessionFactoryBuilder创建SqlSessionFactory实例。
   * SqlSessionFactoryBuilder委派XMLConfigBuilder类去解析mybatis-config.xml文件，并组装成Configuration实例。
     * XMLConfigBuilder将xml文件流委托给XPathParser类去解析成XNode节点。XPathParser通过java自带的jaxp方式将xml解析成Node，然后将Node包装成XNode，方便XMLConfigBuilder解析。
@@ -87,7 +88,7 @@ try {
     **SqlSession执行数据库操作有两种方式，一种是通过mapper.xml的id直接访问，另一种是通过面向Mapper接口方式调用。Mapper接口方式首先会返回一个代理MapperProxy，实际执行方法时，通过接口的完全限定名+方法名称作为id调用SqlSession的方法，即上述步骤。这也就是为什么mapper.xml的命名空间和sql语句id要与Mapper接口的完全限定名和方法名各自对应**
 * SqlSession commit/rollback事务。  
   mybatis的事务处理最终依然是调用jdbc Connection的commit和rollback两个方法进行提交和回滚操作。它的调用路线如下：  
-  sqlSession.commit/rollback->executor.commit/rollback->transaction.commit/rollback->connection->commit->rollback
+  `sqlSession.commit/rollback->executor.commit/rollback->transaction.commit/rollback->connection->commit->rollback`
 
-
-**总结百度脑图：**[技术学习整理路线](http://naotu.baidu.com/file/2eab9acbf1192229072dbc68eefe641b) mybatis知识块。
+#  总结
+**百度脑图：**[技术学习整理路线](http://naotu.baidu.com/file/2eab9acbf1192229072dbc68eefe641b) mybatis知识块。
