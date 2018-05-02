@@ -17,13 +17,13 @@ VirtualBox版本：5.0.10 r104061
 
 # 执行
 
-1.安装VirtualBox步骤，网上一搜一大堆。
+1. 安装VirtualBox步骤，网上一搜一大堆。
 
-2.由于需要虚拟机和本地机可进行拖拽操作，故而需要安装VirtualBox增强功能。
+2. 由于需要虚拟机和本地机可进行拖拽操作，故而需要安装VirtualBox增强功能。
 
 安装网上的一些安装教程，折腾了老半天，最终都没有搞定，最后点了根烟，理了理思路尴尬尴尬尴尬。。。
 
-3.经过查看错误日志，最后总结如下。
+3. 经过查看错误日志，最后总结如下。  
 
 首先安装VirtualBox的增强功能需要依赖make（本机已有）、gcc、kernel-headers和kernel-devel包。然而kernel-headers和kernel-devel包的版本需要和linux系统内核版本一致（输入uname -r可查看，或者rpm -qa kernel 来查看kernel版本）。
 
@@ -44,7 +44,7 @@ $ yum -y install gcc
 
 ![](http://file.ctosb.com/upload/image/20170705/1499239271934061671.png)
 
-4.VisualBox系统磁盘大小修改
+4. VisualBox系统磁盘大小修改  
 
 进入VisualBox安装目录
 > VBoxManage.exe modifyhd e:\visualbox\Centos6.5.vdi --resize 20000
