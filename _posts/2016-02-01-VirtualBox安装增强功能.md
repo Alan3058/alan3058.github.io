@@ -28,7 +28,13 @@ VirtualBox版本：5.0.10 r104061
 首先安装VirtualBox的增强功能需要依赖make（本机已有）、gcc、kernel-headers和kernel-devel包。然而kernel-headers和kernel-devel包的版本需要和linux系统内核版本一致（输入uname -r可查看，或者rpm -qa kernel 来查看kernel版本）。
 
 由于我这里懒得去搜寻linux对应版本的kernel-headers和kernel-devel包，我直接升级linux的kernel版本。
-/# yum list kernel/* /# yum -y install kernel /# yum -y install kernel-header /# yum -y install kernel-devel /# yum -y install gcc
+```bash
+$ yum list  kernel*   
+$ yum -y install kernel  
+$ yum -y install kernel-header  
+$ yum -y install kernel-devel  
+$ yum -y install gcc
+```
 
 之后重启linux系统，进入linux的光盘目录（/media目录，如果没有加载需要手工加载增强功能）去启动VBOX的增强功能。
 
@@ -41,12 +47,10 @@ VirtualBox版本：5.0.10 r104061
 4.VisualBox系统磁盘大小修改
 
 进入VisualBox安装目录
-输入 VBoxManage.exe modifyhd e:\visualbox\Centos6.5.vdi --resize 20000
+> VBoxManage.exe modifyhd e:\visualbox\Centos6.5.vdi --resize 20000
 
-**后记：最后考虑了一下自己最原始的需求，发现其实自己的目的很简单，就是是想要虚拟机系统和本主机系统进行文件传输。。。![](http://img.baidu.com/hi/jx2/j_0064.gif)**![](http://img.baidu.com/hi/jx2/j_0064.gif)****![](http://img.baidu.com/hi/jx2/j_0064.gif)****
+**后记：最后考虑了一下自己最原始的需求，发现其实自己的目的很简单，就是是想要虚拟机系统和本主机系统进行文件传输。。。**
 
-**其实完全可以通过ftp文件来通讯即可，本机使用winscp。不过他没有拖拽方便**![](http://img.baidu.com/hi/jx2/j_0060.gif)****![](http://img.baidu.com/hi/jx2/j_0060.gif)****![](http://img.baidu.com/hi/jx2/j_0060.gif)****
+**其实完全可以通过ftp文件来通讯即可，本机使用winscp。不过他没有拖拽方便****
 
-****
-
-**使用后感：小巧、系统启动快、占用资源小，符合我的口味**![](http://img.baidu.com/hi/jx2/j_0063.gif)****![](http://img.baidu.com/hi/jx2/j_0063.gif)****![](http://img.baidu.com/hi/jx2/j_0063.gif)****
+**使用后感：小巧、系统启动快、占用资源小，符合我的口味**
