@@ -8,7 +8,7 @@ fullview: false
 继第一篇[PowerDesigner脚本使用一](http://ctosb.com/article/18717232594944)，继续写通过PowerDesigner脚本导出多个Excel文件。如下
 
 **3. 导出多个Excel文件**
-```
+```vbscript
 '******************************************************************************
 '* File:     Table2MutilExcel
 '* Title:    pdm export to Mutil excel
