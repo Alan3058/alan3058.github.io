@@ -2,6 +2,7 @@
 layout: post
 title: [PowerDesigner脚本使用二]
 categories: [开发工具]
+tags: [powerdesigner,名字备注替换,导出excel,脚本]
 fullview: false
 ---
 继第一篇[PowerDesigner脚本使用一](http://ctosb.com/article/18717232594944)，继续写通过PowerDesigner脚本导出多个Excel文件。如下

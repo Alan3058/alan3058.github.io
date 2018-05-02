@@ -2,6 +2,7 @@
 layout: post
 title: [Linux下安装Jenkins持续集成工具]
 categories: [开发工具]
+tags: [linux,jenkins,安装]
 fullview: false
 ---
 对于Jenkins的定义，百度百科是这样定义的。Jenkins是一个持续集成工具，用于监控持续重复的工作。对我而言，其实就是一个专为懒人使用的自动发布工具![](http://img.baidu.com/hi/jx2/j_0007.gif)![](http://img.baidu.com/hi/jx2/j_0007.gif)![](http://img.baidu.com/hi/jx2/j_0007.gif)。像我这种不喜重复工作，浪费时间，浪费生命的人绝对得用上咯。

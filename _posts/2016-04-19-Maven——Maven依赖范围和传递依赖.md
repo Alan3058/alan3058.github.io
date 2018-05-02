@@ -2,6 +2,7 @@
 layout: post
 title: [Maven——Maven依赖范围和传递依赖]
 categories: [开发工具]
+tags: [maven,依赖范围,传递依赖]
 fullview: false
 ---
 # 依赖范围
