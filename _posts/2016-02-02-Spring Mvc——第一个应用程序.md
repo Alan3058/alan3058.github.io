@@ -6,6 +6,7 @@ tags: [springmvc,源码分析,搭建]
 id: [18583014866944]
 fullview: false
 ---
+
 # 1、介绍
 
 Spring Mvc是一个简单灵活、高度可配置的mvc框架，是Spring为前端mvc框架的一个重要解决方案。能支持市面上大多数的视图技术，比如Jsp、Velocity和Freemarker等视图，甚至支持自定义视图实现。支持xml配置和注解两种方式，通过注解能大量简化我们的配置文件，并且与Spring IOC、 AOP无缝整合，开发者使用起来非常简单，易上手。好了不多说了，现在直接来看我们的第一个例子。

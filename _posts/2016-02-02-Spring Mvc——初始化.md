@@ -6,6 +6,7 @@ tags: [springmvc,源码分析,初始化]
 id: [18587209170944]
 fullview: false
 ---
+
 # 1、概述
 
 Spring mvc的初始化主要包括根IOC容器的构建和初始化、DispacherServlet的构建和初始化（初始化包括Spring mvc IOC容器的构建和初始化）。根IOC容器指的是Spring的IOC容器，其对应配置文件是web.xml配置文件下的contextConfigLocation参数，也就是Spring的配置文件，即上例的spring.xml文件，该容器的构建和初始化实现在ContextLoaderListener监听器完成。Spring mvc IOC容器是根容器的一个子IOC容器，其配置文件是DispatcherServlet配置节点下contextConfigLocation参数，即上例的spring-mvc.xml。
@@ -27,7 +28,6 @@ Spring mvc的初始化主要包括根IOC容器的构建和初始化、DispacherS
 # 3、DispatcherServlet初始化
 
 ## 3.1、DispatcherServlet初始化参数配置说明
-
 contextClass
 定义DispatcherServlet类构建的WebApplicationContext实例类，用户可自定义类去实现WebApplicationContext接口。默认使用XmlWebApplicationContext类
 contextConfigLocation

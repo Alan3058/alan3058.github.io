@@ -6,12 +6,13 @@ tags: [spring,aspectj,切面编程]
 id: [18813705781248]
 fullview: false
 ---
+
 # 背景
 
 最近碰到一个需求，系统运行一段时间后，由于数据量不断增长，导致系统运行某个功能时效率低下，甚至宕机。这时需要去定位导致系统缓慢的方法或者代码段。第一眼看到这个需求感觉非常简单，只需要在每个处理业务的地方记录前后时间，然后计算时间差即可。
 
 ```java
-long fmtime = System.currentTimeMillis();
+                long fmtime = System.currentTimeMillis();
 		insert(user);
 		long totime = System.currentTimeMillis();
 		System.out.println("insert耗时:" + (totime - fmtime));

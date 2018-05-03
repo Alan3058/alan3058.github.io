@@ -6,6 +6,7 @@ tags: [spring,springboot,gradle,junit]
 id: [28751999407226880]
 fullview: false
 ---
+
 springboot提供了spring-boot-starter-test jar包去支持单元测试。这个jar包依赖于junit、mockito、spring-test、assertj、hamcrest、jsonpath、jsonassert开发jar包，因此我们的项目不需要再引入这些jar包。
 
 首先我们编写一个测试基类BaseTest，我们需要在该基类上添加两个注解SpringBootTest和RunWith。它们一般都是必要的，其中SpringBootTest注解表示该测试类支持springboot，并且我们需要告诉该注解我们应用的启动类。RunWith表示测试类启动时会自动去发现注解。

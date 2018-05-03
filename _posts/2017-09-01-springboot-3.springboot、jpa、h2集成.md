@@ -6,6 +6,7 @@ tags: [spring,springboot,gradle,jpa,h2,集成]
 id: [21450230918545408]
 fullview: false
 ---
+
 ### 介绍
 
 前两章介绍了springboot的注解的使用，并通过创建一个demo项目，了解springboot的简单使用，在本章中将整合springboot、spring data jpa、h2，并实现一个简单的用户操作，来验证整合结果。
@@ -106,7 +107,7 @@ public class UserService {
 最后在ExampleController类中添加新增和查询接口方法。
 
 ```java
-@RequestMapping(value = "/user", method = RequestMethod.POST)
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
 	@ResponseBody
 	public Object addUser(@RequestBody User user) {
 		return userService.insert(user);

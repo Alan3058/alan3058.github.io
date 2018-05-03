@@ -6,6 +6,7 @@ tags: [spring,springboot,gradle,EnableAutoConfiguration,ComponentScan,Configurat
 id: [21091549043490816]
 fullview: false
 ---
+
 上一节中已经搭建了一个简单的springboot项目，它也是springboot官方的demo，接下来通过学习springboot官方的提出来几点注意的地方，来改造第一个demo。以下是我汇总的几点，这里就称呼它们为springboot最佳实践吧。
 
 ### springboot最佳实践
@@ -84,5 +85,5 @@ public class ExampleController {
 
 启动应用程序和验证步骤和第一篇一致，这里不再赘述。
 
-源代码地址：[https://github.com/Alan3058/springboot-demo](https://github.com/Alan3058/springboot-demo)commit号：459577659105c1a479c0e4126450c369dfd12e11
+源代码地址：[https://github.com/Alan3058/springboot-demo](https://github.com/Alan3058/springboot-demo) commit号：459577659105c1a479c0e4126450c369dfd12e11
 

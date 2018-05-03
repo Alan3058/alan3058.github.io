@@ -6,6 +6,7 @@ tags: [shell,操作properties：properties]
 id: [18855653015552]
 fullview: false
 ---
+
 Shell读取properties文件属性值
 
 例如读取config.properties文件的jdbc.url属性值

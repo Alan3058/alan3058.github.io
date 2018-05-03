@@ -6,6 +6,7 @@ tags: [java,thread,并发,volatile]
 id: [18834677301248]
 fullview: false
 ---
+
 # 背景
 
 在Java并发编程中，经常会看到volatile关键字。其实如果看过Java并发concurrent包源代码，会发现很多地方都有用到。volatile中文翻译为可变的、不稳定的，在Java编程中，它保证了变量的可见性，即一个线程对该变量做的修改，在另一个线程能读取到该变量值。
@@ -54,13 +55,13 @@ public class VolatileExample extends Thread {
 **解释：t线程和main线程各自持有一个flag变量副本，main线程修改了自身flag变量副本的值，但并未将值同步给t线程的变量副本，故而t线程一直在循环。如果给flag标志增加volatile修饰，程序会正常退出。**
 
 ```java
-private static volatile boolean flag = true;
+	private static volatile boolean flag = true;
 ```
 
 可见性是很难测试的，只有在高频率读取变量时，才能重现。
 
 ```java
-System.out.println(flag);
+			System.out.println(flag);
 ```
 
 **结论**：使用volatile是可以保证变量可见性，但我们经常会误认为volatile能保证线程操作的原子性。synchronized可以保证可见性、原子性和互斥性。在一些只读场合下，或者不进行写运算，volatile的效率将会比synchronized效率更高。

@@ -6,6 +6,7 @@ tags: [java,thread,synchronized,并发]
 id: [18809511477248]
 fullview: false
 ---
+
 # 概念
 
 首先我们来熟悉一下几个概念：程序、进程、线程。在这之前我其实也没有去详细了解它们，对它们仅仅只是一层朦胧美![](http://img.baidu.com/hi/jx2/j_0026.gif)![](http://img.baidu.com/hi/jx2/j_0026.gif)![](http://img.baidu.com/hi/jx2/j_0026.gif)。经过一番资料查找，才渐渐若有所思，似乎明白了什么。。。
@@ -95,7 +96,7 @@ alan当前金额：0
 java中提供了synchronized关键字，可以实现上例程序正常计算金额。只需在add和del方法上加上该关键字即可，如下
 
 ```java
-public synchronized void add(int money) {
+	public synchronized void add(int money) {
 		this.amount = this.amount + money;
 	}
 

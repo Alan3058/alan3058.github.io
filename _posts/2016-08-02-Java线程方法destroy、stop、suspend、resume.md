@@ -6,6 +6,7 @@ tags: [java,destroy,stop,suspend,resume]
 id: [18843065909248]
 fullview: false
 ---
+
 **destroy方法**
 
 该方法不支持,会抛出NoSuchMethodError异常。

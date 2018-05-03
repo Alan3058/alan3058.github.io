@@ -6,6 +6,7 @@ tags: [mysql,explain,sql]
 id: [18830482997248]
 fullview: false
 ---
+
 # 背景
 
 系统开发运行一段时间后，经常会出现系统运行缓慢等效率问题，对此可能会是程序逻辑问题，也或者是数据库层面的问题。在这里讨论一下数据库SQL优化，SQL优化已经能解决很大一部分问题。
@@ -95,7 +96,7 @@ index_merge：该联接类型表示使用了索引合并优化方法。在这种
 
 
 
-通过相乘EXPLAIN输出的rows列的所有值，你能得到一个关于一个联接如何的提示。这应该粗略地告诉你MySQL必须检查多少行以执行查询。当你使用max_join_size变量限制查询时，也用这个乘积来确定执行哪个多表SELECT语句。
+ 通过相乘EXPLAIN输出的rows列的所有值，你能得到一个关于一个联接如何的提示。这应该粗略地告诉你MySQL必须检查多少行以执行查询。当你使用max_join_size变量限制查询时，也用这个乘积来确定执行哪个多表SELECT语句。
 
 转载：[http://blog.csdn.net/gzh0222/article/details/6707760](http://blog.csdn.net/gzh0222/article/details/6707760) 
 

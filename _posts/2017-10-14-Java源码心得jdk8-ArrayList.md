@@ -6,6 +6,7 @@ tags: [jdk8,ArrayList,源码分析,源码心得]
 id: [38851080209039360]
 fullview: false
 ---
+
 ### ArrayList源码分析
 
 ArrayList的源码实现应该算是Java集合工具类是最简单的一个，也是我们使用最多的一个集合类。它的内部实现是一个数组，在首次加入元素时，我们会创建一个默认大小（或者用户指定发现）的数组，默认值为16，之后的添加、删除、查询操作都是对该数组进行操作。
@@ -110,7 +111,7 @@ public E remove(int index) {
 
 
 ```java
-private class Itr implements Iterator<E> {
+    private class Itr implements Iterator<E> {
         int cursor;       // index of next element to return
         int lastRet = -1; // index of last element returned; -1 if no such
         int expectedModCount = modCount;
@@ -142,7 +143,7 @@ private class Itr implements Iterator<E> {
 
 
 ```java
-private class ListItr extends Itr implements ListIterator<E> {
+    private class ListItr extends Itr implements ListIterator<E> {
         ListItr(int index) {
             super();
             cursor = index;

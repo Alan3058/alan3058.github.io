@@ -6,6 +6,7 @@ tags: [spring,源码分析,beanfactory]
 id: [18608180690944]
 fullview: false
 ---
+
 # 1、BeanFactory类图
 
 BeanFactory类图如下
@@ -277,13 +278,13 @@ protected <T> T doGetBean(
 
 3.调用initializeBean方法，初始化Bean。
 
-3.1.invokeAwareMethods方法，如果Bean实现了Aware，则调用对应的Aware接口方法。
+ 3.1.invokeAwareMethods方法，如果Bean实现了Aware，则调用对应的Aware接口方法。
 
-3.2.applyBeanPostProcessorsBeforeInitialization方法，如果BeanFactory配置了BeanPostProcessor，则执行BeanPostProcessor的postProcessBeforeInitialization方法。
+ 3.2.applyBeanPostProcessorsBeforeInitialization方法，如果BeanFactory配置了BeanPostProcessor，则执行BeanPostProcessor的postProcessBeforeInitialization方法。
 
-3.3.invokeInitMethods方法，如果Bean实现了InitializingBean接口，则调用执行InitializingBean的接口方法。
+ 3.3.invokeInitMethods方法，如果Bean实现了InitializingBean接口，则调用执行InitializingBean的接口方法。
 
-3.4.applyBeanPostProcessorsAfterInitialization方法，如果BeanFactory配置了BeanPostProcessor，则执行BeanPostProcessor的postProcessAfterInitialization方法。
+ 3.4.applyBeanPostProcessorsAfterInitialization方法，如果BeanFactory配置了BeanPostProcessor，则执行BeanPostProcessor的postProcessAfterInitialization方法。
 
 4.registerDisposableBeanIfNecessary方法，如果Bean实现了DisposableBean接口或者Bean需要destroy方法，则给Bean注册DisposableBean功能（即把bean名称和销毁方法保存在一个Map集合中）。
 

@@ -6,6 +6,7 @@ tags: [springboot,gradle,freemarker,swagger,整合]
 id: [22541128121188352]
 fullview: false
 ---
+
 freemarker是一款开源，且功能强大的Java后台模板语言，通常会使用它替代jsp。swagger也是一个开源的框架，它可以将我们的api整合起来管理调试，极大提高了我们对系统api管控的效率。以上是个人理解，更多详情请移步对应官网或者百度。
 
 下面是springboot整合freemarker和swagger的大体步骤流程。
@@ -39,7 +40,7 @@ ${message} ${name}
 4.在ExampleController中添加hello接口，用于显示将hello.ftl展现成html页面。
 
 ```java
-@RequestMapping(value = "/hello", method = RequestMethod.GET)
+	@RequestMapping(value = "/hello", method = RequestMethod.GET)
 	public String hello(Map<String,Object> map) {
 		map.put("message", "hello world!");
 		map.put("name", "alan");
@@ -52,7 +53,7 @@ ${message} ${name}
 1.首先在build.gradle脚本文件中添加springfox-swagger jar包。
 
 ```bash
-compile("io.springfox:springfox-swagger2:2.7.0")
+	compile("io.springfox:springfox-swagger2:2.7.0")
 	compile("io.springfox:springfox-swagger-ui:2.7.0")
 ```
 

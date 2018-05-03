@@ -6,6 +6,7 @@ tags: [spring,源码分析,applicationcontext]
 id: [18612374994944]
 fullview: false
 ---
+
 # 1、概述
 
 ApplicationContext相对于BeanFactory增加的新特性：支持国际化（MessageSource）、访问资源（ResourceLoader）、应用事件（ApplicationEventPublisher）和一些附加服务（EnvironmentCapable）。

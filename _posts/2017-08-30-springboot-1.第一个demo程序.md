@@ -6,6 +6,7 @@ tags: [spring,springboot,gradle,demo程序,案例]
 id: [20750203753594880]
 fullview: false
 ---
+
 ### 介绍
 
 关于springboot介绍，大家可以去spring官网或者百度上查找相关资料，这两年已经火得一塌糊涂了。这里我先通过创建一个简单的springboot项目，以便了解springboot是如何简化开发流程。

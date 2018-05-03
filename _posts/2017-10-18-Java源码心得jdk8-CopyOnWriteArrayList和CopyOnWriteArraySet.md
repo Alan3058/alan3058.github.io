@@ -6,6 +6,7 @@ tags: [jdk8,CopyOnWriteArrayList,CopyOnWriteArraySet,源码分析,源码心得]
 id: [40621131488559104]
 fullview: false
 ---
+
 ### CopyOnWrite
 
 CopyOnWrite（简写COW）是一种写时复制技术，Java中的CopyOnWriteArrayList和CopyOnWriteArraySet两个类就使用了CopyOnWrite技术。当往集合内部数组添加修改或者删除元素时，不会直接对原数组进行操作，而是先将容器复制一份出来，然后对新的容器进行操作，最后将原容器的引用指向新容器。

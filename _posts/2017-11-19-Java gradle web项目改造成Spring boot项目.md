@@ -6,6 +6,7 @@ tags: [java,gradle,改造成springboot项目,springboot,ueditor支持springmvc]
 id: [49353660643147776]
 fullview: false
 ---
+
 首先看我的旧项目内部组成，它是一个gradle项目，包含spring、springmvc、mybatis、jquery、h5、css这些常用的技术，另外还有自定义mybatis分页排序插件，自定义过滤器、拦截器，自定义<点赞>、<加载更多>前端插件，还使用了ueditor编辑器。对于项目转成springboot项目，大概有如下三种方案。
 
 1.springboot直接调用解析原来的xml配置文件

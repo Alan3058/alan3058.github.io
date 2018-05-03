@@ -6,6 +6,7 @@ tags: [jdk7,jdk8,eclipse调试看不到变量值,编译jdk debug jar包]
 id: [38078566360940544]
 fullview: false
 ---
+
 在eclipse中调试JDK源代码时，变量值不会显示，这是因为JDK7和8中的rt.jar包，踢除了debug信息，以便减少rt.jar包大小。我们只需重新编译一个rt-debug.jar包即可。大致步骤如下
 
 在eclipse中新建一个jdk项目，将源码导入进来，然后将项目导出jar包，最后将jar包拷贝到JDK安装目录下，重启eclipse即可。

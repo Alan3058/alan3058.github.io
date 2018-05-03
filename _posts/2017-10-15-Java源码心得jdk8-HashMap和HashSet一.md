@@ -6,6 +6,7 @@ tags: [jdk8,HashMap,HashSet,源码分析,源码心得]
 id: [40532393412526080]
 fullview: false
 ---
+
 ### HashMap源码分析
 
 HashMap、HashSet和ArrayList一样，都是使用非常频繁的集合，理解这两个的实现原理，在使用的时候会更加得心应手。HashMap内部由两部分组成，首先是Node数组（Hash桶数组），每个Node元素（桶元素）又单独组成一个数据结构，可能是链表或者红黑树（当链表长度大于8时，将转换成红黑树。mark：红黑树原理将单独作为一个专题来学习），如下图。
@@ -48,7 +49,7 @@ index = (n - 1) & hash
 HashMap的构造函数主要是初始化HashMap的容量值和加载因子。默认初始容量为16，加载因子为0.75。这里注意的是在构造函数中并不会立刻初始化内部数组，内部数组会在第一次put时，进行初始化，这样可以做到内存使用滞后。
 
 ```java
-public HashMap() {
+    public HashMap() {
         this.loadFactor = DEFAULT_LOAD_FACTOR; 
     }
 ```
@@ -66,7 +67,7 @@ public HashMap() {
 5.如果当前元素长度大于扩容极限值，则进行扩容操作。
 
 ```java
-final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
+    final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
                    boolean evict) {
         Node<K,V>[] tab; Node<K,V> p; int n, i;
         if ((tab = table) == null || (n = tab.length) == 0)
@@ -128,7 +129,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
 由于容量发生了变化，所以扩容后还需要将原本的结构中的元素重新hash和index处理，得到新的数组索引值。reindex原理：将索引m下的元素的hash值与oldCap（旧容量）做与运算，结果为0则将元素置于索引m下，否则将元素置于索引m+oldCap下。
 
 ```java
-final Node<K,V>[] resize() {
+    final Node<K,V>[] resize() {
         Node<K,V>[] oldTab = table;
         int oldCap = (oldTab == null) ? 0 : oldTab.length;
         int oldThr = threshold;
@@ -210,5 +211,4 @@ final Node<K,V>[] resize() {
 ```
 
 待续中。。。 [Java源码心得jdk8-HashMap和HashSet二](http://ctosb.com/article/40545367412346080)
-
 
