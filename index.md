@@ -6,7 +6,7 @@ layout: page
 tagline:
 ---
 
-{% for post in site.posts %}
+{% for post in paginator.posts %}
 
 <article class="home">
 
@@ -43,3 +43,19 @@ tagline:
 </article>
 {% endfor %}
 <hr/>
+
+<!-- Pager -->
+{% if paginator.total_pages > 1 %}
+<ul class="pager">
+    {% if paginator.previous_page %}
+    <li class="previous">
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
+    </li>
+    {% endif %}
+    {% if paginator.next_page %}
+    <li class="next">
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
+    </li>
+    {% endif %}
+</ul>
+{% endif %}
