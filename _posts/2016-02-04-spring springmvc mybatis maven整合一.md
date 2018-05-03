@@ -49,7 +49,7 @@ com.cygoat.service.impl：存放业务层实现类ManagerImpl.java文件
 
 1.pom.xml增加依赖jar包
 
-```
+```java
 <properties>
 	<spring.version>3.2.13.RELEASE</spring.version>
 	<mybatis.version>3.2.8</mybatis.version>
@@ -123,7 +123,7 @@ com.cygoat.service.impl：存放业务层实现类ManagerImpl.java文件
 
 在src/main/resources创建spring.xml文件，内容如下
 
-```
+```java
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -197,7 +197,7 @@ com.cygoat.service.impl：存放业务层实现类ManagerImpl.java文件
 
 jdbc连接
 
-```
+```java
 hibernate.dialect=org.hibernate.dialect.MySQLDialect
 driverClassName=com.mysql.jdbc.Driver
 validationQuery=SELECT 1
@@ -214,7 +214,7 @@ hibernate.format_sql=true
 
 1.在pom中增加mybatis插件
 
-```
+```java
 <plugin>  
 	<groupId>org.mybatis.generator</groupId>  
 	<artifactId>mybatis-generator-maven-plugin</artifactId>  
@@ -257,7 +257,7 @@ hibernate.format_sql=true
 
 2.在src/main/resources下创建generatorConfig.xml，文件内容如下
 
-```
+```java
 <?xml version="1.0" encoding="UTF-8"?>  
 <!DOCTYPE generatorConfiguration  
   PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  

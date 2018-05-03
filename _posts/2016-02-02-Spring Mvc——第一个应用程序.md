@@ -17,7 +17,7 @@ Spring Mvc是一个简单灵活、高度可配置的mvc框架，是Spring为前�
 
 1.修改pom.xml文件，添加spring web mvc jar包依赖
 
-```
+```java
 <!-- spring mvc包 -->
 <dependency>
 	<groupId>org.springframework</groupId>
@@ -34,7 +34,7 @@ Spring Mvc是一个简单灵活、高度可配置的mvc框架，是Spring为前�
 
 2.修改web.xml文件，在该文件中配置DispatcherServlet类和URL请求过滤，配置spring的配置文件的目录，添加spring mvc的启动监听器。DispatcherServlet类会根据我们配置的Url过滤规则来接收符合规则的请求，并将请求分发处理。ContextLoaderListener监听器实现了ServletContextListener监听器接口，它监听ServletContext实例的构建和销毁，Spring mvc把IOC容器的初始化实现都放在ContextLoaderListener监听器中。
 
-```
+```java
 <!-- 设置DispatcherServlet类和对应配置文件 -->
 <servlet>
 	<servlet-name>dispatcher</servlet-name>
@@ -63,7 +63,7 @@ Spring Mvc是一个简单灵活、高度可配置的mvc框架，是Spring为前�
 
 3.在src/main/resources目录下创建spring-mvc.xml文件
 
-```
+```java
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
@@ -91,7 +91,7 @@ Spring Mvc是一个简单灵活、高度可配置的mvc框架，是Spring为前�
 
 4.创建spring.xml文件
 
-```
+```java
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
@@ -106,7 +106,7 @@ Spring Mvc是一个简单灵活、高度可配置的mvc框架，是Spring为前�
 
 5.在src/main/java下创建User类。
 
-```
+```java
 package com.springmvctest.model;
 
 public class User {
@@ -141,7 +141,7 @@ public class User {
 
 6.创建UserController类
 
-```
+```java
 package com.springmvctest.controller;
 
 import org.springframework.stereotype.Controller;
@@ -168,7 +168,7 @@ public class UserController {
 
 7.在WebRoot文件夹下创建jsp/test.jsp页面。
 
-```
+```java
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();

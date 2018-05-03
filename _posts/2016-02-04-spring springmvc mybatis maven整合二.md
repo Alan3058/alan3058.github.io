@@ -17,7 +17,7 @@ fullview: false
 
 SysUserManager.java
 
-```
+```java
 package com.cygoat.service;
 
 import com.cygoat.model.SysUser;
@@ -31,7 +31,7 @@ public interface SysUserManager {
 
 SysUserManagerImpl.java
 
-```
+```java
 package com.cygoat.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +56,7 @@ public class SysUserManagerImpl implements SysUserManager {
 
 src/test/java下创建SysUserManagerImplTest.java文件，代码如下
 
-```
+```java
 package com.cygoat.service;
 
 import static org.junit.Assert.*;
@@ -97,7 +97,7 @@ public class SysUserManagerImplTest {
 
 6.1.配置spring-mvc.xml
 
-```
+```java
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -169,7 +169,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 
 6.2.修改web.xml
 
-```
+```java
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -232,7 +232,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 
 新增SysUserController类
 
-```
+```java
 package com.cygoat.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;

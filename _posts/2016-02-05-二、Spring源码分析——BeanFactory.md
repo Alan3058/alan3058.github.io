@@ -27,7 +27,7 @@ BeanFactory类图如下
 
 创建bean.xml，内容如下
 
-```
+```java
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="http://www.springframework.org/schema/beans"
@@ -44,7 +44,7 @@ BeanFactory类图如下
 
 创建Person类，代码如下
 
-```
+```java
 package com.test.bean;
 
 public class Person {
@@ -72,7 +72,7 @@ public class Person {
 
 创建junit测试代码，内容如下
 
-```
+```java
 @Test
 public void testBeanFactory(){
 	ClassPathResource resource = new ClassPathResource("bean.xml");
@@ -120,7 +120,7 @@ BeanDefinition注册实现：调用BeanDefinitionRegistry.registerBeanDefinition
 
 spring的依赖注入入口也就是BeanFactory的getBean（）方法。getBean（）方法最后调用doGetBean（）方法，即doGetBean（）方法是依赖注入的真实入口，代码如下。
 
-```
+```java
 protected <T> T doGetBean(
 		final String name, final Class<T> requiredType, final Object[] args, boolean typeCheckOnly)
 		throws BeansException {

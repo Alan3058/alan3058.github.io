@@ -57,7 +57,7 @@ Spring Aop主要实现是通过Jdk动态代理和Cglib动态代理来实现的�
 
 创建业务Manager接口类，代码如下
 
-```
+```java
 package com.test.aop;
 
 public interface Manager {
@@ -71,7 +71,7 @@ public interface Manager {
 
 创建业务实现类ManagerImpl，代码如下
 
-```
+```java
 package com.test.aop;
 
 public class ManagerImp implements Manager {
@@ -93,7 +93,7 @@ public class ManagerImp implements Manager {
 
 添加记录日志功能类Log，代码如下
 
-```
+```java
 package com.test.aop;
 
 
@@ -107,7 +107,7 @@ public class Log {
 
 添加校验权限的功能类Check，代码如下
 
-```
+```java
 package com.test.aop;
 
 public class Check {
@@ -120,7 +120,7 @@ public class Check {
 
 添加Spring配置文件bean.xml，需要在所有方法前添加校验用户权限功能，在insert插入方法后增加记录日志功能。
 
-```
+```java
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="http://www.springframework.org/schema/beans"
@@ -150,7 +150,7 @@ public class Check {
 
 添加Junit测试代码
 
-```
+```java
 /**
  * 测试Spring Aop
  */

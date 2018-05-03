@@ -24,7 +24,7 @@ compile("org.springframework.boot:spring-boot-starter-freemarker")
 
 3.在templates文件夹下新增hello.ftl模板文件，内容如下。
 
-```
+```java
 <!DOCTYPE html>
 <html>
 <head>

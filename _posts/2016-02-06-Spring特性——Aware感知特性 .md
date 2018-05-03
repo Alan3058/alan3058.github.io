@@ -27,7 +27,7 @@ BeanNameAware：给实现该接口的bean注入bean的名称。
 
 现在新建一个ApplicationContextUtil类，实现了BeanNameAware和ApplicationContextAware接口，代码如下
 
-```
+```java
 package com.test.aware;
 
 import org.springframework.beans.BeansException;
@@ -61,7 +61,7 @@ public class ApplicationUtil implements ApplicationContextAware,BeanNameAware {
 
 创建bean.xml文件，内容如下
 
-```
+```java
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="http://www.springframework.org/schema/beans"
@@ -76,7 +76,7 @@ public class ApplicationUtil implements ApplicationContextAware,BeanNameAware {
 
 创建Junit代码
 
-```
+```java
 /**
  * 测试Aware感知特性
  */

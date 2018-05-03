@@ -15,7 +15,7 @@ fullview: false
 
 首先在第一个例子的UserController类中添加以下代码，去构建初始化数据
 
-```
+```java
 private static Map<String,User> map = new HashMap<String,User>();
 static{
 	for(int i=0;i<10;i++){
@@ -29,7 +29,7 @@ static{
 
 1.返回字符串
 
-```
+```java
 //返回字符串处理例子 http://localhost:8080/springmvctest/helloworld.shtml
 @RequestMapping("helloworld")
 @ResponseBody
@@ -44,7 +44,7 @@ helloworld
 
 2.实体bean转json
 
-```
+```java
 //实体bean转json http://localhost:8080/springmvctest/getUser.shtml
 @RequestMapping("getUser")
 @ResponseBody
@@ -60,7 +60,7 @@ public Object getUser(){
 
 3.数组转json
 
-```
+```java
 //数组转json http://localhost:8080/springmvctest/getUsers.shtml
 @RequestMapping("getUsers")
 @ResponseBody
@@ -75,7 +75,7 @@ public Object getUsers(){
 
 4.Collection集合转json
 
-```
+```java
 //Collection集合转json http://localhost:8080/springmvctest/getUserCollection.shtml
 @RequestMapping("getUserCollection")
 @ResponseBody
@@ -90,7 +90,7 @@ public Object getUserCollection(){
 
 5.Map集合转json
 
-```
+```java
 //Map集合转json http://localhost:8080/springmvctest/getUserMap.shtml
 @RequestMapping("getUserMap")
 @ResponseBody
@@ -107,7 +107,7 @@ public Object getUserMap(){
 
 该注解用在方法参数上，被注解的参数的值将在对应的Url路径上。
 
-```
+```java
 //PathVariable注解例子 http://localhost:8080/springmvctest/get/zhangsan1.shtml
 @RequestMapping("get/{username}")
 @ResponseBody
@@ -139,7 +139,7 @@ public Object get1(@PathVariable String username){
 
 @RequestParam注解使用在方法参数上，使用它可以接收请求的参数。
 
-```
+```java
 //RequestParam注解 http://localhost:8080/springmvctest/getByusername.shtml?username=zhangsan1
 @RequestMapping("getByusername")
 @ResponseBody
@@ -157,7 +157,7 @@ public Object getByusername(@RequestParam String username){
 
 @RequestBody注解使用在方法参数上，用来接收请求Body内容
 
-```
+```java
 //RequestBody注解 http://localhost:8080/springmvctest/getRequestBody.shtml
 @RequestMapping("getRequestBody")
 @ResponseBody
@@ -183,7 +183,7 @@ url ——》 http://localhost:8080/springmvctest/getRequestBody.shtml
 
 @ModelAttribute可用于方法体和方法参数上，使用在方法参数上可将请求参数转换为对应model对象，使用在方法体上暂不考虑。
 
-```
+```java
 //ModelAttribute注解 http://localhost:8080/springmvctest/getUserByUser.shtml?name=lisi&age=32
 @RequestMapping(value="getUserByUser")
 @ResponseBody
@@ -201,7 +201,7 @@ public Object getUserByUser(@ModelAttribute("user") User user){
 
 spring mvc可让HttpServletRequest和HttpServletResponse对象作为方法的接收参数 
 
-```
+```java
 //请求、响应作为方法参数 http://localhost:8080/springmvctest/getUserByRequest.shtml?name=wangwu&age=32
 @RequestMapping(value="getUserByRequest")
 @ResponseBody
@@ -222,13 +222,13 @@ spring mvc支持文件上传，并且支持多文件。spring mvc文件上传解
 
 1.在spring-mvc.xml配置文件下添加解析器。
 
-```
+```java
 <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>	
 ```
 
 2.在pom.xml文件下添加fileupload上传jar包。
 
-```
+```java
 <!-- 文件上传包 -->
 <dependency>
 	<groupId>commons-fileupload</groupId>
@@ -239,7 +239,7 @@ spring mvc支持文件上传，并且支持多文件。spring mvc文件上传解
 
 3.添加方法
 
-```
+```java
 //上传文件 http://localhost:8080/springmvctest/upload.shtml
 @RequestMapping(value="upload")
 @ResponseBody
@@ -263,7 +263,7 @@ public Object upload(@RequestParam("files") MultipartFile[] files){
 
 1、使用注解方法
 
-```
+```java
 //ExceptionHandler注解例子 http://localhost:8080/springmvctest/exceptiontest.shtml
 @RequestMapping("exceptiontest")
 public void exceptiontest(){
@@ -287,7 +287,7 @@ it is error page:null
 
 (1).创建异常处理类HandlerException，该类实现HandlerExceptionResolver接口
 
-```
+```java
 package com.springmvctest.handler;
 
 import javax.servlet.http.HttpServletRequest;
@@ -312,13 +312,13 @@ public class HandlerException implements HandlerExceptionResolver {
 
 (2).在spring-mvc.xml配置文件中配置HandlerException类
 
-```
+```java
 <bean class="com.springmvctest.handler.HandlerException"></bean>
 ```
 
 (3).在jsp文件夹下构建error.jsp。
 
-```
+```java
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
@@ -349,7 +349,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 (4).在UserController类中添加如下方法
 
-```
+```java
 //异常统一处理例子 http://localhost:8080/springmvctest/exceptiontest1.shtml
 @RequestMapping("exceptiontest1")
 public void exceptiontest1(){

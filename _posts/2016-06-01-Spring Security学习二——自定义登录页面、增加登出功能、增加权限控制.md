@@ -85,7 +85,7 @@ fullview: false
 
 修改index.jsp页面如下
 
-```
+```java
 <html>
 <body>
 <h2>welcome login!</h2>
@@ -97,7 +97,7 @@ fullview: false
 
 新增admin.jsp页面，该页面只有ROLE_ADMIN权限可访问
 
-```
+```java
 <html>
 <body>
 <h2>welcome admin page!</h2>
@@ -107,7 +107,7 @@ fullview: false
 
 新增403.jsp访问受限界面
 
-```
+```java
 <html>
 <body>
 <h2>403 error,access denied.</h2>

@@ -23,7 +23,7 @@ ApplicationContextd的主要实现子类有ClassPathXmlApplicationContext、File
 
 创建bean.xml配置文件，内容如下
 
-```
+```java
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="http://www.springframework.org/schema/beans"
@@ -40,7 +40,7 @@ ApplicationContextd的主要实现子类有ClassPathXmlApplicationContext、File
 
 创建Person类
 
-```
+```java
 package com.test.bean;
 
 public class Person {
@@ -69,7 +69,7 @@ public class Person {
 创建Junit测试代码
 
 
-```
+```java
 @Test
 public void test(){
 	ApplicationContext ctx = new FileSystemXmlApplicationContext("H:\\workspaceST\\cygoattest\\src\\test\\resources\\bean.xml");
