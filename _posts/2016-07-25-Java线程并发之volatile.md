@@ -3,6 +3,7 @@ layout: post
 title: [Java线程并发之volatile]
 categories: [Java]
 tags: [java,thread,并发,volatile]
+id: [18834677301248]
 fullview: false
 ---
 # 背景

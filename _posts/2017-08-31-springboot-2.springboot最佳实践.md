@@ -3,6 +3,7 @@ layout: post
 title: [springboot-2.springboot最佳实践]
 categories: [Spring]
 tags: [spring,springboot,gradle,EnableAutoConfiguration,ComponentScan,Configuration,最佳实践]
+id: [21091549043490816]
 fullview: false
 ---
 上一节中已经搭建了一个简单的springboot项目，它也是springboot官方的demo，接下来通过学习springboot官方的提出来几点注意的地方，来改造第一个demo。以下是我汇总的几点，这里就称呼它们为springboot最佳实践吧。

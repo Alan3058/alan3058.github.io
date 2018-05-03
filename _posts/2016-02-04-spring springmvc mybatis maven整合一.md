@@ -3,6 +3,7 @@ layout: post
 title: [spring springmvc mybatis maven整合一]
 categories: [Spring,Mybatis,SpringMVC,Java]
 tags: [spring,springmvc,mybatis,maven整合]
+id: [18599792082944]
 fullview: false
 ---
 # 1.概述

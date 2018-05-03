@@ -3,6 +3,7 @@ layout: post
 title: [Spring Security学习三——自定义用户权限数据源、用户授权]
 categories: [Spring]
 tags: [spring security,权限数据源,用户授权]
+id: [18775952850944]
 fullview: false
 ---
 # 背景

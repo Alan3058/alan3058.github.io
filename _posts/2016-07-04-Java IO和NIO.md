@@ -3,6 +3,7 @@ layout: post
 title: [Java IO和NIO]
 categories: [Java]
 tags: [java io,java nio]
+id: [18801122869248]
 fullview: false
 ---
 很久以前就听说过Java NIO，但似乎在工作中很少使用，我们大部分还是在使用Java IO。这两天突发奇想，变想起了NIO这东东。相对来讲，IO是每次传输字还是移动一个字节，而NIO每次传输是一个数据块，并且IO是阻塞型的而NIO是非阻塞型。这样导致NIO处理效率较IO高等特点。

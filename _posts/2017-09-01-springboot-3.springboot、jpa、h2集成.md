@@ -3,6 +3,7 @@ layout: post
 title: [springboot-3.springboot、jpa、h2集成]
 categories: [Spring]
 tags: [spring,springboot,gradle,jpa,h2,集成]
+id: [21450230918545408]
 fullview: false
 ---
 ### 介绍

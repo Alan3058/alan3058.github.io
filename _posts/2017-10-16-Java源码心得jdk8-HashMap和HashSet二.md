@@ -3,6 +3,7 @@ layout: post
 title: [Java源码心得jdk8-HashMap和HashSet二]
 categories: [Java]
 tags: [jdk8,HashMap,HashSet,源码分析,源码心得]
+id: [40545367412346080]
 fullview: false
 ---
 在第一篇[Java源码心得jdk8-HashMap和HashSet一](http://ctosb.com/article/40532393412526080)中已经了解了HashMap的大致原理和添加元素和扩容元素方法的源码。接下来继续看它的get、remove方法源码。

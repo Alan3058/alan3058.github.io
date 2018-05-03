@@ -3,6 +3,7 @@ layout: post
 title: [springboot-1.第一个demo程序]
 categories: [Spring]
 tags: [spring,springboot,gradle,demo程序,案例]
+id: [20750203753594880]
 fullview: false
 ---
 ### 介绍

@@ -3,6 +3,7 @@ layout: post
 title: [spring springmvc mybatis maven整合二]
 categories: [SpringMVC,Java,Spring,Mybatis]
 tags: [spring,springmvc,mybatis,maven整合]
+id: [18602787082944]
 fullview: false
 ---
 第一篇([spring springmvc mybatis maven整合一](http://ctosb.com/article/18599792082944))已经将spring，mybatis，mybatis插件整合完成，接下来我们将整合spring和springmvc。

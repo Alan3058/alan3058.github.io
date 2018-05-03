@@ -3,6 +3,7 @@ layout: post
 title: [Spring Security学习二——自定义登录页面、增加登出功能、增加权限控制]
 categories: [Spring]
 tags: [spring security,自定义登录页面,登出页面]
+id: [18771758546944]
 fullview: false
 ---
 # 背景

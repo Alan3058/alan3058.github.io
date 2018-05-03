@@ -3,6 +3,7 @@ layout: post
 title: [Gradle下的Task和Action]
 categories: [Gradle]
 tags: [gradle,task,action,doLast,<<]
+id: [17384222897471488]
 fullview: false
 ---
 Task是Gradle一个重要的组件，官方解释：Task代表构建下的一个单一原子工作块，比如编译类或者生成javadoc。它是寄生在Project下，并且可以通过TaskContainer类的方法去创建和查询task。

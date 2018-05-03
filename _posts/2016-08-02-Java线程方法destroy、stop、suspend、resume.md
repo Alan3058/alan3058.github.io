@@ -3,6 +3,7 @@ layout: post
 title: [Java线程方法destroy、stop、suspend、resume]
 categories: [Java]
 tags: [java,destroy,stop,suspend,resume]
+id: [18843065909248]
 fullview: false
 ---
 **destroy方法**

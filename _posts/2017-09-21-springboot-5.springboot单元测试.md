@@ -3,6 +3,7 @@ layout: post
 title: [springboot-5.springboot单元测试]
 categories: [Spring]
 tags: [spring,springboot,gradle,junit]
+id: [28751999407226880]
 fullview: false
 ---
 springboot提供了spring-boot-starter-test jar包去支持单元测试。这个jar包依赖于junit、mockito、spring-test、assertj、hamcrest、jsonpath、jsonassert开发jar包，因此我们的项目不需要再引入这些jar包。

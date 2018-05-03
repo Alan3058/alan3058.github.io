@@ -3,6 +3,7 @@ layout: post
 title: [Spring Data Jpa，Hibernate报懒加载，no session]
 categories: [Spring]
 tags: [spring data jpa,hibernate,懒加载,no session]
+id: [18780147154944]
 fullview: false
 ---
 Hibernate，Java程序员都应该用过，就算没有用过估计也听过咯。本人的一个项目中使用了Spring Data Jpa加Hibernate，用过Hibernate的人应该都遇到过懒加载的异常。由于本人是JPA新手，特此记录下![](http://img.baidu.com/hi/jx2/j_0028.gif)![](http://img.baidu.com/hi/jx2/j_0028.gif)![](http://img.baidu.com/hi/jx2/j_0028.gif)。如下是异常信息，主要是说由于配置懒加载，导致在获取懒加载对象时，session事务已关闭。

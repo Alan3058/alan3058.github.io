@@ -3,6 +3,7 @@ layout: post
 title: [springboot-4.springboot整合freemarker、swagger]
 categories: [Spring]
 tags: [springboot,gradle,freemarker,swagger,整合]
+id: [22541128121188352]
 fullview: false
 ---
 freemarker是一款开源，且功能强大的Java后台模板语言，通常会使用它替代jsp。swagger也是一个开源的框架，它可以将我们的api整合起来管理调试，极大提高了我们对系统api管控的效率。以上是个人理解，更多详情请移步对应官网或者百度。

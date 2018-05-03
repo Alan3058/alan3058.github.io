@@ -3,6 +3,7 @@ layout: post
 title: [Spring特性——Aware感知特性 ]
 categories: [Spring]
 tags: [spring,特性,aware,感知]
+id: [18629152210944]
 fullview: false
 ---
 Aware，即感知，是Spring IOC的一个特性，当实现了对应的Aware接口时，BeanFactory工厂会在生产bean时给bean注入对应的属性，即为该bean增强一定功能。

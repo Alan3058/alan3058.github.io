@@ -3,6 +3,7 @@ layout: post
 title: [Shell操作properties文件]
 categories: [Linux学习]
 tags: [shell,操作properties：properties]
+id: [18855653015552]
 fullview: false
 ---
 Shell读取properties文件属性值

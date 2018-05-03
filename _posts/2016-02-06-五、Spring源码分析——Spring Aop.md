@@ -3,6 +3,7 @@ layout: post
 title: [五、Spring源码分析——Spring Aop]
 categories: [Spring]
 tags: [spring,源码分析,aop,切面编程]
+id: [18620763602944]
 fullview: false
 ---
 首先先重复一下上篇动态代理所说的例子，如下。

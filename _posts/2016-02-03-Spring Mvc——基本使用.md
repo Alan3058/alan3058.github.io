@@ -3,6 +3,7 @@ layout: post
 title: [Spring Mvc——基本使用]
 categories: [SpringMVC]
 tags: [springmvc,源码分析,使用案例,基本使用]
+id: [18595597778944]
 fullview: false
 ---
 注：以下例子都是建立在第一个例子的基础上修改

@@ -3,6 +3,7 @@ layout: post
 title: [自定义Jquery插件loading（加载更多）]
 categories: [Javascript]
 tags: [jquery,自定义,jquery插件,加载更多,loading]
+id: [20103608712298496]
 fullview: false
 ---
 因项目需要自定义一个jquery插件，现将自定义jquery插件心得记录下来，以便加深印象。如下是自定义jquery插件的几个简单步骤。

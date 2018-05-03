@@ -3,6 +3,7 @@ layout: post
 title: [Explain优化SQL]
 categories: [数据库]
 tags: [mysql,explain,sql]
+id: [18830482997248]
 fullview: false
 ---
 # 背景

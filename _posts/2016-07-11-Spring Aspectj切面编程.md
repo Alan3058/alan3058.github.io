@@ -3,6 +3,7 @@ layout: post
 title: [Spring Aspectj切面编程]
 categories: [Spring]
 tags: [spring,aspectj,切面编程]
+id: [18813705781248]
 fullview: false
 ---
 # 背景

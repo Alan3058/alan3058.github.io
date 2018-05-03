@@ -3,6 +3,7 @@ layout: post
 title: [二、Spring源码分析——BeanFactory]
 categories: [Spring]
 tags: [spring,源码分析,beanfactory]
+id: [18608180690944]
 fullview: false
 ---
 # 1、BeanFactory类图
