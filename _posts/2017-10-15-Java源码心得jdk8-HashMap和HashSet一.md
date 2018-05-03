@@ -24,7 +24,7 @@ HashMap、HashSet和ArrayList一样，都是使用非常频繁的集合，理解
 
 * HashMap大小或者长度（size）：实际key/balue键值对数量。
 
-* 加载因子（loadFactor）：主要是用来计算扩容极限值，加载因子/*容量=扩容极限值。
+* 加载因子（loadFactor）：主要是用来计算扩容极限值，加载因子\*容量=扩容极限值。
 
 * 扩容极限值（threshold）：当HashMap长度大于扩容极限值，则集合开始扩容。
 
