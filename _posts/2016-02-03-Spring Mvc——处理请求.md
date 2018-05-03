@@ -1,0 +1,54 @@
+---
+layout: post
+title: [Spring Mvc——处理请求]
+categories: [SpringMVC]
+tags: [springmvc,源码分析,处理请求]
+fullview: false
+---
+# 1、概述
+
+下面这张图是Spring mvc处理请求的整体流程，其中Front controller指的是DispatcherServlet类。
+
+1.客户端所有的请求都会发送到DispatcherServlet，由DispacherServlet处理。
+
+2.DispacherServlet将请求分发到不同的Controller类，由Controller类去处理对应的请求。
+
+3.Controller类将对应的请求处理完后，将处理后对应的model或者视图信息给将DispatcherServlet类。
+
+4.DispatcherServlet将这些信息交由视图模版解析。
+
+5.视图模版解析到的对应视图信息等传给DispacherServlet。
+
+6.最后由DispacherServlet将视图信息推送响应给客户端。
+
+![1.png](http://dl2.iteye.com/upload/attachment/0110/4599/6659a319-f878-3b7d-bf3a-c2a365b7fe4b.png "1454473609150658.png")
+
+因此可以看出DispatcherServlet类在Spring mvc框架中占据了一个非常重要的地位，它接收所有请求，然后将对应的请求分发到对应的功能类实例去处理，然后将处理后结果响应给客户端。
+
+# 2、Dispatcher分发处理请求
+
+在DispatcherServlet的子类FrameworkServlet中，可以看到它已经重写了父类HttpServlet的所有请求方式的对应方法。这些方法最后都调用processRequest方法去处理请求，该方法对请求做了简单处理后又调用了doService方法，该方法由父类DispatcherServlet实现。
+
+在DispatcherServlet类的doService方法中，首先为Request请求设置了一些对应的属性实例，然后调用doDispatch方法去分发处理请求。以下是实际处理过程
+
+1.在doDispatch方法中，调用checkMultipart方法去判断该请求是否是Multipart请求（比如文件上传），如果是，则使用MultipartResolver实例将请求转换为Multipart请求。
+
+2.调用getHandler方法去获取HandlerExecutionChain实例对象。在该方法中首先查找符合当前的HandlerMapping实例，然后调用HandlerMapping实例的getHandler方法去获取HandlerExecutionChain实例，该实例包装了HandlerMapping实例对象，并在该实例中设置了相匹配的拦截器。
+
+3.调用getHandlerAdapter方法，为当前HandlerMapping实例查找对应的HandlerAdapter适配器实例。
+
+4.调用HandlerExecutionChain实例的applyPreHandler方法，去调用其拦截器的preHandler方法（前置拦截方法）执行。如果返回true，则继续往后处理，否则停止方法调用处理。（前置拦截方法执行调用）
+
+5.调用HandlerAdapter适配器实例的handler方法去处理当前请求，并返回对应的ModelAndView对象。（调用目标对象的对应方法执行）
+
+6.调用HandlerExecutionChain实例的applyPostHandler方法，去调用其拦截器的postHandler方法（后置拦截方法）执行。（后置拦截方法执行调用）
+
+7.调用processDispatchResult方法去处理最后结果（ModelAndView或者异常），该方法调用render方法去渲染解析最后视图。在render方法中首先通过ViewResolver解析器去获取对应的视图名称的视图View对象，最后在调用对应View对象的render方法渲染处理视图，并响应对应结果给客户端。（调用对应View渲染视图）
+
+# 3、总结
+
+如上，DispatcherServlet类实际分发处理请求主要有如下几个重要步骤。将HandlerMapping和对应的拦截器包装在一个HandlerExecution实例对象；然后获取该HandlerMapping想匹配的HandlerAdapter适配器；之后调用前置拦截器方法，如果返回true，则调用适配器去处理当前请求，并返回对应的ModelAndView对象；然后在调用后置拦截器方法；最后调用ViewResolver视图解析器解析出对应的视图View对象，并调用View对象去渲染视图，并响应对应结果给客户端。
+
+如下列出Spring Mvc处理请求所设计到的重要接口和类。
+
+HandlerMapping接口、HandlerInterceptor拦截器接口和其包装类MappedInterceptor、HandlerExecutionChain类、HandlerAdapter适配器接口、ViewResolver视图解析器接口、View接口、HttpMessageConvert消息转换接口

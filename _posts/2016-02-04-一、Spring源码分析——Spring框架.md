@@ -1,0 +1,48 @@
+---
+layout: post
+title: [一、Spring源码分析——Spring框架]
+categories: [Spring]
+tags: [spring,源码分析,spring框架]
+fullview: false
+---
+# 1、Spring框架
+
+Spring框架是一个分层架构，通过模块化划分，如下图，列出了主要的几个模块。
+
+![](http://file.ctosb.com/upload/image/20170705/1499240014563052007.gif)
+
+**核心容器：**Spring核心容器提供了Spring框架的基本功能，核心容器的组件是BeanFactory，它是一个典型的工厂模式的实现。BeanFactory通过IOC控制反转将Bean的实例注入给对应的变量，简单说就是Bean的生成不需要自己new，让BeanFactory通过Java反射创建即可。
+
+**Spring上下文：**Spring上下文是一个配置文件，向Spring提供上下文信息。
+
+**Spring Aop：**Spring Aop模块将面向切面编程集成到Spring框架中，支持Java的动态代理和Cglib。
+
+**Spring Web：**Spring Web模块为Web应用环境提供了一个Web上下文。可集成Struts、Struts2等框架。
+
+**Spring MVC：**Spring Mvc模块是Spring构建Web应用程序的MVC实现。可和Spring其他模块完美结合使用，也可以单独使用，支持大量的视图技术，包括Jsp、Velocity、POI等。
+
+**Spring ORM：**ORM模块支持目前市面大量的ORM框架的集成，包括Mybatis、Hibernate等。
+
+**Spring DAO：**Spring DAO模块提供了一系列的DaoSupport类来简化数据库操作代码，比如JdbcDaoSupport、HibernateDaoSupport等。
+
+# 2、IOC接口设计
+
+IOC，控制反转模式，即不用自己创建对象，只需要在配置文件中描述类的特性，以及类与类之间的联系，最后通过BeanFactory工厂来获取对应的类的实例。
+
+Spring IOC接口设计分两条设计路线，一条是包含基本IOC容器功能（BeanFactory），另外一种是除了包含基本IOC容器功能外，还添加了一些高级容器的特性（ApplicationContext）。
+
+如下图是IOC接口类图
+
+![](http://file.ctosb.com/upload/image/20170705/1499240027848030115.png)
+
+从以上接口类图可以看出基本IOC容器接口是BeanFactory，高级IOC容器接口ApplicationContext依旧是BeanFactory的子类。
+
+1.在BeanFactory中实现了最基本的IOC功能，依赖注入getBean方法，和一些其他基本方法。
+
+2.ApplicationContext通过继承MessageSource、ResourcePatternResolver、ApplicationEventPublisher、EnvironmentCapable接口，在BeanFactory简单的IOC容器基础上添加了许多高级容器的特性。也就是说基本上ApplicationContext除了包含IOC基本的功能外，还附加了更高级的功能，并且更好扩展性更强，应用中可以以ApplicationContext使用为主。
+
+# 3、AOP面向切面编程。
+
+面向切面编程是一种编程技术，它允许动态给某个功能方法添加额外功能，使得在不修改原来功能方法的前提下，动态添加了额外功能。比如delete删除方法后需要增加log记录日志功能，使用Aop就可以将原来的删除方法和日志功能的各自实现拆分开来，符合设计原则的松散耦合特性。SpringAop是IOC的补充，可与IOC完美集成。
+
+Sprig AOP的功能的典型实现代表是Spring事务管理，除此之外还可做日志功能和方法拦截等功能。

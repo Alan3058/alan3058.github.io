@@ -1,0 +1,83 @@
+---
+layout: post
+title: [三、Spring源码分析——ApplicationContext]
+categories: [Spring]
+tags: [spring,源码分析,applicationcontext]
+fullview: false
+---
+# 1、概述
+
+ApplicationContext相对于BeanFactory增加的新特性：支持国际化（MessageSource）、访问资源（ResourceLoader）、应用事件（ApplicationEventPublisher）和一些附加服务（EnvironmentCapable）。
+
+ApplicationContextd的主要实现子类有ClassPathXmlApplicationContext、FileSystemXmlApplicationContext 和XmlWebApplicationContext。下面我们以FileSystemXmlApplicationContext的实现作为分析。ClasspathXmlApplicationContext和FileSystemXmlApplicationContext的实现基本一致。
+
+下图是FileSystemXmlApplicationContext类图
+
+![](http://file.ctosb.com/upload/image/20170705/1499240284972090617.png)
+
+从类图中可以看出FileSystemXmlApplicationContext的直接父类是AbstractXmlApplicationContext，然而大部分ApplicationContext容器功能都已被FileSystemXmlApplicationContext的父类实现。FileSystemXmlApplicationContext类主要重写了父类DefaultResourceLoader的getResourceByPath(String path)方法，该方法作用是将xml文件转换成对应的Resource，FileSystemXmlApplicationContext在这里返回的是FileSystemResource，默认返回的是Classpath，故而ClassPathXmlApplicationContext不需要实现该方法。
+
+# 2、编程式实现
+
+创建bean.xml配置文件，内容如下
+<?xml version="1.0" encoding="UTF-8"?> <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"> <bean id="person" class="com.test.bean.Person"> <property name="name" value="ylxy"/> <property name="age" value="25"/> </bean> </beans>
+
+创建Person类
+package com.test.bean; public class Person { private String name; private int age; public String getName() { return name; } public void setName(String name) { this.name = name; } public int getAge() { return age; } public void setAge(int age) { this.age = age; } public void info(){ System.out.println("name:"+getName()+" age:"+getAge()); } }
+
+创建Junit测试代码
+@Test public void test(){ ApplicationContext ctx = new FileSystemXmlApplicationContext("H:\\workspaceST\\cygoattest\\src\\test\\resources\\bean.xml"); Person p = (Person) ctx.getBean("person"); p.info(); }
+
+执行测试结果如下
+
+![](http://file.ctosb.com/upload/image/20170705/1499240298271009662.png)
+
+# 3、IOC初始化
+
+跟踪FileSystemXmlBeanFactory类构造函数的代码上，可以看到IOC容器初始化是在AbstractApplicationContext类的refresh()方法中开始的，刷新IOC可分如下几个大步骤。
+
+1.prepareRefresh（）为初始化筹备环境，创建标准环境StandardEnviroment。
+
+2.obtainFreshBeanFactory（）刷新IOC容器，如果BeanFactory存在，则销毁，再创建DefaultListableBeanFactory容器。这里主要是BeanDefinition解析注册。
+
+3.prepareBeanFactory（）BeanFactory初始化，为BeanFactory添加初始化特性。
+
+4.postProcessBeanFactory（）为BeanFactory的BeanFactoryPostProcessor后置处理器，空方法空实现，需子类实现。
+
+5.invokeBeanFactoryPostProcessors（）调用BeanFactory的BeanFactoryPostProcessor后置处理器。
+
+6.registerBeanPostProcessors（）给BeanFactory注册BeanPostProcessor后置处理器。
+
+7.initMessageSource（）初始化消息源，即国际化。
+
+8.initApplicationEventMulticaster（）初始化应用事件多路广播实例。
+
+9.onRefresh()初始化特殊Bean，未实现，给子类实现。
+
+10.registerListeners（）注册应用监听器。
+
+11.finishBeanFactoryInitialization（）结束BeanFactory的初始化，需要饥饿加载的单例Bean是在这里初始化加载缓存的。
+
+12.finishRefresh（）完成IOC初始化，并发布对应的事件（ContextRefreshedEvent）。
+
+## 3.1、ObtainFreshBeanFactory（）刷新IOC容器
+
+进入该方法，该方法调用AbstraRefreshableBeanFactory类的refreshBeanFactory()方法去刷新BeanFactory。首先会判断当前BeanFactory是否存在，存在则销毁BeanFactory，然后在创建一个默认的DefaultListableBeanFactory对象，之后给这个BeanFactory初始化，最后就是BeanFactory加载和注册BeanDefinition的过程loadBeanDefinitions(beanFactory)。跟踪该方法，发现最终依旧是通过XmlBeanDefinitionReader类去完成解析和注册BeanDefinition，和BeanFactory编程式处理一样，可参考BeanFactory篇的IOC初始化实现。
+
+## 3.2、initApplicationEventMulticaster（）初始化应用事件多路广播器
+
+首先判断ApplicationEventMulticaster对象bean是否已经被BeanFactory容器实例化过，或者BeanDefinition是否存在。如果上述条件成立，则直接通过BeanFactory容器依赖注入获取ApplicationEventMulticaster对象bean；否则，直接创建一个默认的应用事件多路广播器SimpleApplicationEventMulticaster实例，并将对象缓存到一个Map集合（singletonObjects）中。
+
+## 3.3、registerListeners（）注册应用监听器
+
+获取应用上下文静态指定的的应用监听器ApplicationListener，并将应用监听器注册到应用事件多路广播器ApplicationEventMulticaster实例中。
+
+从BeanDefinition集合中去获取ApplicationListener的子类的名称，并将名称注册到应用事件多路广播器ApplicationEventMulticaster实例中。
+
+# 4、依赖注入
+
+从源码上可以看出FileSystemXmlBeanFactory在IOC初始化时创建了一个DefaultListableBeanFactory对象作为内部BeanFactory容器，也就是说之后的依赖注入获取Bean的方式和BeanFactory获取的方式一模一样，可参照BeanFactory篇的依赖注入实现。
+
+源码见如下附件
+
+![](http://ctosb.com/ueditor/dialogs/attachment/fileTypeImages/icon_rar.gif)[cygoattest.zip](http://file.ctosb.com/upload/file/20170705/1499240361490070338.zip "cygoattest.zip")

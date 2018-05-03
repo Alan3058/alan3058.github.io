@@ -1,0 +1,82 @@
+---
+layout: post
+title: [五、Spring源码分析——Spring Aop]
+categories: [Spring]
+tags: [spring,源码分析,aop,切面编程]
+fullview: false
+---
+首先先重复一下上篇动态代理所说的例子，如下。
+
+先举一个编程的例子。比如一个功能（DB接口），实现的是对数据库的一些增删改查的功能（方法名分别是add、delete、update、find），现在由于业务的变更，需要在对数据库操作完成后增加日志记录功能（Log接口），记录当前人对数据库进行了什么样的操作，操作是否成功。这时首先想到的实现方式应该是在add、delete、update、find的方法内部最后面增加记录日志的实现方式。如果又因为业务的变更，还需要判断这个人是否有该操作的权限（Permission接口），如果没有，则不让该用户进行操作，这时我们又得修改所有的数据库操作的方法，在每个方法执行前校验用户的权限。
+
+用一句话去概括总结上述例子，我总结的是在什么地方（可指在哪个包下的哪个类的哪个方法）去增强什么样的功能（可表示日志功能或者事务功能）。首先先来理清楚以下几个概念。
+
+Advice通知：指上例所说的日志、权限功能，可以简单理解为要增加什么样的功能（Log、Permission）。
+
+JoinPoint连接点：指上例所说的add方法或者update方法，可以理解为在哪个点进行增加功能，表示一个方法的执行。
+
+Pointcut切入点：指上例所说的add、delete、update、find方法，是JoinPoint的集合，表示多个方法的集合。可以简单理解为在什么地方增加功能。
+
+Advisor通知器：指在什么样的地方增加什么样的功能，也就是将Advice和Pointcut联系起来。
+
+目标对象（Target Object）：指需要增强功能的对象，也就是上例的包含add、delete、update、find方法的对象（DB接口的实现类）。
+
+Introduction引入：和Advice不同，Advice是指在生成后的代理对象在含有目标对象的方法功能外，还在方法前后添加一些额外功能，比如记录日志等。引入是指动态的给某个接口类实现继承其他接口功能，比如上例中的接口类（DB接口）含有add、delete、update、find功能，现在要要为该接口类动态的引入其他接口功能，比如DBAll接口的deleteAll功能，这时生成后的代理对象则相当于实现了DBAll接口。
+
+# 1、Advice通知
+
+通知类继承图如下
+
+![](http://file.ctosb.com/upload/image/20170705/1499240531795083029.png)
+
+如上图可以看出Advice主要分为四个接口子类，一个是AfterAdvice（在目标方法执行后增加功能）、BeforeAdvice（在目标方法执行前增加功能）、DynamicIntroductionAdvice、Interceptor（拦截器）。AfterAdvice的子接口由AfterReturningAdvice和ThrowsAdvice，AfterReturningAdvice接口类有一个afterReturning方法，在目标方法执行完后才执行；ThrowsAdvice接口类是在目标方法执行后抛出异常时执行。BeforeAdvice的子接口有MethodBeforeAdvice，MethodBeforeAdvice接口有一个before方法，在目标方法执行前执行。
+
+# 2、Pointcut切入点
+
+Pointcut切入点类继承图如下
+
+![](http://file.ctosb.com/upload/image/20170705/1499240540764082486.png)
+
+在Pointcut接口中，有两个方法，一个是getClassFilter（获取过滤类的类），一个是getMethodMatcher（获取过滤方法的类），从这里应该可以看出Pointcut的作用。
+
+Pointcut主要分类动态切入点和静态切入点，静态切入点在代理创建时执行一次，之后就会缓存下来，而动态切入点是在每次执行前都执行，故而静态切入点性能高。
+
+Pointcut类可参考子类实现JdkRegexpMethodPointcut（按正则表达式匹配方法），NameMatchMethodPointcut（按方法名去匹配）。
+
+# 3、Advisor通知器
+
+Advisor通知器主要包含两大类，一个是引入通知器（IntroductionAdvisor），一个是切点通知器（PointcutAdvisor）。如下类继承图
+
+![](http://file.ctosb.com/upload/image/20170705/1499240550390094358.png)
+
+# 4、Spring Aop
+
+Spring Aop主要实现是通过Jdk动态代理和Cglib动态代理来实现的，这个在Spring动态代理篇已经有讲过。在Spring动态代理篇幅中是使用ProxyFactoryBean中实现的增强功能的实现是通过实现Spring的Advise接口完成的，这样会导致需要增强的功能类和Spring耦合在一起，现在可以通过Spring Aop标签来配置，达到Spring Aop功能。
+
+创建业务Manager接口类，代码如下
+package com.test.aop; public interface Manager { public abstract void insert(String sql); public abstract void find(String sql); public abstract void findAll(); }
+
+创建业务实现类ManagerImpl，代码如下
+package com.test.aop; public class ManagerImp implements Manager { public void insert(String sql){ System.out.println("--------执行插入语句"+sql+"----------"); } public void find(String sql) { System.out.println("--------执行查询语句"+sql+"----------"); } public void findAll() { System.out.println("--------查询所有记录----------"); } }
+
+添加记录日志功能类Log，代码如下
+package com.test.aop; public class Log { public void writelog(){ System.out.println("-----------记录日志--------"); } }
+
+添加校验权限的功能类Check，代码如下
+package com.test.aop; public class Check { public void hasPermission(){ System.out.println("-----------校验是否有权限操作--------"); } }
+
+添加Spring配置文件bean.xml，需要在所有方法前添加校验用户权限功能，在insert插入方法后增加记录日志功能。
+<?xml version="1.0" encoding="UTF-8"?> <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"> <!-- 测试Spring aop --> <bean id="manager" class="com.test.aop.ManagerImp" lazy-init="false"/> <bean id="log" class="com.test.aop.Log"/> <bean id="check" class="com.test.aop.Check"/> <aop:config> <aop:pointcut expression="execution(/* com.test.aop.Manager.insert(..))" id="target"/> <aop:pointcut expression="execution(/* com.test.aop.Manager.find/*(..))" id="findAllTarget"/> <aop:aspect ref="log"> <aop:after method="writelog" pointcut-ref="target"/> </aop:aspect> <aop:aspect ref="check"> <aop:before method="hasPermission" pointcut-ref="target"/> </aop:aspect> <aop:aspect ref="check"> <aop:before method="hasPermission" pointcut-ref="findAllTarget"/> </aop:aspect> </aop:config> </beans>
+
+添加Junit测试代码
+//*/* /* 测试Spring Aop /*/ @Test public void testSpringAop(){ ApplicationContext ctx = new ClassPathXmlApplicationContext("bean.xml"); Manager manager = (Manager) ctx.getBean("manager"); System.out.println("------------------------测试插入方法---------------------------"); manager.insert("insert into sp_user(1,2,'1111')"); System.out.println("------------------------测试查询所有数据的查询方法---------------------------"); manager.findAll(); System.out.println("------------------------测试查询方法---------------------------"); manager.find("select /* from sp_user"); }
+
+测试结果如下
+
+![](http://file.ctosb.com/upload/image/20170705/1499240563147058896.png)
+
+如上，即使增强功能类与Spring达到松散耦合的效果。
+
+源码见如下附件
+
+![](http://ctosb.com/ueditor/dialogs/attachment/fileTypeImages/icon_rar.gif)[cygoattest.zip](http://file.ctosb.com/upload/file/20170705/1499240606715036039.zip "cygoattest.zip")
