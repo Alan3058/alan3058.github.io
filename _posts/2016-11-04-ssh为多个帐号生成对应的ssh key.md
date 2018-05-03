@@ -9,12 +9,11 @@ fullview: false
 
 ### 1.生成key
 
-生成test1的key，一直下一步即可
-$ ssh-keygen -t rsa -C "test1@email.com"
+a. 生成test1的key，一直下一步即可
+> $ ssh-keygen -t rsa -C "test1@email.com"
 
-生成test2的key，需要修改生成文件名称如下，否则会替换前一个key
-
-$ ssh-keygen -t rsa -C "test2@email.com"
+b. 生成test2的key，需要修改生成文件名称如下，否则会替换前一个key
+> $ ssh-keygen -t rsa -C "test2@email.com"
 
 **如下修改key的文件名称**
 
@@ -22,12 +21,12 @@ $ ssh-keygen -t rsa -C "test2@email.com"
 
 ### 2.添加key到ssh agent
 
-添加ssh key到ssh agent中
-$ ssh-add ~/.ssh/id_rsa_github
+a. 添加ssh key到ssh agent中
+> $ ssh-add ~/.ssh/id_rsa_github
 
 可能提示错误信息：
+> Could not open a connection to your authentication agent.
 
-Could not open a connection to your authentication agent.
-
-这可以执行如下命令即可。
-$ ssh-agent bash$ ssh-add ~/.ssh/id_rsa_github
+b. 这可以执行如下命令即可。
+> $ ssh-agent bash  
+> $ ssh-add ~/.ssh/id_rsa_github
