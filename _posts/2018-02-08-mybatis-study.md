@@ -5,6 +5,8 @@ categories: [mybatis]
 tags: [mybatis]
 fullview: false
 ---
+mybatis框架是一个半自动ORM框架，并且它是目前主流框架套件（SSM）之一，相比Hibernate来说，它是非常简单且容易上手。虽说hibernate声称自己不需要写sql，并且可以跨数据库。但是对于程序员的我们来说，多写写sql还是有好处的，而且哪个公司闲着没事随便换数据库。目前工作中使用mybatis的频率比较高，因此打算对mybatis知识进行一次整理。
+
 # 版本
 3.4.5
 
