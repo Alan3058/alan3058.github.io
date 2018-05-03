@@ -55,29 +55,125 @@ Advisor通知器主要包含两大类，一个是引入通知器（IntroductionA
 Spring Aop主要实现是通过Jdk动态代理和Cglib动态代理来实现的，这个在Spring动态代理篇已经有讲过。在Spring动态代理篇幅中是使用ProxyFactoryBean中实现的增强功能的实现是通过实现Spring的Advise接口完成的，这样会导致需要增强的功能类和Spring耦合在一起，现在可以通过Spring Aop标签来配置，达到Spring Aop功能。
 
 创建业务Manager接口类，代码如下
-package com.test.aop; public interface Manager { public abstract void insert(String sql); public abstract void find(String sql); public abstract void findAll(); }
+
+```
+package com.test.aop;
+
+public interface Manager {
+
+	public abstract void insert(String sql);
+	public abstract void find(String sql);
+	public abstract void findAll();
+
+}
+```
 
 创建业务实现类ManagerImpl，代码如下
-package com.test.aop; public class ManagerImp implements Manager { public void insert(String sql){ System.out.println("--------执行插入语句"+sql+"----------"); } public void find(String sql) { System.out.println("--------执行查询语句"+sql+"----------"); } public void findAll() { System.out.println("--------查询所有记录----------"); } }
+
+```
+package com.test.aop;
+
+public class ManagerImp implements Manager {
+	
+	public void insert(String sql){
+		System.out.println("--------执行插入语句"+sql+"----------");
+	}
+
+	public void find(String sql) {
+		System.out.println("--------执行查询语句"+sql+"----------");
+	}
+
+	public void findAll() {
+		System.out.println("--------查询所有记录----------");
+	}
+
+}
+```
 
 添加记录日志功能类Log，代码如下
-package com.test.aop; public class Log { public void writelog(){ System.out.println("-----------记录日志--------"); } }
+
+```
+package com.test.aop;
+
+
+public class Log {
+
+	public void writelog(){
+		System.out.println("-----------记录日志--------");
+	}
+}
+```
 
 添加校验权限的功能类Check，代码如下
-package com.test.aop; public class Check { public void hasPermission(){ System.out.println("-----------校验是否有权限操作--------"); } }
+
+```
+package com.test.aop;
+
+public class Check {
+
+	public void hasPermission(){
+		System.out.println("-----------校验是否有权限操作--------");
+	}
+}
+```
 
 添加Spring配置文件bean.xml，需要在所有方法前添加校验用户权限功能，在insert插入方法后增加记录日志功能。
-<?xml version="1.0" encoding="UTF-8"?> <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"> <!-- 测试Spring aop --> <bean id="manager" class="com.test.aop.ManagerImp" lazy-init="false"/> <bean id="log" class="com.test.aop.Log"/> <bean id="check" class="com.test.aop.Check"/> <aop:config> <aop:pointcut expression="execution(/* com.test.aop.Manager.insert(..))" id="target"/> <aop:pointcut expression="execution(/* com.test.aop.Manager.find/*(..))" id="findAllTarget"/> <aop:aspect ref="log"> <aop:after method="writelog" pointcut-ref="target"/> </aop:aspect> <aop:aspect ref="check"> <aop:before method="hasPermission" pointcut-ref="target"/> </aop:aspect> <aop:aspect ref="check"> <aop:before method="hasPermission" pointcut-ref="findAllTarget"/> </aop:aspect> </aop:config> </beans>
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+    <!-- 测试Spring aop -->
+    <bean id="manager" class="com.test.aop.ManagerImp" lazy-init="false"/>
+    <bean id="log" class="com.test.aop.Log"/>
+    <bean id="check" class="com.test.aop.Check"/>
+    <aop:config>
+   		<aop:pointcut expression="execution(* com.test.aop.Manager.insert(..))" id="target"/>
+   		<aop:pointcut expression="execution(* com.test.aop.Manager.find*(..))" id="findAllTarget"/>
+    	<aop:aspect ref="log">
+    		<aop:after method="writelog"  pointcut-ref="target"/>
+    	</aop:aspect>
+    	<aop:aspect ref="check">
+    		<aop:before method="hasPermission"  pointcut-ref="target"/>
+    	</aop:aspect>
+    	<aop:aspect ref="check">
+    		<aop:before method="hasPermission"  pointcut-ref="findAllTarget"/>
+    	</aop:aspect>
+    </aop:config>
+</beans>
+```
 
 添加Junit测试代码
-//*/* /* 测试Spring Aop /*/ @Test public void testSpringAop(){ ApplicationContext ctx = new ClassPathXmlApplicationContext("bean.xml"); Manager manager = (Manager) ctx.getBean("manager"); System.out.println("------------------------测试插入方法---------------------------"); manager.insert("insert into sp_user(1,2,'1111')"); System.out.println("------------------------测试查询所有数据的查询方法---------------------------"); manager.findAll(); System.out.println("------------------------测试查询方法---------------------------"); manager.find("select /* from sp_user"); }
+
+```
+/**
+ * 测试Spring Aop
+ */
+@Test
+public void testSpringAop(){
+	ApplicationContext ctx = new ClassPathXmlApplicationContext("bean.xml");
+	Manager manager = (Manager) ctx.getBean("manager");
+	System.out.println("------------------------测试插入方法---------------------------");
+	manager.insert("insert into sp_user(1,2,'1111')");
+	System.out.println("------------------------测试查询所有数据的查询方法---------------------------");
+	manager.findAll();
+	System.out.println("------------------------测试查询方法---------------------------");
+	manager.find("select * from sp_user");
+}
+```
 
 测试结果如下
 
 ![](http://file.ctosb.com/upload/image/20170705/1499240563147058896.png)
 
-如上，即使增强功能类与Spring达到松散耦合的效果。
+如上，即使增强功能类与Spring达到松散耦合的效果。 
 
 源码见如下附件
 
 ![](http://ctosb.com/ueditor/dialogs/attachment/fileTypeImages/icon_rar.gif)[cygoattest.zip](http://file.ctosb.com/upload/file/20170705/1499240606715036039.zip "cygoattest.zip")
+
+

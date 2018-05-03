@@ -25,13 +25,68 @@ BeanFactoryAware：给实现该接口的bean注入当前BeanFactory容器，此�
 BeanNameAware：给实现该接口的bean注入bean的名称。
 
 现在新建一个ApplicationContextUtil类，实现了BeanNameAware和ApplicationContextAware接口，代码如下
-package com.test.aware; import org.springframework.beans.BeansException; import org.springframework.beans.factory.BeanNameAware; import org.springframework.context.ApplicationContext; import org.springframework.context.ApplicationContextAware; public class ApplicationUtil implements ApplicationContextAware,BeanNameAware { private ApplicationContext applicationContext; private String beanName; public void setApplicationContext(ApplicationContext applicationContext) throws BeansException { this.applicationContext = applicationContext; } public ApplicationContext getApplicationContext() { return applicationContext; } public void setBeanName(String name) { this.beanName=name; } public String getBeanName() { return beanName; } }
+
+```
+package com.test.aware;
+
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
+public class ApplicationUtil implements ApplicationContextAware,BeanNameAware {
+	private ApplicationContext applicationContext;
+	private String beanName;
+
+	public void setApplicationContext(ApplicationContext applicationContext)
+			throws BeansException {
+		this.applicationContext = applicationContext;
+	}
+
+	public ApplicationContext getApplicationContext() {
+		return applicationContext;
+	}
+
+	public void setBeanName(String name) {
+		this.beanName=name;
+	}
+
+	public String getBeanName() {
+		return beanName;
+	}
+
+}
+```
 
 创建bean.xml文件，内容如下
-<?xml version="1.0" encoding="UTF-8"?> <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"> <!-- 测试Spring IOC Aware感知特性 --> <bean id="applicationUtil" class="com.test.aware.ApplicationUtil"/> </beans>
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+    <!-- 测试Spring IOC Aware感知特性 -->
+    <bean id="applicationUtil" class="com.test.aware.ApplicationUtil"/>
+</beans>
+```
 
 创建Junit代码
-//*/* /* 测试Aware感知特性 /*/ @Test public void testAware(){ ApplicationContext ctx = new FileSystemXmlApplicationContext("H:\\workspaceST\\cygoattest\\src\\test\\resources\\bean.xml"); ApplicationUtil util = (ApplicationUtil) ctx.getBean("applicationUtil",ApplicationUtil.class); System.out.println(util.getApplicationContext()); System.out.println(util.getBeanName()); }
+
+```
+/**
+ * 测试Aware感知特性
+ */
+@Test
+public void testAware(){
+	ApplicationContext ctx = new FileSystemXmlApplicationContext("H:\\workspaceST\\cygoattest\\src\\test\\resources\\bean.xml");
+	ApplicationUtil util = (ApplicationUtil) ctx.getBean("applicationUtil",ApplicationUtil.class);
+	System.out.println(util.getApplicationContext());
+	System.out.println(util.getBeanName());
+}
+```
 
 测试结果如下
 
@@ -41,4 +96,7 @@ package com.test.aware; import org.springframework.beans.BeansException; import 
 
 源码见如下附件
 
+
 ![](http://ctosb.com/ueditor/dialogs/attachment/fileTypeImages/icon_rar.gif)[cygoattest.zip](http://file.ctosb.com/upload/file/20170705/1499240694524004167.zip "cygoattest.zip")
+
+

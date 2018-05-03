@@ -21,3 +21,4 @@ fullview: false
 4.将项目生成的jar包拷贝到JDK目录下，D:\Devtool\Java\jdk1.8.0_144\jre\lib\endorsed，如果endoresd文件夹不存在，则新建文件夹。
 
 5.重启eclipse，运行调试，debug将能看到变量值。
+

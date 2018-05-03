@@ -25,13 +25,63 @@ BeanFactory类图如下
 3.BeanDefinition注册 BeanDefinitionRegistry去注册
 
 创建bean.xml，内容如下
-<?xml version="1.0" encoding="UTF-8"?> <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"> <bean id="person" class="com.test.bean.Person"> <property name="name" value="ylxy"/> <property name="age" value="25"/> </bean> </beans>
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+    <bean id="person" class="com.test.bean.Person">
+        <property name="name" value="ylxy"/>
+        <property name="age" value="25"/>
+    </bean>
+</beans>
+```
 
 创建Person类，代码如下
-package com.test.bean; public class Person { private String name; private int age; public String getName() { return name; } public void setName(String name) { this.name = name; } public int getAge() { return age; } public void setAge(int age) { this.age = age; } public void info(){ System.out.println("name:"+getName()+" age:"+getAge()); } }
+
+```
+package com.test.bean;
+
+public class Person {
+    
+    private String name;
+    private int age;
+    
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public int getAge() {
+        return age;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
+    public void info(){
+        System.out.println("name:"+getName()+" age:"+getAge());
+    }
+}
+```
 
 创建junit测试代码，内容如下
-@Test public void testBeanFactory(){ ClassPathResource resource = new ClassPathResource("bean.xml"); DefaultListableBeanFactory bf = new DefaultListableBeanFactory(); XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(bf); reader.loadBeanDefinitions(resource); Person p = bf.getBean("person", Person.class); p.info(); }
+
+```
+@Test
+public void testBeanFactory(){
+	ClassPathResource resource = new ClassPathResource("bean.xml");
+	DefaultListableBeanFactory bf = new DefaultListableBeanFactory();
+	XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(bf);
+	reader.loadBeanDefinitions(resource);
+	Person p = bf.getBean("person", Person.class);
+	p.info();
+}
+```
 
 最终测试结果如下
 
@@ -68,7 +118,156 @@ BeanDefinition注册实现：调用BeanDefinitionRegistry.registerBeanDefinition
 依赖注入和控制反转是同一个概念。当某个A javaBean需要B javaBean的引用去协助处理一些事情的时候，在传统程序设计中，是需要A去new一个B对象。然而在spring中却不一样，创建B对象的工作不是由A来new，而是由spring IOC容器去创建，然后将创建的B对象注入到A中。
 
 spring的依赖注入入口也就是BeanFactory的getBean（）方法。getBean（）方法最后调用doGetBean（）方法，即doGetBean（）方法是依赖注入的真实入口，代码如下。
-protected <T> T doGetBean( final String name, final Class<T> requiredType, final Object[] args, boolean typeCheckOnly) throws BeansException { final String beanName = transformedBeanName(name); Object bean; // Eagerly check singleton cache for manually registered singletons. Object sharedInstance = getSingleton(beanName); if (sharedInstance != null && args == null) { if (logger.isDebugEnabled()) { if (isSingletonCurrentlyInCreation(beanName)) { logger.debug("Returning eagerly cached instance of singleton bean '" + beanName + "' that is not fully initialized yet - a consequence of a circular reference"); } else { logger.debug("Returning cached instance of singleton bean '" + beanName + "'"); } } bean = getObjectForBeanInstance(sharedInstance, name, beanName, null); } else { // Fail if we're already creating this bean instance: // We're assumably within a circular reference. if (isPrototypeCurrentlyInCreation(beanName)) { throw new BeanCurrentlyInCreationException(beanName); } // Check if bean definition exists in this factory. BeanFactory parentBeanFactory = getParentBeanFactory(); //检查这个bean是否在当前这个BeanFactory中，如果当前BeanFactory的不包含这个bean，则去父级BeanFactory查找。 if (parentBeanFactory != null && !containsBeanDefinition(beanName)) { // Not found -> check parent. String nameToLookup = originalBeanName(name); if (args != null) { // Delegation to parent with explicit args. return (T) parentBeanFactory.getBean(nameToLookup, args); } else { // No args -> delegate to standard getBean method. return parentBeanFactory.getBean(nameToLookup, requiredType); } } if (!typeCheckOnly) { markBeanAsCreated(beanName); } try { final RootBeanDefinition mbd = getMergedLocalBeanDefinition(beanName); checkMergedBeanDefinition(mbd, beanName, args); // Guarantee initialization of beans that the current bean depends on. String[] dependsOn = mbd.getDependsOn(); //查找这个BeanDefinition是否有依赖对象，如果有依赖的对象，则IOC容器先创建依赖对象。 if (dependsOn != null) { for (String dependsOnBean : dependsOn) { getBean(dependsOnBean); registerDependentBean(dependsOnBean, beanName); } } // Create bean instance. if (mbd.isSingleton()) { //获取单例对象 sharedInstance = getSingleton(beanName, new ObjectFactory<Object>() { public Object getObject() throws BeansException { try { //创建Bean的入口方法 return createBean(beanName, mbd, args); } catch (BeansException ex) { // Explicitly remove instance from singleton cache: It might have been put there // eagerly by the creation process, to allow for circular reference resolution. // Also remove any beans that received a temporary reference to the bean. destroySingleton(beanName); throw ex; } } }); //这里创建动态代理对象 bean = getObjectForBeanInstance(sharedInstance, name, beanName, mbd); } else if (mbd.isPrototype()) { // It's a prototype -> create a new instance. Object prototypeInstance = null; try { beforePrototypeCreation(beanName); prototypeInstance = createBean(beanName, mbd, args); } finally { afterPrototypeCreation(beanName); } bean = getObjectForBeanInstance(prototypeInstance, name, beanName, mbd); } else { String scopeName = mbd.getScope(); final Scope scope = this.scopes.get(scopeName); if (scope == null) { throw new IllegalStateException("No Scope registered for scope '" + scopeName + "'"); } try { Object scopedInstance = scope.get(beanName, new ObjectFactory<Object>() { public Object getObject() throws BeansException { beforePrototypeCreation(beanName); try { return createBean(beanName, mbd, args); } finally { afterPrototypeCreation(beanName); } } }); bean = getObjectForBeanInstance(scopedInstance, name, beanName, mbd); } catch (IllegalStateException ex) { throw new BeanCreationException(beanName, "Scope '" + scopeName + "' is not active for the current thread; " + "consider defining a scoped proxy for this bean if you intend to refer to it from a singleton", ex); } } } catch (BeansException ex) { cleanupAfterBeanCreationFailure(beanName); throw ex; } } // Check if required type matches the type of the actual bean instance. if (requiredType != null && bean != null && !requiredType.isAssignableFrom(bean.getClass())) { try { return getTypeConverter().convertIfNecessary(bean, requiredType); } catch (TypeMismatchException ex) { if (logger.isDebugEnabled()) { logger.debug("Failed to convert bean '" + name + "' to required type [" + ClassUtils.getQualifiedName(requiredType) + "]", ex); } throw new BeanNotOfRequiredTypeException(name, requiredType, bean.getClass()); } } return (T) bean; }
+
+```
+protected <T> T doGetBean(
+		final String name, final Class<T> requiredType, final Object[] args, boolean typeCheckOnly)
+		throws BeansException {
+
+	final String beanName = transformedBeanName(name);
+	Object bean;
+
+	// Eagerly check singleton cache for manually registered singletons.
+	Object sharedInstance = getSingleton(beanName);
+	if (sharedInstance != null && args == null) {
+		if (logger.isDebugEnabled()) {
+			if (isSingletonCurrentlyInCreation(beanName)) {
+				logger.debug("Returning eagerly cached instance of singleton bean '" + beanName +
+						"' that is not fully initialized yet - a consequence of a circular reference");
+			}
+			else {
+				logger.debug("Returning cached instance of singleton bean '" + beanName + "'");
+			}
+		}
+		bean = getObjectForBeanInstance(sharedInstance, name, beanName, null);
+	}
+
+	else {
+		// Fail if we're already creating this bean instance:
+		// We're assumably within a circular reference.
+		if (isPrototypeCurrentlyInCreation(beanName)) {
+			throw new BeanCurrentlyInCreationException(beanName);
+		}
+
+		// Check if bean definition exists in this factory.
+		BeanFactory parentBeanFactory = getParentBeanFactory();
+					//检查这个bean是否在当前这个BeanFactory中，如果当前BeanFactory的不包含这个bean，则去父级BeanFactory查找。
+		if (parentBeanFactory != null && !containsBeanDefinition(beanName)) {
+			// Not found -> check parent.
+			String nameToLookup = originalBeanName(name);
+			if (args != null) {
+				// Delegation to parent with explicit args.
+				return (T) parentBeanFactory.getBean(nameToLookup, args);
+			}
+			else {
+				// No args -> delegate to standard getBean method.
+				return parentBeanFactory.getBean(nameToLookup, requiredType);
+			}
+		}
+
+		if (!typeCheckOnly) {
+			markBeanAsCreated(beanName);
+		}
+
+		try {
+			final RootBeanDefinition mbd = getMergedLocalBeanDefinition(beanName);
+			checkMergedBeanDefinition(mbd, beanName, args);
+
+			// Guarantee initialization of beans that the current bean depends on.
+			String[] dependsOn = mbd.getDependsOn();
+							//查找这个BeanDefinition是否有依赖对象，如果有依赖的对象，则IOC容器先创建依赖对象。
+			if (dependsOn != null) {
+				for (String dependsOnBean : dependsOn) {
+					getBean(dependsOnBean);
+					registerDependentBean(dependsOnBean, beanName);
+				}
+			}
+
+			// Create bean instance.
+			if (mbd.isSingleton()) {
+									//获取单例对象
+				sharedInstance = getSingleton(beanName, new ObjectFactory<Object>() {
+					public Object getObject() throws BeansException {
+						try {
+															//创建Bean的入口方法
+							return createBean(beanName, mbd, args);
+						}
+						catch (BeansException ex) {
+							// Explicitly remove instance from singleton cache: It might have been put there
+							// eagerly by the creation process, to allow for circular reference resolution.
+							// Also remove any beans that received a temporary reference to the bean.
+							destroySingleton(beanName);
+							throw ex;
+						}
+					}
+				});
+									//这里创建动态代理对象
+				bean = getObjectForBeanInstance(sharedInstance, name, beanName, mbd);
+			}
+
+			else if (mbd.isPrototype()) {
+				// It's a prototype -> create a new instance.
+				Object prototypeInstance = null;
+				try {
+					beforePrototypeCreation(beanName);
+					prototypeInstance = createBean(beanName, mbd, args);
+				}
+				finally {
+					afterPrototypeCreation(beanName);
+				}
+				bean = getObjectForBeanInstance(prototypeInstance, name, beanName, mbd);
+			}
+
+			else {
+				String scopeName = mbd.getScope();
+				final Scope scope = this.scopes.get(scopeName);
+				if (scope == null) {
+					throw new IllegalStateException("No Scope registered for scope '" + scopeName + "'");
+				}
+				try {
+					Object scopedInstance = scope.get(beanName, new ObjectFactory<Object>() {
+						public Object getObject() throws BeansException {
+							beforePrototypeCreation(beanName);
+							try {
+								return createBean(beanName, mbd, args);
+							}
+							finally {
+								afterPrototypeCreation(beanName);
+							}
+						}
+					});
+					bean = getObjectForBeanInstance(scopedInstance, name, beanName, mbd);
+				}
+				catch (IllegalStateException ex) {
+					throw new BeanCreationException(beanName,
+							"Scope '" + scopeName + "' is not active for the current thread; " +
+							"consider defining a scoped proxy for this bean if you intend to refer to it from a singleton",
+							ex);
+				}
+			}
+		}
+		catch (BeansException ex) {
+			cleanupAfterBeanCreationFailure(beanName);
+			throw ex;
+		}
+	}
+
+	// Check if required type matches the type of the actual bean instance.
+	if (requiredType != null && bean != null && !requiredType.isAssignableFrom(bean.getClass())) {
+		try {
+			return getTypeConverter().convertIfNecessary(bean, requiredType);
+		}
+		catch (TypeMismatchException ex) {
+			if (logger.isDebugEnabled()) {
+				logger.debug("Failed to convert bean '" + name + "' to required type [" +
+						ClassUtils.getQualifiedName(requiredType) + "]", ex);
+			}
+			throw new BeanNotOfRequiredTypeException(name, requiredType, bean.getClass());
+		}
+	}
+	return (T) bean;
+}
+```
 
 从上述代码可以看出创建对象是由DefaultSingletonBeanRegistry的getSingleton方法去创建，然后回调ObjectFactory的getObject方法，ObjectFactory的getObject方法又调用了createBean方法。也就是说实际创建对象的方法是AbstractAutowireCapableBeanFactory类的createBean方法，该方法内又调用doCreateBean去创建Bean。
 
@@ -99,3 +298,5 @@ protected <T> T doGetBean( final String name, final Class<T> requiredType, final
 源码见如下附件
 
 ![](http://ctosb.com/ueditor/dialogs/attachment/fileTypeImages/icon_rar.gif)[cygoattest.zip](http://file.ctosb.com/upload/file/20170705/1499240213131066792.zip "cygoattest.zip")
+
+

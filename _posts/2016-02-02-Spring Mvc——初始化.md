@@ -29,9 +29,12 @@ Spring mvc的初始化主要包括根IOC容器的构建和初始化、DispacherS
 ## 3.1、DispatcherServlet初始化参数配置说明
 
 contextClass
-定义DispatcherServlet类构建的WebApplicationContext实例类，用户可自定义类去实现WebApplicationContext接口。默认使用XmlWebApplicationContext类contextConfigLocation
-定义DispatcherServlet类的IOC容器（即contextClass实例）的配置文件。由于spring支持多配置文件，故而在此处可填写多个配置文件路径（按逗号分隔）。如果同一个bean在多个配置文件中都被定义，则以最后一个为准。namespace
+定义DispatcherServlet类构建的WebApplicationContext实例类，用户可自定义类去实现WebApplicationContext接口。默认使用XmlWebApplicationContext类
+contextConfigLocation
+定义DispatcherServlet类的IOC容器（即contextClass实例）的配置文件。由于spring支持多配置文件，故而在此处可填写多个配置文件路径（按逗号分隔）。如果同一个bean在多个配置文件中都被定义，则以最后一个为准。
+namespace
 DispatcherServlet的IOC容器的命名空间，默认使用[servlet-name]-servlet
+
 
 ## 3.2、DispatcherServlet初始化
 
@@ -85,3 +88,5 @@ Bean类型说明HandlerMapping将传入的请求映射到处理类和拦截器Ha
 # 4、总结
 
 在Spring mvc容器启动时，首先会调用ContextLoaderListener监听器去初始化根IOC容器，该容器代表Spring IOC容器。之后在构建和初始化DispatcherServlet容器时先实例化DispatcherServlet对象，再构建和初始化Spring mvc IOC容器，该容器的父节点是Spring IOC容器。这两个IOC容器都被缓存在ServletContext对象中，可调用相应工具类（比如WebApplicationContextUtils）查找出来。
+
+

@@ -21,13 +21,61 @@ ApplicationContextd的主要实现子类有ClassPathXmlApplicationContext、File
 # 2、编程式实现
 
 创建bean.xml配置文件，内容如下
-<?xml version="1.0" encoding="UTF-8"?> <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"> <bean id="person" class="com.test.bean.Person"> <property name="name" value="ylxy"/> <property name="age" value="25"/> </bean> </beans>
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+    <bean id="person" class="com.test.bean.Person">
+        <property name="name" value="ylxy"/>
+        <property name="age" value="25"/>
+    </bean>
+</beans>
+```
 
 创建Person类
-package com.test.bean; public class Person { private String name; private int age; public String getName() { return name; } public void setName(String name) { this.name = name; } public int getAge() { return age; } public void setAge(int age) { this.age = age; } public void info(){ System.out.println("name:"+getName()+" age:"+getAge()); } }
+
+```
+package com.test.bean;
+
+public class Person {
+    
+    private String name;
+    private int age;
+    
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public int getAge() {
+        return age;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
+    public void info(){
+        System.out.println("name:"+getName()+" age:"+getAge());
+    }
+}
+```
 
 创建Junit测试代码
-@Test public void test(){ ApplicationContext ctx = new FileSystemXmlApplicationContext("H:\\workspaceST\\cygoattest\\src\\test\\resources\\bean.xml"); Person p = (Person) ctx.getBean("person"); p.info(); }
+
+
+```
+@Test
+public void test(){
+	ApplicationContext ctx = new FileSystemXmlApplicationContext("H:\\workspaceST\\cygoattest\\src\\test\\resources\\bean.xml");
+	Person p = (Person) ctx.getBean("person");
+	p.info();
+}
+```
 
 执行测试结果如下
 
@@ -82,3 +130,5 @@ package com.test.bean; public class Person { private String name; private int ag
 源码见如下附件
 
 ![](http://ctosb.com/ueditor/dialogs/attachment/fileTypeImages/icon_rar.gif)[cygoattest.zip](http://file.ctosb.com/upload/file/20170705/1499240361490070338.zip "cygoattest.zip")
+
+

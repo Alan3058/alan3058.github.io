@@ -24,7 +24,7 @@ fullview: false
 
 ![1.png](http://dl2.iteye.com/upload/attachment/0110/4599/6659a319-f878-3b7d-bf3a-c2a365b7fe4b.png "1454473609150658.png")
 
-因此可以看出DispatcherServlet类在Spring mvc框架中占据了一个非常重要的地位，它接收所有请求，然后将对应的请求分发到对应的功能类实例去处理，然后将处理后结果响应给客户端。
+因此可以看出DispatcherServlet类在Spring mvc框架中占据了一个非常重要的地位，它接收所有请求，然后将对应的请求分发到对应的功能类实例去处理，然后将处理后结果响应给客户端。 
 
 # 2、Dispatcher分发处理请求
 
@@ -53,3 +53,5 @@ fullview: false
 如下列出Spring Mvc处理请求所设计到的重要接口和类。
 
 HandlerMapping接口、HandlerInterceptor拦截器接口和其包装类MappedInterceptor、HandlerExecutionChain类、HandlerAdapter适配器接口、ViewResolver视图解析器接口、View接口、HttpMessageConvert消息转换接口
+
+
