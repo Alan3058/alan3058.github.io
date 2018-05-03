@@ -3,6 +3,7 @@ layout: post
 title: [PowerDesigner脚本使用一]
 categories: [开发工具]
 tags: [powerdesigner,名字备注替换,导出excel,脚本]
+id: [18717232594944]
 fullview: false
 ---
 这段时间经常使用powerdesigner，期间有遇到导出excel或者转名称为备注等需求。于是网上搜索了下，似乎新版本也只支持部分功能，最后发现工具下有段运行脚本的功能（`PowerDesigner->Tools->Execute Commands->Edit/Run Scripts`）。这应该是设计者留给我们使用者的入口吧![](http://img.baidu.com/hi/jx2/j_0028.gif)![](http://img.baidu.com/hi/jx2/j_0028.gif)![](http://img.baidu.com/hi/jx2/j_0028.gif)，自己搜了几段脚本，越看越眼熟，这尼玛不是蛋疼的VB吗？大学学过的东西还是用上了，当然我也没有完全记住，只能记住大概、能看懂就是了，不过已经足够了。。。![](http://img.baidu.com/hi/jx2/j_0028.gif)![](http://img.baidu.com/hi/jx2/j_0028.gif)![](http://img.baidu.com/hi/jx2/j_0028.gif)。其实程序员哥哥妹妹应该很容易看懂啦。。。

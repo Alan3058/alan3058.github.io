@@ -3,6 +3,7 @@ layout: post
 title: [Linux系统下将网卡eth1名称修改为eth0]
 categories: [开发工具]
 tags: [linux,修改网卡名称,eth1,eth0]
+id: [18645929426944]
 fullview: false
 ---
 正常安装Linux系统，Linux会自动识别第一张网卡为eth0，第二张网卡名称eth1。然而当我们使用虚拟机克隆技术去复制Linux系统时将有所不同，新克隆出来的系统的网卡信息名称可能是eth1。本人使用VirtualBox虚拟机克隆Centos6.5系统时出现过该问题，以下是解决方法。

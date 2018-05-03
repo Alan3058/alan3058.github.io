@@ -3,6 +3,7 @@ layout: post
 title: [Linux下安装Nexus私服]
 categories: [开发工具]
 tags: [linux,nexus,nexus私服,安装]
+id: [18687872466944]
 fullview: false
 ---
 # 背景

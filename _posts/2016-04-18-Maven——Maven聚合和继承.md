@@ -3,6 +3,7 @@ layout: post
 title: [Maven——Maven聚合和继承]
 categories: [开发工具]
 tags: [maven,聚合,继承]
+id: [18729815506944]
 fullview: false
 ---
 当我底下有多个Maven项目的时候，一般我们会通过对每个Maven项目进行构建，然而这种重复的点击工作将会带来很多负面情绪，令人躁动。不过Maven已经为我们预见到了该问题所在，故而提出了聚合概念，即新建一个父级pom工程，后续只需构建父级pom工程，底下所有的子Maven项目也将一一被构建。
