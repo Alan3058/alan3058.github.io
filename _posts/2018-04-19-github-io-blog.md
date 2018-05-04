@@ -5,6 +5,9 @@ categories: [other]
 tags: [github,github io,blog]
 fullview: false
 ---
+# Remark
+Because of the blog of github io is simple and easy, so I am planning use the github io to replace my blog site. Now write the article to record the step of crete github blog, For more infomation, as below.
+
 # Steps
 
 ## A. Create a simple github blog
