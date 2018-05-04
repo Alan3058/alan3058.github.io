@@ -49,7 +49,8 @@ Because of the blog of github io is simple and easy, so I am planning use the gi
   $ jekyll serve  
   ```
 
-> tip:For more information: see [jekyll site](http://jekyllcn.com/docs/quickstart/). 
+> tip:For more information: see [jekyll site](http://jekyllcn.com/docs/quickstart/).   
+> also see [jekyll/liquid api document](http://ju.outofmemory.cn/entry/149459)
 
 ## C. Use your domain on the blog (Not Must)
 1. Add a domain resolve on your DNS provider.
@@ -99,4 +100,4 @@ Now, you can use your domain to access.
 </div>
 ```
 
-Now, to visit your site, you will look the pagination effect
+Now, to visit your site, you will look the pagination effect.
