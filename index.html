@@ -22,7 +22,7 @@ tagline:
     {% if post.fullview %}
     {{ post.content }}
     {% else %}
-    {{ post.excerpt | strip_html | truncate:200 }}
+    {{ post.content | strip_html | truncate:200 }}
     {% endif %}
   </div>
 
