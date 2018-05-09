@@ -39,7 +39,15 @@ plugins:
   - jekyll-feed
 
 
-
+# Gitalk
+gitalk:
+  enable: true    #是否开启Gitalk评论
+  clientID: 4a5819a9e98f0387b829                            #生成的clientID
+  clientSecret: a44530afd651b7207d0fb8e5d1a81e50ae8f9021    #生成的clientSecret
+  repo: alan3058.github.io    #仓库名称
+  owner: alan3058    #github用户名
+  admin: alan
+  distractionFreeMode: true #是否启用类似FB的阴影遮罩
   
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
