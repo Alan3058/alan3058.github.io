@@ -48,7 +48,7 @@ gitalk:
   clientSecret: a44530afd651b7207d0fb8e5d1a81e50ae8f9021    #生成的clientSecret
   repo: alan3058.github.io    #仓库名称
   owner: Alan3058    #github用户名
-  admin: 雪碧心拔凉
+  admin: [Alan3058]
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
   
 # Exclude from processing.
