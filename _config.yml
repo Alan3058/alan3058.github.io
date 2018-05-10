@@ -28,7 +28,7 @@ rss_path: feed.xml
 categories_path: categories.html
 tags_path: tags.html
 
-permalink: pretty
+permalink: /:title.html
 paginate: 5
 
 BASE_PATH:
