@@ -10,7 +10,12 @@ published: true
 The zookeeper is a stronger midware, and it a high-perfomance coordination service for distributed applications.It exposed common service - such as naming, configuration management, synchronization,and group services. You can create the distribute lock, distribute configuration file manage, and the other distribute thing by using it.  
 I will to install the zookeeper next.
 
-# 1. standalone
+# 1. Prepare
+Operating System: Centos 7  
+Java: openjdk1.8  
+zookeeper: 3.4.12  
+
+# 2. Standalone
 a. download [zookeeper](http://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/zookeeper-3.4.12/zookeeper-3.4.12.tar.gz)  
 
 b. unzip file  
@@ -26,6 +31,7 @@ In the file, There is a default client port that value of 2181, you can connecti
 d. start the zookeeper.  
 Go into the `bin` directory in the zookeeper path, and input the follow:  
 > sh zkServer.sh start
+
 Or  
 > sh zkServer.sh start-foreground
 
@@ -35,7 +41,7 @@ Now, you can connection all of machine.input the follow command. (eg: the ip is 
 tip: you also add the `bin` directory in the zookeeper path to the environment variable. looke the follow:  
 > export PATH="$PATH:/app/zookeeper/bin"
 
-# 2. cluster 
+# 3. Cluster 
 a. prepare
 The First, you must have more the three machine. and the odd number of machine is the  best practice, such as three, five, seven.(eg: I use the three machine)
 
