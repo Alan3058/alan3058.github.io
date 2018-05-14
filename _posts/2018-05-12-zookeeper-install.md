@@ -4,7 +4,7 @@ title:  "zookeeper install"
 categories: [中间件,zookeeper]
 tags: [java,zookeeper]
 fullview: false
-published: false
+published: true
 ---
 
 The zookeeper is a stronger midware, and it a high-perfomance coordination service for distributed applications.It exposed common service - such as naming, configuration management, synchronization,and group services. You can create the distribute lock, distribute configuration file manage, and the other distribute thing by using it.  
@@ -59,14 +59,17 @@ Create a `myid` file in the data directory of zookeeper, and the file must conta
 Such as the follow:  
 The first machine's id value is 1.
 > echo 1 > myid  
-The second machine's id value is 2.
-> echo 2 > myid   
-The third machine's id value is 3.
+
+The second machine's id value is 2.  
+> echo 2 > myid  
+
+The third machine's id value is 3.  
 > echo 3 > myid  
 
 e. Start all of machine.  
 Input the command by every machine:  
 > sh zkServer.sh start  
+
 Or  
 > sh zkServer.sh start-foreground  
 
