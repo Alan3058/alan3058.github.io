@@ -11,11 +11,11 @@ The zookeeper is a stronger midware, and it a high-perfomance coordination servi
 I will to install the zookeeper next.
 
 # 1. Prepare
-Machine number: 3  
-Machine exposed port: 2181(client port), 2788(used by machine communication), 3788(used by machine communication)
-Operating System: Centos 7  
-Java: openjdk1.8  
-zookeeper: 3.4.12  
+Machine number: 3    
+Machine exposed port: 2181(client port), 2788(used by machine communication), 3788(used by machine communication)    
+Operating System: Centos 7    
+Java: openjdk1.8    
+zookeeper: 3.4.12    
 
 > tip: To ensure the communication of the 3 machine and the client can connection zookeeper service of the machine. we must close the firewall on the machine or open the port(above:2181,2788,3788) on the machine.
 
