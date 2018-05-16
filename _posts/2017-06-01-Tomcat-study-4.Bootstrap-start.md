@@ -102,6 +102,6 @@ fullview: false
 
 到这里，基本上已经完成了tomcat的启动流程。如下是tomcat启动流程时序图
 
-![mmexport1496972649225.jpg](http://file.ctosb.com/upload/image/20170609/1496972822770016293.jpg "1496972822770016293.jpg")
+![mmexport1496972649225.jpg](/assets/resources/image/20170609/1496972822770016293.jpg "1496972822770016293.jpg")
 
 

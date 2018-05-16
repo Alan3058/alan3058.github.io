@@ -11,7 +11,7 @@ fullview: false
 
 适配器模式包含以下三个角色:主体(Subject)，实际主体(ConcreteSubject)，适配主体(Adapter)，实际适配主体(ConcreteAdapter)。它们之间的类图关系如下
 
-![blob.png](http://file.ctosb.com/upload/image/20170708/1499531248110077393.png "1499531248110077393.png")
+![blob.png](/assets/resources/image/20170708/1499531248110077393.png "1499531248110077393.png")
 
 编写一个案例，假如目前已由高电压220V，手机最大承受电压12V，现需设置一个适配器，使得高电压可以用于充手机。
 

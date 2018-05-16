@@ -27,7 +27,7 @@ fullview: false
 
 虽说第一次搭建网站不尽如人意，但最终坚持把它搞定了，依旧大快人心，如下是第一版网站的大致架构图，比较简陋。
 
-![blob.png](http://file.ctosb.com//upload/image/20171118/1510987397471080257.png "1510987397471080257.png")
+![blob.png](/assets/resources/image/20171118/1510987397471080257.png "1510987397471080257.png")
 
 ### 第一次改造：php->java gradle project
 
@@ -49,7 +49,7 @@ fullview: false
 
 如下是第一次改造后网站大致的架构图。
 
-![blob.png](http://file.ctosb.com//upload/image/20171118/1510987910299015557.png "1510987910299015557.png")
+![blob.png](/assets/resources/image/20171118/1510987910299015557.png "1510987910299015557.png")
 
 ### 第二次改造：java gradle project->spring boot
 
@@ -69,6 +69,6 @@ fullview: false
 
 如下是第二次改造后网站大致的架构图。
 
-![blob.png](http://file.ctosb.com//upload/image/20171120/1511190990589031785.png "1511190990589031785.png")
+![blob.png](/assets/resources/image/20171120/1511190990589031785.png "1511190990589031785.png")
 
 

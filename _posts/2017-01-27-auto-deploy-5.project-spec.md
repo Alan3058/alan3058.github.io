@@ -23,4 +23,4 @@ fullview: false
 
 如下图是一个简单的demo例子。
 
-![blob.png](http://file.ctosb.com/upload/image/20170327/1490594093761014128.png "1490594093761014128.png")
+![blob.png](/assets/resources/image/20170327/1490594093761014128.png "1490594093761014128.png")

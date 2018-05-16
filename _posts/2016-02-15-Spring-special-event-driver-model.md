@@ -131,7 +131,7 @@ public void testSpringEvent(){
 
 测试结果如下
 
-![](http://file.ctosb.com/upload/image/20170705/1499240729735091870.png)
+![](/assets/resources/image/20170705/1499240729735091870.png)
 
 # 2、代码分析
 
@@ -176,12 +176,12 @@ public void onApplicationEvent(ApplicationEvent event) {
 测试结果如下
 
 
-![](http://file.ctosb.com/upload/image/20170705/1499240739802081406.png)
+![](/assets/resources/image/20170705/1499240739802081406.png)
 
 如上测试结果可知，两个用户查看新闻是不同线程，即SimpleApplicationEventMulticaster类通过多线程，来实现异步发布事件。
 
 源码见如下附件
 
-![](http://ctosb.com/ueditor/dialogs/attachment/fileTypeImages/icon_rar.gif)[cygoattest.zip](http://file.ctosb.com/upload/file/20170705/1499240777940046825.zip "cygoattest.zip")
+![](http://ctosb.com/ueditor/dialogs/attachment/fileTypeImages/icon_rar.gif)[cygoattest.zip](/assets/resources/file/20170705/1499240777940046825.zip "cygoattest.zip")
 
 

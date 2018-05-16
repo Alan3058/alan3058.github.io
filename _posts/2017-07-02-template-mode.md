@@ -11,7 +11,7 @@ fullview: false
 
 模板模式包含两个角色:抽象主体(Subject)，实际主体(ConcreteSubject)。它们的类图如下
 
-![blob.png](http://file.ctosb.com/upload/image/20170708/1499528725358003375.png "1499528725358003375.png")
+![blob.png](/assets/resources/image/20170708/1499528725358003375.png "1499528725358003375.png")
 
 编写一个实例，模拟数据库事务处理。
 

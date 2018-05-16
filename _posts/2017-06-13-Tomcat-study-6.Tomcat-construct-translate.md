@@ -10,7 +10,7 @@ fullview: false
 如下图，表示Tomcat重要组件图之间的关联关系。Server代表Tomcat的整个容器，并且它只能存在一个实例，它内部可以包含一个或多个Service，Service中包含两个主要的组件Connector连接器和Container容器。连接器Connector负责接收请求连接，并创建request和response实例，将request和response传递给Container容器，交由容器处理请求并响应客户端。
 
 
-![mmexport1498065837332.jpg](http://file.ctosb.com/upload/image/20170621/1498065853759056339.jpg "1498065853759056339.jpg")
+![mmexport1498065837332.jpg](/assets/resources/image/20170621/1498065853759056339.jpg "1498065853759056339.jpg")
 
 ### Server
 

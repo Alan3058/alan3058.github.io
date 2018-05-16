@@ -61,7 +61,7 @@ shutdown
 
 3.添加删除查找Service。
 
-![blob.png](http://file.ctosb.com/upload/image/20170714/1500040731325018373.png "1500040731325018373.png")
+![blob.png](/assets/resources/image/20170714/1500040731325018373.png "1500040731325018373.png")
 
 ### 
 
@@ -115,7 +115,7 @@ name
 
 ### 该接口提供如下方法功能以达到添加、删除Connector和Engine容器。
 
-![blob.png](http://file.ctosb.com/upload/image/20170714/1500042295852078670.png "1500042295852078670.png")
+![blob.png](/assets/resources/image/20170714/1500042295852078670.png "1500042295852078670.png")
 
 ### 
 

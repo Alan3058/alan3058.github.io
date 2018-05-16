@@ -9,7 +9,7 @@ fullview: false
 
 Connector是一个实体类，可以处理多种协议的请求，比如AJP、HTTP。它委托ProtocolHandler接口的实现类去监听不同协议的端口，接收并解析该端口的请求。从通信协议上来分类，ProtocolHandler主要包含两大实现类：AJP和HTTP。从IO上来分类，主要包含三大实现类：IO、NIO和NIO2。如下图是该接口的实现子类。
 
-![blob.png](http://file.ctosb.com/upload/image/20170714/1500046617843029883.png "1500046617843029883.png")
+![blob.png](/assets/resources/image/20170714/1500046617843029883.png "1500046617843029883.png")
 
 
 以Http11Protocol实现子类为例。它将实际监听端口请求的职责委托给JIOEndpoint类，JIOEndpoint类又将职责委托给JIOEndpoint的Acceptor内部类。如下是它的内部类Acceptor的实现
@@ -121,7 +121,7 @@ protected class Acceptor extends AbstractEndpoint.Acceptor {
 
 调用getExecutor().execute(new SocketProcessor(wrapper));即调用线程池去处理Socket请求，这是线程池会调度一个空闲的线程去处理该请求。如下图是官方提供的处理请求的时序图。
 
-![](http://file.ctosb.com/upload/image/20170714/1500049776206040429.png)
+![](/assets/resources/image/20170714/1500049776206040429.png)
 
 如上时序图可知，最终是交由Http11Processor去解析请求信息，并创建Request和Response对象。之后将Request和Response对象交由Engine引擎容器处理，Engine容器最后将请求交由过滤器链过滤处理，最后让对应Sevelet类处理并响应。
 

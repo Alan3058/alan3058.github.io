@@ -11,7 +11,7 @@ fullview: false
 
 ConcurrentHashMap是HashMap在高并发场景下的实现。它的内部结构和HashMap基本一致，也是由一个内部数组，外加一个链表或者树形结构组成。
 
-![blob.png](http://file.ctosb.com/upload/image/20171030/1509374380839078086.png "1509374380839078086.png")
+![blob.png](/assets/resources/image/20171030/1509374380839078086.png "1509374380839078086.png")
 
 它通过CAS机制来保证并发写操作时数据正确。在它的内部添加了一个Unsafe对象U，所有的原子读操作和写操作都是通过U对象操作。Unsafe类的实现原理是，通过获取对象的地址+字段相对对象地址的偏移量地址，已完成准确更新和获取对象。关于Unsafe类实现可以搜索它的Java和C实现文件，以便参考。以下是ConcurrentHashMap使用Unsafe的三个方法：读、CAS写、写。
 

@@ -11,7 +11,7 @@ fullview: false
 
 代理模式主要包含以下三个角色:主体(Subject)，实际主体(ConcreteSubject)，代理主体(Proxy)。其类图如下
 
-![blob.png](http://file.ctosb.com/upload/image/20170708/1499530183474070743.png "1499530183474070743.png")
+![blob.png](/assets/resources/image/20170708/1499530183474070743.png "1499530183474070743.png")
 
 编写一个实例，由于ConcreteSubject实例构建太过于占用资源，故而使用代理类Proxy对象代替ConcreteSubject对象，实现只有在真正使用ConcreteSubject方法时才对其实例化。
 

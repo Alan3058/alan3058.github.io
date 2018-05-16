@@ -11,7 +11,7 @@ fullview: false
 
 装饰者模式包含如下四种角色：主体（Subject），实际主体（ConcreteSubject），装饰基类（Decorator），实际装饰类（ConcreteDecorator）。它们的类图如下
 
-![blob.png](http://file.ctosb.com/upload/image/20170709/1499584620894064749.png "1499584620894064749.png")
+![blob.png](/assets/resources/image/20170709/1499584620894064749.png "1499584620894064749.png")
 
 编写一个案例，为目标类增加一个功能，每当方法执行完后，将日志信息输出来。
 

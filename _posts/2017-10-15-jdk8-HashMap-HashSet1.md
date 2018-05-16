@@ -11,7 +11,7 @@ fullview: false
 
 HashMap、HashSet和ArrayList一样，都是使用非常频繁的集合，理解这两个的实现原理，在使用的时候会更加得心应手。HashMap内部由两部分组成，首先是Node数组（Hash桶数组），每个Node元素（桶元素）又单独组成一个数据结构，可能是链表或者红黑树（当链表长度大于8时，将转换成红黑树。mark：红黑树原理将单独作为一个专题来学习），如下图。
 
-![blob.png](http://file.ctosb.com/upload/image/20171030/1509374380839078086.png "1509374380839078086.png")
+![blob.png](/assets/resources/image/20171030/1509374380839078086.png "1509374380839078086.png")
 
 在深入了解HashMap前，先说明以下几个概念。
 

@@ -24,11 +24,11 @@ fullview: false
 
 首先第一个问题是Gitlab是否能够去触发Jenkins的任务，Jenkins需要暴露一个接口给Gitlab去触发。Jenkins的构建触发器中有一栏触发远程脚本，就是暴露出来的接口，而Gitlab的webhook功能是可以在代码被提交时触发一个外部的接口。如下图
 
-![blob.png](http://file.ctosb.com/upload/image/20170429/1493451625372083131.png "1493451625372083131.png")
+![blob.png](/assets/resources/image/20170429/1493451625372083131.png "1493451625372083131.png")
 
 Jenkins配置图
 
-![blob.png](http://file.ctosb.com/upload/image/20170429/1493451708125058216.png "1493451708125058216.png")
+![blob.png](/assets/resources/image/20170429/1493451708125058216.png "1493451708125058216.png")
 
 Gitlab配置图
 
@@ -43,7 +43,7 @@ apply plugin: "jacoco" //代码覆盖率
 ```
 
 然后在Jenkins中配置check和jacoco任务。
-![blob.png](http://file.ctosb.com/upload/image/20170429/1493452593588003599.png "1493452593588003599.png")
+![blob.png](/assets/resources/image/20170429/1493452593588003599.png "1493452593588003599.png")
 
 详见官方文档[https://docs.gradle.org/3.5/userguide/checkstyle_plugin.html](https://docs.gradle.org/3.5/userguide/checkstyle_plugin.html)
 
@@ -68,26 +68,26 @@ apply plugin: "jacoco" //代码覆盖率
 |[Email Extension Template Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Email-ext+Template+Plugin)| 邮箱|
 
 添加完上述插件后，在《构建后操作》添加如下步骤。
-![blob.png](http://file.ctosb.com/upload/image/20170429/1493453783559040557.png "1493453783559040557.png")
+![blob.png](/assets/resources/image/20170429/1493453783559040557.png "1493453783559040557.png")
 
-![blob.png](http://file.ctosb.com/upload/image/20170429/1493453815023061168.png "1493453815023061168.png")
+![blob.png](/assets/resources/image/20170429/1493453815023061168.png "1493453815023061168.png")
 
 这样，Jenkins就将代码规范、findbug、代码覆盖率、单元测试结果收集起来了，并且可以在Jenkins中以图表的方式展示。如下图
 
-![blob.png](http://file.ctosb.com/upload/image/20170429/1493454092111079282.png "1493454092111079282.png")
+![blob.png](/assets/resources/image/20170429/1493454092111079282.png "1493454092111079282.png")
 
 4. 将检查后结果发送邮件给对应开发人员
 
 在《构建后操作》中增加发送邮件步骤。如下图
-![blob.png](http://file.ctosb.com/upload/image/20170429/1493454264891093441.png "1493454264891093441.png")
+![blob.png](/assets/resources/image/20170429/1493454264891093441.png "1493454264891093441.png")
 
 这样会将构建日志和fingbug结果信息发送到对应的开发人员。细心点的人员可能会发现，我在这里填的收件人、主题、内容似乎都是变量，那实际的值都是什么呢？特别是收件人，怎么知道提交代码人的邮箱？
 
 由于Gitlab的帐号默认就是邮箱帐号，并且邮箱字段是必填的，所以Jenkins会自动将提交代码人员的邮箱帐号作为邮箱。以下是Jenkins的系统设置截图
-![blob.png](http://file.ctosb.com/upload/image/20170429/1493455284543029875.png "1493455284543029875.png")
+![blob.png](/assets/resources/image/20170429/1493455284543029875.png "1493455284543029875.png")
 
 由于Gitlab的邮箱帐号是通过AD域自动生成的，但该邮箱并不是公司的邮箱，所以在发送邮件之前统一替换收件人邮箱帐号，使用的脚本语法是groovy。
 
 基本上这样，就完成了一个自动化构建、代码规范检测、findbug查找、单元测试。即开发人员每次提交代码后会收到一个构建结果邮件,如下图。
 
-![blob.png](http://file.ctosb.com/upload/image/20170429/1493456045247065558.png "1493456045247065558.png")
+![blob.png](/assets/resources/image/20170429/1493456045247065558.png "1493456045247065558.png")

@@ -39,11 +39,11 @@ $ yum -y install gcc
 
 之后重启linux系统，进入linux的光盘目录（/media目录，如果没有加载需要手工加载增强功能）去启动VBOX的增强功能。
 
-![1454469836624049.png](http://file.ctosb.com/upload/image/20170705/1499239227956082951.png "1454469836624049.png")
+![1454469836624049.png](/assets/resources/image/20170705/1499239227956082951.png "1454469836624049.png")
 
 最后还报了个OpenGL Support模块加载失败，由于不影响拖拽使用，故而忽略掉了，可自行处理。
 
-![](http://file.ctosb.com/upload/image/20170705/1499239271934061671.png)
+![](/assets/resources/image/20170705/1499239271934061671.png)
 
 4. VisualBox系统磁盘大小修改  
 

@@ -11,7 +11,7 @@ fullview: false
 
 maven项目目录如下
 
-![](http://file.ctosb.com/upload/image/20170705/1499239756426023829.png)
+![](/assets/resources/image/20170705/1499239756426023829.png)
 
 src/main/java：主要java文件路径
 
@@ -37,11 +37,11 @@ com.cygoat.service.impl：存放业务层实现类ManagerImpl.java文件
 
 1.新建项目SSM
 
-![](http://file.ctosb.com/upload/image/20170705/1499239767206015623.png)
+![](/assets/resources/image/20170705/1499239767206015623.png)
 
 2.点击下一步
 
-![](http://file.ctosb.com/upload/image/20170705/1499239777849098953.png)
+![](/assets/resources/image/20170705/1499239777849098953.png)
 
 3.点击完成，创建项目成功。
 
@@ -298,7 +298,7 @@ hibernate.format_sql=true
 
 3.执行命令生成代码mybatis-generator:generate
 
-![](http://file.ctosb.com/upload/image/20170705/1499239804445020204.png)
+![](/assets/resources/image/20170705/1499239804445020204.png)
 
 此时已将spring，mybatis和mybatis插件整合起来，接下来将要整个spring和springmvc。待续中。。。[spring springmvc mybatis maven整合二](http://ctosb.com/article/18602787082944)
 

@@ -11,7 +11,7 @@ Aware，即感知，是Spring IOC的一个特性，当实现了对应的Aware接
 
 Aware类继承图如下
 
-![](http://file.ctosb.com/upload/image/20170705/1499240644249036751.png)
+![](/assets/resources/image/20170705/1499240644249036751.png)
 
 从上图可以看出Aware的所有子类接口，以下列出几个主要子类接口作用。
 
@@ -91,13 +91,13 @@ public void testAware(){
 
 测试结果如下
 
-![](http://file.ctosb.com/upload/image/20170705/1499240656464093836.png)
+![](/assets/resources/image/20170705/1499240656464093836.png)
 
 如上测试结果，最后ApplicationUtil实例被注入了ApplicationContext容器和它的名字。接下来ApplicationUtil可以操作成员变量ApplicationContext的自有的功能。
 
 源码见如下附件
 
 
-![](http://ctosb.com/ueditor/dialogs/attachment/fileTypeImages/icon_rar.gif)[cygoattest.zip](http://file.ctosb.com/upload/file/20170705/1499240694524004167.zip "cygoattest.zip")
+![](http://ctosb.com/ueditor/dialogs/attachment/fileTypeImages/icon_rar.gif)[cygoattest.zip](/assets/resources/file/20170705/1499240694524004167.zip "cygoattest.zip")
 
 

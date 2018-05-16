@@ -259,12 +259,12 @@ public class SysUserController {
 
 启动tomcat，在浏览器输入[http://localhost:8080/SSM/sysUser/get.shtml?id=1](http://localhost:8080/SSM/sysUser/get.shtml?id=1)
 
-![](http://file.ctosb.com/upload/image/20170705/1499239829816059164.png)
+![](/assets/resources/image/20170705/1499239829816059164.png)
 
 至此，已完成了spring、springmvc、mybatis整合
 
 源码见如下附件
 
-![](http://ctosb.com/ueditor/dialogs/attachment/fileTypeImages/icon_rar.gif)[SSM.zip](http://file.ctosb.com/upload/file/20170705/1499239937410099859.zip "SSM.zip")
+![](http://ctosb.com/ueditor/dialogs/attachment/fileTypeImages/icon_rar.gif)[SSM.zip](/assets/resources/file/20170705/1499239937410099859.zip "SSM.zip")
 
 

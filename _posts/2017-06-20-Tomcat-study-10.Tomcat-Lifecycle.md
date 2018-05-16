@@ -11,11 +11,11 @@ fullview: false
 
 Tomcat容器里有个重要的接口，管理各个组件的生命周期接口Lifecycle，查看该接口源代码，该接口主要提供初始化init()、启动start()、停止stop()、销毁destroy()、配置监听器的方法find/remove/addLifecycleListener()。Tomcat所有组件的基本上都继承了Lifecycle，也就是说Tomcat的组件都包含生命周期管理。如下图是Lifecycle接口的子类继承信息。
 
-![blob.png](http://file.ctosb.com/upload/image/20170623/1498190295738015419.png "1498190295738015419.png")
+![blob.png](/assets/resources/image/20170623/1498190295738015419.png "1498190295738015419.png")
 
 因此上图中描述的Tomcat组件：Server,Service,Container,Engine,Host,Context等。它们都有生命周期管理，和一个共同的状态流转关系。如下图是Lifecycle接口的描述和状态流转图。
 
-![blob.png](http://file.ctosb.com/upload/image/20170623/1498178691749036471.png "1498178691749036471.png")
+![blob.png](/assets/resources/image/20170623/1498178691749036471.png "1498178691749036471.png")
 
 从上图中可以看出Lifecycle主要有五个大节点：New、Init、Start、Stop、Destroy，其中有些节点被拆分成两个或三个子节点（处理前、处理中、处理完成）处理，每个节点对应一个状态。拆分后全状态：New、Initializing、Initialized、Starting_prep、Starting、Started、Stopping_prep、Stopping、Stopped、Destroying、Destroyed、Failed。
 

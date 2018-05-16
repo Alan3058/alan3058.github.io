@@ -189,4 +189,4 @@ task deployServer << {
 }
 ```
 
-![](http://ctosb.com/ueditor/dialogs/attachment/fileTypeImages/icon_txt.gif)[deploy.txt](http://file.ctosb.com/upload/file/20170412/1491982338115026985.txt "deploy.txt")
+![](http://ctosb.com/ueditor/dialogs/attachment/fileTypeImages/icon_txt.gif)[deploy.txt](/assets/resources/file/20170412/1491982338115026985.txt "deploy.txt")

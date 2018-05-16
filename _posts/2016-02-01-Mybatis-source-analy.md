@@ -157,7 +157,7 @@ log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
 
 测试结果如下
 
-![](http://file.ctosb.com/upload/image/20170705/1499239652531082474.png)
+![](/assets/resources/image/20170705/1499239652531082474.png)
 
 # 2、源码分析
 
