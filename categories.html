@@ -38,7 +38,7 @@ group: navigation
         {% for post in pages_list %}
           {% if post.title != null %}
             {% if group == null or group == post.group %}
-              <li style="line-height: 35px;"><a href="{{ site.BASE_PATH }}{{ post.url }}">{{ post.title }}</a> <span class="text-muted">- {{ post.date | slice:0,8 }}</span></li>
+              <li style="line-height: 35px;"><a href="{{ site.BASE_PATH }}{{ post.url }}">{{ post.title }}</a> <span class="text-muted">- {{ post.date | slice:0,10 }}</span></li>
             {% endif %}
           {% endif %}
         {% endfor %}
