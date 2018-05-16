@@ -23,7 +23,7 @@ fullview: false
 
 6.最后由DispacherServlet将视图信息推送响应给客户端。
 
-![1.png](http://dl2.iteye.com/upload/attachment/0110/4599/6659a319-f878-3b7d-bf3a-c2a365b7fe4b.png "1454473609150658.png")
+![1.png](/assets/resources/image/20160203/c2a365b7fe4b.png "1454473609150658.png")
 
 因此可以看出DispatcherServlet类在Spring mvc框架中占据了一个非常重要的地位，它接收所有请求，然后将对应的请求分发到对应的功能类实例去处理，然后将处理后结果响应给客户端。 
 

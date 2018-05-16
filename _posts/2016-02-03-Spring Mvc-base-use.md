@@ -177,7 +177,7 @@ url ——》 http://localhost:8080/springmvctest/getRequestBody.shtml
 
 测试设置如下
 
-![1.png](http://dl2.iteye.com/upload/attachment/0110/5279/13c54fc7-d58f-3199-bc8c-104b3e3bbe24.png "1454478098550788.png")
+![1.png](/assets/resources/image/20160203/104b3e3bbe24.png "1454478098550788.png")
 
 # 5、@ModelAttribute
 
@@ -255,7 +255,7 @@ public Object upload(@RequestParam("files") MultipartFile[] files){
 
 4.测试结果如下图
 
-![1.png](http://dl2.iteye.com/upload/attachment/0110/5307/a86d0799-534f-3b9b-b592-bb25332f07c5.png "1454478373212726.png")
+![1.png](/assets/resources/image/20160203/bb25332f07c5.png "1454478373212726.png")
 
 # 8、@ExceptionHandler
 
@@ -367,6 +367,6 @@ erro页面
 
 源码见如下附件
 
-![](http://ctosb.com/ueditor/dialogs/attachment/fileTypeImages/icon_rar.gif)[springmvctest.zip](http://dl.iteye.com/topics/download/fe27332b-e18c-320c-a00b-f77376ebe9db "springmvctest.zip")
+![](/assets/resources/icon_rar.gif)[springmvctest.zip](http://dl.iteye.com/topics/download/fe27332b-e18c-320c-a00b-f77376ebe9db "springmvctest.zip")
 
 

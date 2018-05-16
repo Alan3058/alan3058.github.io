@@ -13,7 +13,7 @@ Spring mvc的初始化主要包括根IOC容器的构建和初始化、DispacherS
 
 # 2、ContextLoaderListener初始化监听
 
-![1.png](http://dl2.iteye.com/upload/attachment/0110/4777/6f4513d7-5746-31ee-a2a8-79b306dfe7f2.png "1454472780430133.png")
+![1.png](/assets/resources/image/20160201/79b306dfe7f2.png "1454472780430133.png")
 
 如上类图可以看出ContextLoaderListener类实现了ServletContextLisener接口和继承了ContextLoader，主要职责是监听ServletContext实例的创建和销毁（对应监听器方法是contextInitialized和contextDestroyed方法）。
 
@@ -38,7 +38,7 @@ DispatcherServlet的IOC容器的命名空间，默认使用[servlet-name]-servle
 
 ## 3.2、DispatcherServlet初始化
 
-![1.png](http://dl2.iteye.com/upload/attachment/0110/4779/0b97b24f-8a4d-3968-8d8a-48a34656e533.png "1454473021487989.png")
+![1.png](/assets/resources/image/20160201/48a34656e533.png "1454473021487989.png")
 
 如上类图可以看出DispacherServlet类是HttpServlet的子类，它包含了关于HttpServlet的所有功能，初始化、处理请求和Servlet容器销毁。容器初始化init方法被DispacherServlet的父类HttpServletBean重写处理，因此Srping mvc的初始化入口在HttpServletBean类的init方法上。
 

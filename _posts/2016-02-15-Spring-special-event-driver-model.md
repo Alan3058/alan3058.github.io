@@ -182,6 +182,6 @@ public void onApplicationEvent(ApplicationEvent event) {
 
 源码见如下附件
 
-![](http://ctosb.com/ueditor/dialogs/attachment/fileTypeImages/icon_rar.gif)[cygoattest.zip](/assets/resources/file/20170705/1499240777940046825.zip "cygoattest.zip")
+![](/assets/resources/icon_rar.gif)[cygoattest.zip](/assets/resources/file/20170705/1499240777940046825.zip "cygoattest.zip")
 
 

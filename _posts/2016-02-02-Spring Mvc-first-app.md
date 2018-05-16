@@ -201,7 +201,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 输入http://localhost:8080/springmvctest/test.shtml，将在test.jsp页面上展现用户信息
 
-![1454472629700631.png](http://dl2.iteye.com/upload/attachment/0110/4584/ab1b03cc-6f49-339e-a022-72c078bbeada.png "1454472629700631.png")
+![1454472629700631.png](/assets/resources/image/20160202/72c078bbeada.png "1454472629700631.png")
 
 # 3、简要分析 
 
@@ -235,6 +235,6 @@ RssChannelHttpMessageConverter：转换成Rss（添加Rome jar包）
 
 源码见如下附件
 
-![](http://ctosb.com/ueditor/dialogs/attachment/fileTypeImages/icon_rar.gif)[springmvctest.zip](http://dl.iteye.com/topics/download/42903542-fcfc-3c45-8f2c-0dd28d6ccd93 "springmvctest.zip")
+![](/assets/resources/icon_rar.gif)[springmvctest.zip](http://dl.iteye.com/topics/download/42903542-fcfc-3c45-8f2c-0dd28d6ccd93 "springmvctest.zip")
 
 

@@ -265,6 +265,6 @@ public class SysUserController {
 
 源码见如下附件
 
-![](http://ctosb.com/ueditor/dialogs/attachment/fileTypeImages/icon_rar.gif)[SSM.zip](/assets/resources/file/20170705/1499239937410099859.zip "SSM.zip")
+![](/assets/resources/icon_rar.gif)[SSM.zip](/assets/resources/file/20170705/1499239937410099859.zip "SSM.zip")
 
 
