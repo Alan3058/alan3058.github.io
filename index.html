@@ -11,7 +11,7 @@ tagline:
 <article class="home">
 
   <span class="post-date">
-    {{ post.date | date: "%B %-d, %Y" }}
+    {{ post.date | slice:0,8 }}
   </span>
 
   <h2>
