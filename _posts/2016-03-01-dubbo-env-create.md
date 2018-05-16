@@ -60,10 +60,7 @@ Welcome to ZooKeeper!
 JLine support is enabled
 [zkshell: 0]
 ```
-
-之后可输入help显示命令行帮助信息。如下图
-
-![O1@5$MV~NV6`BDV}GW1H%3C.png](/ueditor/php/upload/image/20160301/1456839902267408.png "1456839902267408.png")
+之后可输入help显示命令行帮助信息。
 
 ## 2.安装dubbo-admin管理中心。
 
@@ -76,15 +73,6 @@ JLine support is enabled
 2.3.验证工程是否启动成功
 
 进入[http://localhost:8080/dubbo-admin-2.5.4](http://localhost:8080/dubbo-admin-2.5.4) 输入用户名root 密码root，则可进入。
-
-输入用户名密码界面
-
-![B`(XGHY8U6%N`4$R`2WWIH1.png](/ueditor/php/upload/image/20160301/1456840418505001.png "1456840418505001.png")
-
-
-登录成功界面
-
-![}AST}RXWVI6%IEJN4~)OVPU.png](/ueditor/php/upload/image/20160301/1456840505959498.png "1456840505959498.png")
 
 此时dubbo-admin管理中心已搭建成功。
 
@@ -279,13 +267,9 @@ public class MainStartup {
 </beans>
 ```
 
-3.8.启动dubbo-manager工程，将在dubbo管理中心看到已经注册了一个服务
+3.8.启动dubbo-manager工程，将在dubbo管理中心看到已经注册了一个服务。
 
-![Y5YMX6G@7W04CKWT@V1DYZ4.png](/ueditor/php/upload/image/20160301/1456841867145534.png "1456841867145534.png")
-
-3.9.启动dubbo-web工程，将打印如下信息
-
-![JY%D4XCO}8M4LVI(4JLD$OE.png](/ueditor/php/upload/image/20160301/1456841957572512.png "1456841957572512.png")
+3.9.启动dubbo-web工程，输出启动成功日志。
 
 如此dubbo服务基本环境已搭建完成。当然在dubbo-manager和dubbo-web中都没有用spring注解方式，dubbo-web中也没有用到spring mvc相关类，读者可自行扩展。
 

@@ -9,7 +9,6 @@ fullview: false
 
 # 背景
 
-
 由于工作需要，项目中使用了Spring Security安全框架，为了更上时代进步，先搭个简单应用玩玩。现学现卖，做个笔记，以便能留下更深映像。
 
 开发工具：Eclipse、Maven3、Jetty6集成
@@ -18,12 +17,9 @@ fullview: false
 
 # 开始
 
-
 * 首先使用Eclipse构建一个maven web项目，这个不多讲，so easy，不会的自己脑补去。
 
-
 * 然后是修改web.xml配置文件，内容如下
-
 
 ```xml
 <!DOCTYPE web-app PUBLIC
@@ -184,29 +180,19 @@ fullview: false
 
 由于添加了jetty插件，我这里就直接运行 clean install jetty:run可以运行工程，使用本地tomcat等容器的可以按自己方式去启动，关于jetty容器插件大家自己脑补去。
 
-* 经过上面，已经启动成功了，输入url访问工程[http://localhost:8080/ctosb-spring-security/](http://localhost:8080/ctosb-spring-security/)，将出现如下登录页面，这个页面是spring security自带的默认登录页面。 
-
-
-
-![blob.png](/ueditor/php/upload/image/20160531/1464706774167448.png "1464706774167448.png")
+* 经过上面，已经启动成功了，输入url访问工程[http://localhost:8080/ctosb-spring-security/](http://localhost:8080/ctosb-spring-security/)，将出现如下登录页面，该页面是spring security自带的默认登录页面。 
 
 * 输入用户名admin，密码admin，将会登录访问index.jsp。用户密码如果输入错误，将会提示错误信息。
-
-
-![blob.png](/ueditor/php/upload/image/20160531/1464706954656086.png "1464706954656086.png")
 
 以上就是一个最简单的spring security应用，so easy吧。
 
 # 总结
-
 
 * 配置web.xml文件。这里面配置最主要的是配置spring security的过滤器DelegatingFilterProxy，该过滤器是一个是一个spring security过滤拦截的入口。并且配置spring web的监听器ContextLoaderListener,这个是spring web应用必配的。
 
 * 配置spring-security.xml文件。该文件主要配置要访问的url需要什么要的权限，并且这里把用户配置在配置文件里面，没有用数据库，纯属方便测试。
 
 * 配置pom.xml文件。加入spring security相关jar包的坐标
-
-
 
 未完待续。。。
 

@@ -19,8 +19,6 @@ fullview: false
 
 * 增加访问受限，跳到访问首先页面
 
-
-
 # 开始
 
 修改spring-security.xml配置文件。
@@ -116,16 +114,11 @@ fullview: false
 </html>
 ```
 
-启动web服务器。登录admin用户，可以访问admin.jsp界面。登录alan用户访问admin.jsp将会跳转到403页面。
-
-
-![blob.png](/ueditor/php/upload/image/20160601/1464796510509145.png "1464796510509145.png")
+启动web服务器。登录admin用户，可以访问admin.jsp界面。登录alan用户访问admin.jsp将会跳转到403错误页面。
 
 # 总结
 
-
 主要的配置信息都是在spring-security.xml文件，该文件可配置页面权限，用户信息等。后续需要将用户信息保存到数据库中。
-
 
 未完待续。。。
 
