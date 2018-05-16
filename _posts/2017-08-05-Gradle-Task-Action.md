@@ -2,7 +2,7 @@
 layout: post
 title: [Gradle下的Task和Action]
 categories: [Gradle]
-tags: [gradle,task,action,doLast,<<]
+tags: [gradle,task,action,doLast]
 id: [17384222897471488]
 fullview: false
 ---
