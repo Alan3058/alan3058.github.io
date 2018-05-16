@@ -76,8 +76,7 @@ plugins:
 > gem install jekyll-paginate
 
 5. Update the content of index.html file(show the pagination article). For example,as below  
-```html
-
+```
 <!-- the pagination article -->
 {% for post in paginator.posts %}
 <article>
@@ -90,11 +89,10 @@ plugins:
   </div>
 </article>
 {% endfor %}
-
 ```
  
 6. add the pagination link infomation to index.html file. For example,as below  
-```html
+```
 <!-- pagination link -->
 <div class="pagination">
   {% if paginator.previous_page %}
