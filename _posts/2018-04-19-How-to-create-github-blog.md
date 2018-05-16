@@ -60,12 +60,21 @@ Because of the blog of github io is simple and easy, so I am planning use the gi
 Now, you can use your domain to access.
 
 ## D. Use Paginate in your site
-1. At first, write it on the _config.yml file,as below
+1. At first, write it on the _config.yml file, as below
 > paginate: 5
 
-2. If needed, update name of the index.md file to index.html. and it is a requirement of  jekyll.
+>plugins:   
+>  - jekyll-paginate
 
-3. Update the content of index.html file. For example,as below
+2. add jekyll-paginate plugin on the Gemfile, as below
+> gem "jekyll-paginate"
+
+3. If needed, update name of the index.md file to index.html. and it is a requirement of  jekyll.
+
+4. install jekyll-paginate plugin
+> gem install jekyll-paginate
+
+5. Update the content of index.html file. For example,as below
 * show the pagination article
 ```html
 <!-- the pagination article -->

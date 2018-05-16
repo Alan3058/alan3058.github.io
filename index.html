@@ -10,14 +10,14 @@ tagline:
 
 <article class="home">
 
-  <span class="post-date">
-    {{ post.date | slice:0,10 }}
-  </span>
-
   <h2>
     <a href="{{ site.BASE_PATH }}{{ post.url }}">{{ post.title }}</a>
   </h2>
-
+  
+  <span class="post-date">
+    {{ post.date | slice:0,10 }}
+  </span>
+  
   <div>
     {% if post.fullview %}
     {{ post.content }}
