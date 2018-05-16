@@ -76,37 +76,9 @@ plugins:
 > gem install jekyll-paginate
 
 5. Update the content of index.html file(show the pagination article). For example,as below  
-```
-<!-- the pagination article -->
-{% for post in paginator.posts %}
-<article>
-  <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
-  <p class="author">
-    <span class="date">{{ post.date }}</span>
-  </p>
-  <div class="content">
-    {{ post.content }}
-  </div>
-</article>
-{% endfor %}
-```
+![page-article](/assets/resources/page-article.png)
  
 6. add the pagination link infomation to index.html file. For example,as below  
-```
-<!-- pagination link -->
-<div class="pagination">
-  {% if paginator.previous_page %}
-    <a href="/page{{ paginator.previous_page }}" class="previous">Previous</a>
-  {% else %}
-    <span class="previous">Previous</span>
-  {% endif %}
-  <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
-  {% if paginator.next_page %}
-    <a href="/page{{ paginator.next_page }}" class="next">Next</a>
-  {% else %}
-    <span class="next ">Next</span>
-  {% endif %}
-</div>
-```
+![page-link](/assets/resources/page-link.png)
 
 Now, to visit your site, you will look the pagination effect.
