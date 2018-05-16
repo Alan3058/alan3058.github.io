@@ -235,6 +235,6 @@ RssChannelHttpMessageConverter：转换成Rss（添加Rome jar包）
 
 源码见如下附件
 
-![](/assets/resources/icon_rar.gif)[springmvctest.zip](http://dl.iteye.com/topics/download/42903542-fcfc-3c45-8f2c-0dd28d6ccd93 "springmvctest.zip")
+![](/assets/resources/icon_rar.gif)[springmvctest.zip](/assets/resources/file/20160202/0dd28d6ccd93.zip "springmvctest.zip")
 
 

@@ -367,6 +367,6 @@ erro页面
 
 源码见如下附件
 
-![](/assets/resources/icon_rar.gif)[springmvctest.zip](http://dl.iteye.com/topics/download/fe27332b-e18c-320c-a00b-f77376ebe9db "springmvctest.zip")
+![](/assets/resources/icon_rar.gif)[springmvctest.zip](/assets/resources/file/20160203/f77376ebe9db.zip "springmvctest.zip")
 
 
