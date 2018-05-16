@@ -61,11 +61,12 @@ Now, you can use your domain to access.
 
 ## D. Use Paginate in your site
 1. At first, write it on the _config.yml file, as below
-> paginate: 5
-
->plugins:   
->  - jekyll-paginate
-
+```
+paginate: 5  
+plugins:   
+  - jekyll-paginate
+```
+  
 2. add jekyll-paginate plugin on the Gemfile, as below
 > gem "jekyll-paginate"
 
