@@ -7,7 +7,7 @@ id: [18602787082944]
 fullview: false
 ---
 
-第一篇([spring springmvc mybatis maven整合一](http://ctosb.com/article/18599792082944))已经将spring，mybatis，mybatis插件整合完成，接下来我们将整合spring和springmvc。
+第一篇([spring springmvc mybatis maven整合一](/160204/spring-springmvc-mybatis-maven-integer1))已经将spring，mybatis，mybatis插件整合完成，接下来我们将整合spring和springmvc。
 
 首先我们先对spring和mybatis的整合编写一个测试用例，看看是否整合成功。
 

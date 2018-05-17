@@ -7,7 +7,7 @@ id: [40545367412346080]
 fullview: false
 ---
 
-在第一篇[Java源码心得jdk8-HashMap和HashSet一](http://ctosb.com/article/40532393412526080)中已经了解了HashMap的大致原理和添加元素和扩容元素方法的源码。接下来继续看它的get、remove方法源码。
+在第一篇[Java源码心得jdk8-HashMap和HashSet一](/171015/jdk8-HashMap-HashSet1)中已经了解了HashMap的大致原理和添加元素和扩容元素方法的源码。接下来继续看它的get、remove方法源码。
 
 ### get方法
 

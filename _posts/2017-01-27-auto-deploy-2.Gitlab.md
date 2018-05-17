@@ -10,7 +10,7 @@ fullview: false
 
 ### 安装Docker
 
-安装Gitlab过程大致有两种方式，一种离线rpm，一种是通过docker容器方式，这里我选择了docker方式安装。按照官方文档，首先我们需要安装docker，安装docker步骤详见[自动化发布-docker安装](http://ctosb.com/article/18897596055552.shtml)。
+安装Gitlab过程大致有两种方式，一种离线rpm，一种是通过docker容器方式，这里我选择了docker方式安装。按照官方文档，首先我们需要安装docker，安装docker步骤详见[自动化发布-docker安装](/170212/auto-deploy-8.Docker-install)。
 
 ### 安装Gitlab
 

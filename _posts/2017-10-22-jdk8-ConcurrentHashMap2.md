@@ -7,7 +7,7 @@ id: [46545554779406336]
 fullview: false
 ---
 
-接着第一篇[Java源码心得jdk8-ConcurrentHashMap一](http://ctosb.com/article/40694842942029824)继续看transfer扩容方法源码，如下
+接着第一篇[Java源码心得jdk8-ConcurrentHashMap一](/171021/jdk8-ConcurrentHashMap1)继续看transfer扩容方法源码，如下
 
 ### transfer方法
 
@@ -152,5 +152,5 @@ private final void transfer(Node<K,V>[] tab, Node<K,V>[] nextTab) {
 }
 ```
 
-待续中。。。 [Java源码心得jdk8-ConcurrentHashMap三](http://ctosb.com/article/46546116891639808)
+待续中。。。 [Java源码心得jdk8-ConcurrentHashMap三](/171021/jdk8-ConcurrentHashMap1)
 

@@ -6,7 +6,7 @@ tags: [powerdesigner,名字备注替换,导出excel,脚本]
 id: [18719434594944]
 fullview: false
 ---
-继第一篇[PowerDesigner脚本使用一](http://ctosb.com/article/18717232594944)，继续写通过PowerDesigner脚本导出多个Excel文件。如下
+继第一篇[PowerDesigner脚本使用一](/160328/PowerDesigner-script1)，继续写通过PowerDesigner脚本导出多个Excel文件。如下
 
 **3. 导出多个Excel文件**
 ```vbscript

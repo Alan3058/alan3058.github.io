@@ -210,5 +210,5 @@ HashMap的构造函数主要是初始化HashMap的容量值和加载因子。默
     }
 ```
 
-待续中。。。 [Java源码心得jdk8-HashMap和HashSet二](http://ctosb.com/article/40545367412346080)
+待续中。。。 [Java源码心得jdk8-HashMap和HashSet二](/171016/jdk8-HashMap-HashSet2)
 

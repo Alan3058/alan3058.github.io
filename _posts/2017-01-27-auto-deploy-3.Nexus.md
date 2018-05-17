@@ -27,9 +27,9 @@ Nexus是一个maven私服仓库，他的安装方式也有两种，一种是离�
 
 ### Docker方式安装
 
-首先我们需要安装docker引擎，安装docker步骤详见[自动化发布-docker安装](http://ctosb.com/article/18897596055552.shtml)。
+首先我们需要安装docker引擎，安装docker步骤详见[自动化发布-docker安装](/170212/auto-deploy-8.Docker-install)。
 
 之后直接安装Nexus镜像
 > $ docker run -d -p 8081:8081 --name nexus sonatype/nexus:oss
 
-参考:[自动化发布-docker安装](http://ctosb.com/article/18897596055552.shtml)
+参考:[自动化发布-docker安装](/170212/auto-deploy-8.Docker-install)

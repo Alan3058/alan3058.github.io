@@ -300,5 +300,5 @@ hibernate.format_sql=true
 
 ![](/assets/resources/image/20170705/1499239804445020204.png)
 
-此时已将spring，mybatis和mybatis插件整合起来，接下来将要整个spring和springmvc。待续中。。。[spring springmvc mybatis maven整合二](http://ctosb.com/article/18602787082944)
+此时已将spring，mybatis和mybatis插件整合起来，接下来将要整个spring和springmvc。待续中。。。[spring springmvc mybatis maven整合二](/160204/spring-springmvc-mybatis-maven-integer2)
 

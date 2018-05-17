@@ -172,5 +172,5 @@ final Node<K,V>[] helpTransfer(Node<K,V>[] tab, Node<K,V> f) {
 }
 ```
 
-待续中。。。 [Java源码心得jdk8-ConcurrentHashMap二](http://ctosb.com/article/46545554779406336)
+待续中。。。 [Java源码心得jdk8-ConcurrentHashMap二](/171022/jdk8-ConcurrentHashMap2)
 

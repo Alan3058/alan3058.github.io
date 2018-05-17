@@ -209,4 +209,4 @@ colsNum = 0
 End Sub
 ```
 
-待续中。。。 [PowerDesigner脚本使用二](http://ctosb.com/article/18719434594944)
+待续中。。。 [PowerDesigner脚本使用二](/160329/PowerDesigner-script2)
