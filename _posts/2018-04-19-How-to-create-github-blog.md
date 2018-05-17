@@ -76,9 +76,9 @@ plugins:
 > gem install jekyll-paginate
 
 5. Update the content of index.html file(show the pagination article). For example,as below  
-![page-article](/assets/resources/page-article.png)
+![page-article](/assets/resources/image/20180419/page-article.png)
  
 6. add the pagination link infomation to index.html file. For example,as below  
-![page-link](/assets/resources/page-link.png)
+![page-link](/assets/resources/image/20180419/page-link.png)
 
 Now, to visit your site, you will look the pagination effect.
