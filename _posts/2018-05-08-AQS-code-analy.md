@@ -4,7 +4,7 @@ title:  "AQS源码分析"
 categories: [java]
 tags: [java]
 fullview: false
-published: false
+published: true
 ---
 
 # AQS(AbstractQueuedSynchronizer)
@@ -15,7 +15,7 @@ published: false
 2. acquireSharedxxx/releaseSharedxxx: 获取和释放共享锁算法方法。
 3. getxxx/hasxxx: 查询/判断方法。
 
-同时，它还暴露了五个方法让我们去实现。
+**同时，它还暴露了五个方法让我们去实现。**
 1. tryAcquire
 2. tryRelease
 3. tryAcquireShared
@@ -24,11 +24,11 @@ published: false
 
 通过覆写这五个方法我们可以去实现自己所需要的同步器，大大的降低了实现同步器的难度。Doug Lea在并发工具包中已经为我们提供了很好的例子：Semaphore的公平锁（FairSync）和非公平锁（NonfairSync），CountDownLatch的同步器（Sync），ReentrantLock的公平锁（FairSync）和非公平锁（NonfairSync），ReentrantReadWriteLock的公平锁（FairSync）和非公平锁（NonfairSync），ThreadPoolExecutor的Worker线程类。它们通过重写这五个方法，来实现特定场景的同步器。
 
-tip：给设计模式——模版模式一个特写
-
+> tip：给设计模式——模版模式一个特写镜头
+ 
 ## AQS属性字段
-head: 同步队列头  
-tail: 同步队列尾  
+head: 同步队列Node头节点  
+tail: 同步队列Node尾节点  
 state:  同步器状态值，实际值含义由具体同步器定义。提供了三个方法对这个值进行读写：getState(),setState(),compareAndSetState()。这三个方法会经常被用在重写五个方法里面，通过对state的读写来控制同步器的并发。
 
 # AQS重要内部类Node节点  
@@ -166,7 +166,8 @@ doAcquireShared主要是自旋的去获取共享状态，和doAcquire方法逻�
         return false;
     }
 ```
-
+ 
+释放状态后，唤醒下一个节点
 ```java
     private void doReleaseShared() {
         /*
