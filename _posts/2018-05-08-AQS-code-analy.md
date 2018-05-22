@@ -27,12 +27,13 @@ published: true
 > tip：给设计模式——模版模式一个特写镜头  
 
 ## AQS属性字段
-head: 同步队列Node头节点  
-tail: 同步队列Node尾节点  
-state:  同步器状态值，实际值含义由具体同步器定义。提供了三个方法对这个值进行读写：getState(),setState(),compareAndSetState()。这三个方法会经常被用在重写五个方法里面，通过对state的读写来控制同步器的并发。
+
+head:同步队列Node头节点  
+tail: 同步队列Node尾节点  
+state:  同步器状态值，实际值含义由具体同步器定义。提供了三个方法对这个值进行读写：getState(),setState(),compareAndSetState()。这三个方法会经常被用在重写五个方法里面，通过对state的读写来控制同步器的并发。  
 
 # AQS重要内部类Node节点  
-Node节点是AQS内部实现同步队列和等待队列最基本的元素。通过prev和next两个属性构造了一个双向同步队列，通过nextWaiter构造了一个单向等待队列（用于Condition）。
+Node节点是AQS内部实现同步队列和等待队列最基本的元素。通过prev和next两个属性构造了一个双向同步队列，通过nextWaiter构造了一个单向等待队列（用于Condition）。  
 a. prev: 用于同步队列，上一个节点  
 b. next: 用于同步队列，下一个节点  
 c. waitStatus: 节点等待状态字段，用于Codition条件等待队列。只能是以下几个枚举值。  
