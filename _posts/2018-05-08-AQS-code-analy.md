@@ -7,8 +7,32 @@ fullview: false
 published: false
 ---
 
+# AQS(AbstractQueuedSynchronizer)
+在jdk1.5之后，由Doug Lea大师编写了一套并发工具包，相对原来的synchronized编程方式来说更加灵活，并且性能更佳。大师将并发编程思想抽象出了一个AbstractQueuedSynchronizer类（胞弟AbstractQueuedLongSynchronizer），如果把这一套并发工具包比作深圳第一高楼平安大厦，那么AbstractQueuedSynchronizer就是这座大厦的地基。可想而知，大师的抽象能力之强，乃猿类楷模先锋。
+
+在AbstractQueuedSynchronizer是个抽象类，它提供了三类public方法,并且这些方法都是final，即子类不可以重写。  
+1. acquirexxx/releasexxx: 获取和释放独占锁算法方法。
+2. acquireSharedxxx/releaseSharedxxx: 获取和释放共享锁算法方法。
+3. getxxx/hasxxx: 查询/判断方法。
+
+同时，它还暴露了五个方法让我们去实现。
+1. tryAcquire
+2. tryRelease
+3. tryAcquireShared
+4. tryReleaseShared
+5. isHeldExclusively
+
+通过覆写这五个方法我们可以去实现自己所需要的同步器，大大的降低了实现同步器的难度。Doug Lea在并发工具包中已经为我们提供了很好的例子：Semaphore的公平锁（FairSync）和非公平锁（NonfairSync），CountDownLatch的同步器（Sync），ReentrantLock的公平锁（FairSync）和非公平锁（NonfairSync），ReentrantReadWriteLock的公平锁（FairSync）和非公平锁（NonfairSync），ThreadPoolExecutor的Worker线程类。它们通过重写这五个方法，来实现特定场景的同步器。
+
+tip：给设计模式——模版模式一个特写
+
+## AQS属性字段
+head: 同步队列头  
+tail: 同步队列尾  
+state:  同步器状态值，实际值含义由具体同步器定义。提供了三个方法对这个值进行读写：getState(),setState(),compareAndSetState()。这三个方法会经常被用在重写五个方法里面，通过对state的读写来控制同步器的并发。
+
 # AQS重要内部类Node节点  
-Node节点是AQS内部实现同步队列和等待队列最基本的元素。通过prev和next两个属性构造了一个双向同步队列，通过nextWaiter构造了一个单向等待队列。
+Node节点是AQS内部实现同步队列和等待队列最基本的元素。通过prev和next两个属性构造了一个双向同步队列，通过nextWaiter构造了一个单向等待队列（用于Condition）。
 a. prev: 用于同步队列，上一个节点  
 b. next: 用于同步队列，下一个节点  
 c. waitStatus: 节点等待状态字段，用于Codition条件等待队列。只能是以下几个枚举值。  
@@ -20,12 +44,6 @@ c. waitStatus: 节点等待状态字段，用于Codition条件等待队列。只
 
 d. thread: 在这个节点上排队的线程  
 e. nextWaiter: 用于等待队列，表示下一个等待节点    
-
-# AQS(AbstractQueuedSynchronizer)主要字段
-head: 队列头  
-tail: 队列尾  
-state:  同步器状态值，实际值含义由具体同步器定义。提供了三个方法去操作这个值。getState,setState,casState
-
 
 # AQS主要方法
 ### acquire方法
