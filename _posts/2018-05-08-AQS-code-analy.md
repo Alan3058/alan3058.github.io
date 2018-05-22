@@ -19,7 +19,7 @@ b. next: 下一个节点
 c. waitStatus: 节点等待状态字段，用于Codition条件等待队列。只能是以下几个枚举值。  
 1. SIGNAL(-1): 线程得到运行信号，可以运行。
 2. CANCELLED(1): 线程已经被取消。
-3. CONDITION(-2): 线程正在队列中等待。
+3. CONDITION(-2): 线程正在等待队列中。
 4. PROPAGATE(-3): 线程共享释放锁，传播？？？
 5. 0: 初始值
 
@@ -80,7 +80,7 @@ lastWaiter: 队列尾部Node节点
 ### acquire方法
 ```java
     public final void acquire(int arg) {
-		//尝试获取锁；若未获取到，则往队列尾部添加一个排它锁节点，并循环队列获取节点
+		//尝试获取状态；若未获取到，则往队列尾部添加一个排它锁节点，并自旋去获取状态
         if (!tryAcquire(arg) &&
             acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
 			//获取失败，中断当前线程
@@ -88,24 +88,91 @@ lastWaiter: 队列尾部Node节点
     }
 ```
 
+acquireQueued主要是去自旋地获取状态
+```java
+    final boolean acquireQueued(final Node node, int arg) {
+		//返回获取状态是否失败
+        boolean failed = true;
+        try {
+            boolean interrupted = false;
+			//自旋去获取状态
+            for (;;) {
+                final Node p = node.predecessor();
+				//前节点是队列头节点，并且尝试获取状态
+                if (p == head && tryAcquire(arg)) {
+					//获取成功，将当前节点设为队列头结点
+                    setHead(node);
+                    p.next = null; // help GC
+                    failed = false;
+                    return interrupted;
+                }
+				//获取失败，判断是否要park。park后，再检查线程是否已中断？？？
+                if (shouldParkAfterFailedAcquire(p, node) &&
+                    parkAndCheckInterrupt())
+                    interrupted = true;
+            }
+        } finally {
+            if (failed)
+                cancelAcquire(node);
+        }
+    }
+```
+
 ### acquireShared方法
 ```java
     public final void acquireShared(int arg) {
-		//尝试获取共享锁
+		//尝试获取共享状态
         if (tryAcquireShared(arg) < 0)
-			//获取失败，则往队列尾部添加一个共享锁，并循环获取节点
+			//获取失败，则往队列尾部添加一个共享节点，并自旋获取共享状态
             doAcquireShared(arg);
     }
+```
+
+doAcquireShared主要是自旋的去获取共享状态，和doAcquire方法逻辑类似
+```java
+    private void doAcquireShared(int arg) {
+		//往队列添加一个共享节点
+        final Node node = addWaiter(Node.SHARED);
+        boolean failed = true;
+        try {
+            boolean interrupted = false;
+			//自旋去获取状态
+            for (;;) {
+                final Node p = node.predecessor();
+                if (p == head) {
+					//尝试获取共享状态
+                    int r = tryAcquireShared(arg);
+                    if (r >= 0) {
+						//设置队列头为当前节点
+                        setHeadAndPropagate(node, r);
+                        p.next = null; // help GC
+                        if (interrupted)
+                            selfInterrupt();
+                        failed = false;
+                        return;
+                    }
+                }
+                if (shouldParkAfterFailedAcquire(p, node) &&
+                    parkAndCheckInterrupt())
+                    interrupted = true;
+            }
+        } finally {
+            if (failed)
+                cancelAcquire(node);
+        }
+    }
+
 ```
 
 ### release方法
 ```java
     public final boolean release(int arg) {
-		//尝试释放排它锁
+		//尝试释放排它锁状态
         if (tryRelease(arg)) {
 			//释放成功
             Node h = head;
             if (h != null && h.waitStatus != 0)
+				//唤醒头结点的下一个节点，如果下一个节点是取消状态，则跳过并唤醒下一个节点
                 unparkSuccessor(h);
             return true;
         }
@@ -116,12 +183,47 @@ lastWaiter: 队列尾部Node节点
 ### releaseShared方法
 ```java
    public final boolean releaseShared(int arg) {
-   		//尝试释放排它锁
+   		//尝试释放共享锁状态
         if (tryReleaseShared(arg)) {
             doReleaseShared();
             return true;
         }
         return false;
+    }
+```
+
+```java
+    private void doReleaseShared() {
+        /*
+         * Ensure that a release propagates, even if there are other
+         * in-progress acquires/releases.  This proceeds in the usual
+         * way of trying to unparkSuccessor of head if it needs
+         * signal. But if it does not, status is set to PROPAGATE to
+         * ensure that upon release, propagation continues.
+         * Additionally, we must loop in case a new node is added
+         * while we are doing this. Also, unlike other uses of
+         * unparkSuccessor, we need to know if CAS to reset status
+         * fails, if so rechecking.
+         */
+        for (;;) {
+            Node h = head;
+            if (h != null && h != tail) {
+                int ws = h.waitStatus;
+                if (ws == Node.SIGNAL) {
+					//当前状态为signal，则直接设置节点状态为初始值0
+                    if (!compareAndSetWaitStatus(h, Node.SIGNAL, 0))
+                        continue;            // loop to recheck cases
+					//唤醒下一个节点
+                    unparkSuccessor(h);
+                }
+				//当前状态为0，则设置节点状态为传播状态
+                else if (ws == 0 &&
+                         !compareAndSetWaitStatus(h, 0, Node.PROPAGATE))
+                    continue;                // loop on failed CAS
+            }
+            if (h == head)                   // loop if head changed
+                break;
+        }
     }
 ```
 

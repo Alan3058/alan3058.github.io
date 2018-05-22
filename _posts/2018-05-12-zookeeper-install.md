@@ -11,7 +11,7 @@ The zookeeper is a stronger midware, and it a high-perfomance coordination servi
 I will to install the zookeeper next.
 
 # 1. Prepare
-Machine number: 3    
+Machine number: 3 (ip:192.168.0.10,192.168.0.11,192.168.0.12)   
 Machine exposed port: 2181(client port), 2788(used by machine communication), 3788(used by machine communication)    
 Operating System: Centos 7    
 Java: openjdk1.8    
@@ -46,7 +46,7 @@ Now, you can connection all of machine.input the follow command. (eg: the ip is 
 tip: you also add the `bin` directory in the zookeeper path to the environment variable. looke the follow:  
 > export PATH="$PATH:/app/zookeeper/bin"
 
-# 3. Cluster 
+# 3. Master slave 
 a. prepare
 The First, you must have more the three machine. and the odd number of machine is the  best practice, such as three, five, seven.(eg: I use the three machine)
 
