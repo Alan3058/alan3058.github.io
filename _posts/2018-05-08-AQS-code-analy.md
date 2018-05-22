@@ -212,14 +212,15 @@ firstWaiter: 队列头部Node节点
 lastWaiter: 队列尾部Node节点  
 
 ### await阻塞方法
+主要步骤：首先将当前线程添加到等待队列中，然后释放锁，并唤醒同步队列的后继节点，然后进入等待队列，等待被其他线程唤醒。
 ```java
         public final void await() throws InterruptedException {
 			//被中断，则抛中断异常
             if (Thread.interrupted())
                 throw new InterruptedException();
-			//添加一个节点到等待队列中，并返回该节点
+			//将当前线程添加到等待队列中，并返回该节点
             Node node = addConditionWaiter();
-			//释放排他锁
+			//释放独占锁，并唤醒同步队列后继节点
             int savedState = fullyRelease(node);
             int interruptMode = 0;
             while (!isOnSyncQueue(node)) {
@@ -228,7 +229,7 @@ lastWaiter: 队列尾部Node节点
                 if ((interruptMode = checkInterruptWhileWaiting(node)) != 0)
                     break;
             }
-			//否则表示被唤醒，则尝试去获取队列同步锁
+			//其他线程调用signal后，当前线程被唤醒，并调用acquireQueued方法去自旋获取独占锁
             if (acquireQueued(node, savedState) && interruptMode != THROW_IE)
                 interruptMode = REINTERRUPT;
             if (node.nextWaiter != null) // clean up if cancelled
@@ -239,6 +240,7 @@ lastWaiter: 队列尾部Node节点
 ```
 
 ### signal唤醒方法
+主要步骤：首先进入该方法时必须拥有独占锁，否则抛出异常。将等待队列中的首节点移动到同步队列中，并唤醒该节点的线程（该节点的线程将会从wait方法的LockSupport.park代码行中被唤醒），并且自旋去获取状态。
 ```java
         public final void signal() {
 			//当前线程必须同时拥有独占锁，才可执行唤醒方法，否则直接异常
@@ -246,7 +248,7 @@ lastWaiter: 队列尾部Node节点
                 throw new IllegalMonitorStateException();
             Node first = firstWaiter;
             if (first != null)
-				//将等待队列的首节点移动到同步队列中
+				//将等待队列的首节点移动到同步队列中，并唤醒该线程
                 doSignal(first);
         }
 ```
