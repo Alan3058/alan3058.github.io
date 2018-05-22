@@ -84,7 +84,8 @@ Input the command by every machine:
 Or  
 > sh zkServer.sh start-foreground  
 
-Now, you can connection all of machine.input the follow command.  
+Now, you can connection all of machine by the follow command.  
 > sh zkCli.sh -server 192.168.0.10:2181,192.168.0.11:2181,192.168.0.12:2181
 
-
+also lookup every machine's mode by the follow command
+> sh zkServer.sh status
