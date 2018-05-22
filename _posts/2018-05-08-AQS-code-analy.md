@@ -24,8 +24,8 @@ published: true
 
 通过覆写这五个方法我们可以去实现自己所需要的同步器，大大的降低了实现同步器的难度。Doug Lea在并发工具包中已经为我们提供了很好的例子：Semaphore的公平锁（FairSync）和非公平锁（NonfairSync），CountDownLatch的同步器（Sync），ReentrantLock的公平锁（FairSync）和非公平锁（NonfairSync），ReentrantReadWriteLock的公平锁（FairSync）和非公平锁（NonfairSync），ThreadPoolExecutor的Worker线程类。它们通过重写这五个方法，来实现特定场景的同步器。
 
-> tip：给设计模式——模版模式一个特写镜头
- 
+> tip：给设计模式——模版模式一个特写镜头  
+
 ## AQS属性字段
 head: 同步队列Node头节点  
 tail: 同步队列Node尾节点  
