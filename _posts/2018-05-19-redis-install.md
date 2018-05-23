@@ -46,8 +46,6 @@ $ keys *
 
 
 # Redis master slave config
-
-## Master slave config
 1. Update the master config file.  
 Create or update the following infomation.
 ```
@@ -62,50 +60,43 @@ Run the command on the slave machines.
 ```shell
 $ ./src/redis-server --port 6379 --slaveof [server-ip] [port]
 ```
-
 eg:  
 run it on the slave192.168.0.11.  
 ```shell
 $ ./src/redis-server --port 6379 --slaveof 192.168.0.10 6379
 ```
-
-run it on the slave192.168.0.12  
+run it on the slave192.168.0.12   
 ```shell
 $ ./src/redis-server --port 6379 --slaveof 192.168.0.10 6379
 ```
-
 * The second way  
 Or edit slave config file
 ```
 slaveof <server-ip> <port>
 ```
-And then run
+And then run  
 ```shell
 $ ./src/redis-server 
 ```
-
-eg: edit redis.conf of the slave machines(192.168.0.11,192.168.0.12)
+eg: edit redis.conf of the slave machines(192.168.0.11,192.168.0.12)  
 ```
 slaveof 192.168.0.10 6379
 ```
-
-run it on the slave machines
+run it on the slave machines  
 ```shell
 $ ./src/redis-server --port 6379
 ```
 
-## Check it
+3. Check it
 Run add data command on the master machine, and then lookup whether the data exists from the slave machine.
 ```shell
 $ set test 1
 ```
-
-check the data on the slave machine
+check the data on the slave machine  
 ```shell
 $ get test
 ```
-
-if the slave is shutdown, then have not effect; else the master is shutdown, then will not available.
+if the slave is shutdown, then have not effect; else the master is shutdown, then will not available.  
 
 # Redis cluster
 1. Prepare
@@ -142,8 +133,7 @@ cluster-node-timeout 5000
 appendonly yes
 bind 0.0.0.0
 ```
-
-edit the config file of 7002,as following  
+edit the config file of 7002,as following   
 ```
 port 7002
 logfile "/app/redis-data/7002/redis.log"
@@ -169,28 +159,26 @@ Run the following command on every server.
 ```
 
 6. Creating cluster
-Run the following command on a redis server.
+Run the following command on a redis server.  
 ```shell
 ./redis-trib.rb create --replicas 1 192.168.0.10:7001 192.168.0.10:7001 192.168.0.11:7001 192.168.0.11:7002 192.168.0.12:7002 192.168.0.12:7002
 ```
-
-tip: the redis server must install ruby .
+tip: the redis server must install ruby .  
 ```shell
 yum install -y ruby
 gem install redis -v 3.3.5
 ```
+
 7. Check it
-Run the following command to connect cluster redis.
+Run the following command to connect cluster redis.  
 ```shell
 $ ./src/redis-cli -c -p 7001
 ```
-
-Run the following command to show the cluster infomation.
+Run the following command to show the cluster infomation.  
 ```shell
 cluster nodes
 ```
-
-For example, the following infomation
+For example, the following infomation  
 ```shell
 1104bda669874620bfb31d69ec166d99c086fd4b 192.168.0.10:7002 slave 93e71137f7ff724f587bfa1c1054d721617c9b7c 0 1527061405087 2 connected
 93e71137f7ff724f587bfa1c1054d721617c9b7c 192.168.0.11:7001 myself,master - 0 0 2 connected 5461-10922
