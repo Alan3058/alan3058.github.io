@@ -48,30 +48,28 @@ $ keys *
 # Redis master slave config
 
 ## Master slave config
-1. Update the master config file.
+1. Update the master config file.  
 Create or update the following infomation.
 ```
 bind 0.0.0.0  
-
 or  edit as follow
-  
 bind [master-ip]
 ```
 
-2. Update the slave config file.
+2. Update the slave config file.  
 * The first way  
-Run the command on the slave machines.
+Run the command on the slave machines.  
 ```shell
 $ ./src/redis-server --port 6379 --slaveof [server-ip] [port]
 ```
 
-eg: 
-run it on the slave192.168.0.11. 
+eg:  
+run it on the slave192.168.0.11.  
 ```shell
 $ ./src/redis-server --port 6379 --slaveof 192.168.0.10 6379
 ```
 
-run it on the slave192.168.0.12
+run it on the slave192.168.0.12  
 ```shell
 $ ./src/redis-server --port 6379 --slaveof 192.168.0.10 6379
 ```
