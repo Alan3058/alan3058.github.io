@@ -57,6 +57,7 @@ or  edit as follow
   
 bind [master-ip]
 ```
+
 2. Update the slave config file.
 * The first way  
 Run the command on the slave machines.
