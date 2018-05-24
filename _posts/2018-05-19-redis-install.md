@@ -7,13 +7,13 @@ fullview: false
 published: true
 ---
 
-# Prepare
+# 1. Prepare
 Machine number: 3 (ip:192.168.0.10,192.168.0.11,192.168.0.12)   
 Machine exposed port: 6379  
 Operating System: Centos 7    
 Redis: 3.2.11  
 
-# Redis install
+# 2. Redis install
 ## Install it
 Run following command,to download and compile and install redis.  
 ```shell
@@ -45,8 +45,8 @@ $ keys *
 ```
 
 
-# Redis master slave config
-1. Update the master config file.  
+# 3. Redis master slave config
+## Update the master config file.  
 Create or update the following infomation.
 ```
 bind 0.0.0.0  
@@ -54,8 +54,8 @@ or  edit as follow
 bind [master-ip]
 ```
 
-2. Update the slave config file.  
-* The first way  
+## Update the slave config file.  
+1. The first way  
 Run the command on the slave machines.  
 ```shell
 $ ./src/redis-server --port 6379 --slaveof [server-ip] [port]
@@ -69,7 +69,7 @@ run it on the slave192.168.0.12
 ```shell
 $ ./src/redis-server --port 6379 --slaveof 192.168.0.10 6379
 ```
-* The second way  
+2. The second way  
 Or edit slave config file
 ```
 slaveof <server-ip> <port>
@@ -87,7 +87,7 @@ run it on the slave machines
 $ ./src/redis-server --port 6379
 ```
 
-3. Check it
+## Check it
 Run add data command on the master machine, and then lookup whether the data exists from the slave machine.
 ```shell
 $ set test 1
@@ -98,13 +98,13 @@ $ get test
 ```
 if the slave is shutdown, then have not effect; else the master is shutdown, then will not available.  
 
-# Redis cluster
-1. Prepare
+# 4. Redis cluster
+## Prepare
 cluster config directory: /app/redis-3.2.11/cluster-conf/[port]  
 cluster data directory: /app/redis-data/[port]  
 port:7001,7002  
  
-2. Create directory
+## Create directory
 create config directory
 ```shell
 mkdir -p /app/redis-3.2.11/cluster-conf/7001
@@ -116,7 +116,7 @@ mkdir -p /app/redis-data/7001
 mkdir -p /app/redis-data/7002
 ```
 
-3. Create config file
+## Create config file
 copy the config file to the cluster config directory.  
 ```
 cp /app/redis-3.2.11/redis.conf /app/redis-3.2.11/cluster-conf/7001
@@ -145,20 +145,20 @@ appendonly yes
 bind 0.0.0.0
 ```
 
-4. Copy the redis to the other server
+## Copy the redis to the other server
 ```shell
 scp -r redis-3.2.11/ root@192.168.0.11:/app/
 scp -r redis-3.2.11/ root@192.168.0.12:/app/
 ```
 
-5. Run all of redis server
+## Run all of redis server
 Run the following command on every server.
 ```shell
 ./src/redis-server /app/redis-3.2.11/cluster-conf/7001/redis.conf &
 ./src/redis-server /app/redis-3.2.11/cluster-conf/7002/redis.conf &
 ```
 
-6. Creating cluster
+## Creating cluster
 Run the following command on a redis server.  
 ```shell
 ./redis-trib.rb create --replicas 1 192.168.0.10:7001 192.168.0.10:7001 192.168.0.11:7001 192.168.0.11:7002 192.168.0.12:7002 192.168.0.12:7002
@@ -169,7 +169,7 @@ yum install -y ruby
 gem install redis -v 3.3.5
 ```
 
-7. Check it
+## Check it
 Run the following command to connect cluster redis.  
 ```shell
 $ ./src/redis-cli -c -p 7001
