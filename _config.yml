@@ -35,6 +35,10 @@ BASE_PATH:
 
 # Build settings
 markdown: kramdown
+kramdown: 
+  input: GFM
+  use_coderay: true
+
 theme: minima
 plugins:
   - jekyll-feed
