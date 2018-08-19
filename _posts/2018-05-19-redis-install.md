@@ -163,11 +163,13 @@ Run the following command on a redis server.
 ```shell
 ./redis-trib.rb create --replicas 1 192.168.0.10:7001 192.168.0.10:7001 192.168.0.11:7001 192.168.0.11:7002 192.168.0.12:7002 192.168.0.12:7002
 ```
-tip: the redis server must install ruby .  
+tip: the redis server must install ruby , redis dependcy package of ruby.  
 ```shell
 yum install -y ruby
 gem install redis -v 3.3.5
 ```
+There are some fault at install ruby, we also can use rvm style to install ruby.  You can click the [ruby version manager](http://rvm.io/rvm/install)
+
 
 ## Check it
 Run the following command to connect cluster redis.  
