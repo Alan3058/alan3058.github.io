@@ -45,7 +45,7 @@ $ keys *
 ```
 
 
-# 3. Redis master slave config
+# 3. Redis master slave
 ## Update the master config file.  
 Create or update the following infomation.
 ```
@@ -191,5 +191,25 @@ c0c4bfe56bf2627706cc5a4420b00b43288cedfd 192.168.0.10:7001 master - 0 1527061405
 b4164c29660a2990fe1876a4afb6bb26bb50deab 192.168.0.12:7002 slave 4cf2f4082e7fd517973ad162af44f9c6b331f7f6 0 1527061404584 6 connected
 7c9873e20ab729ce69c2839d7aa84dd7cd0f183c 192.168.0.11:7002 slave c0c4bfe56bf2627706cc5a4420b00b43288cedfd 0 1527061404079 5 connected
 ```
-
 And Now, you are successful to create the cluster redis server.
+
+# 5. Simple Redis cluster
+1. Enter create cluster directory
+```shell
+cd redis-3.2.11/utils/create-cluster
+```
+
+2. Start redis instance
+```shell
+./create-cluster start
+```
+
+3. Create redis cluster
+```shell
+./create-cluster create
+```
+
+4. Stop and clean redis cluster
+```shell
+./create-cluster stop && ./create-cluster clean
+```
