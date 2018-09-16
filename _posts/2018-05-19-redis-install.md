@@ -201,15 +201,10 @@ cd redis-3.2.11/utils/create-cluster
 
 2. Start redis instance
 ```shell
-./create-cluster start
+./create-cluster start && ./create-cluster create
 ```
 
-3. Create redis cluster
-```shell
-./create-cluster create
-```
-
-4. Stop and clean redis cluster
+3. Stop and clean redis cluster
 ```shell
 ./create-cluster stop && ./create-cluster clean
 ```
