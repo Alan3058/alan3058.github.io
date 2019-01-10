@@ -13,6 +13,19 @@ Machine exposed port: 6379
 Operating System: Centos 7    
 Redis: 3.2.11  
 
+Install gcc compiler
+```shell
+yum install -y gcc
+```
+
+Before to use redis-trib.rb, to install ruby and redis ruby lib.
+```shell
+yum install -y ruby rubygems
+wget https://rubygems.org/downloads/redis-3.3.5.gem
+gem install --local redis-3.3.5.gem
+```
+
+
 # 2. Redis install
 ## Install it
 Run following command,to download and compile and install redis.  
@@ -21,8 +34,17 @@ wget http://download.redis.io/releases/redis-3.2.11.tar.gz
 tar -zxvf redis-3.2.11.tar.gz 
 cd redis-3.2.11 && make
 ```
-and then, you will look the success install infomation on the screen.
+and then, you will look the success install infomation on the screen.  
 
+Compile error
+```
+jemalloc/jemalloc.h: No such file or directory
+```
+
+try to use following command
+```
+make MALLOC=libc
+```
 
 ## Run it
 Run the following command on the machine(192.168.0.10).
