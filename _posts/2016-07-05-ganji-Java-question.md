@@ -1,8 +1,8 @@
 ---
 layout: post
 title: [赶集网Java面试题]
-categories: [Java,面试]
-tags: [赶集网,java 面试题,面试]
+categories: [Java,interview]
+tags: [赶集网,java interview]
 id: [18805317173248]
 fullview: false
 ---

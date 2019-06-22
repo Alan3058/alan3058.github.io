@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [h2数据库导出sql脚本]
-categories: [数据库]
+categories: [DB]
 tags: [h2,导出,sql脚本]
 id: [36642300511649792]
 fullview: false

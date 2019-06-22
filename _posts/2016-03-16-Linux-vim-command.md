@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [Linux下vim常用使用技巧]
-categories: [Linux学习]
+categories: [Linux]
 tags: [linux,vim,技巧,常用快捷键]
 id: [18696261074944]
 fullview: false

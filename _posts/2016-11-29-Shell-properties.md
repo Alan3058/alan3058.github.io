@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [Shell操作properties文件]
-categories: [Linux学习]
+categories: [Linux]
 tags: [shell,操作properties：properties]
 id: [18855653015552]
 fullview: false

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [Linux常用命令]
-categories: [Linux学习]
+categories: [Linux]
 tags: [linux,常用命令]
 id: [18859847319552]
 fullview: false
