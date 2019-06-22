@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [eclipse启动报错No Java virtual machine]
-categories: [开发工具]
+categories: [devtool]
 tags: [eclipse,启动报错,No Java virtual machine]
 id: [18658512338944]
 fullview: false

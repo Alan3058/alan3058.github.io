@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [ssh实现两台linux免密码登录]
-categories: [开发工具,Linux学习]
+categories: [devtool,Linux学习]
 tags: [ssh,免密登录]
 id: [18851458711552]
 fullview: false

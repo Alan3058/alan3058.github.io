@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [UML类图关系]
-categories: [开发工具]
+categories: [devtool]
 tags: [uml,类图,uml类图]
 id: [18759175634944]
 fullview: false

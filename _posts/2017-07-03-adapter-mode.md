@@ -1,8 +1,8 @@
 ---
 layout: post
 title: [适配器模式]
-categories: [设计模式]
-tags: [设计模式,适配器模式]
+categories: [DesignPattern]
+tags: [DesignPattern,适配器模式]
 id: [1582111538544640]
 fullview: false
 ---

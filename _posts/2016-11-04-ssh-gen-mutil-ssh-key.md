@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [ssh为多个帐号生成对应的ssh key]
-categories: [开发工具]
+categories: [devtool]
 tags: [ssh,多个帐号,生产key]
 id: [18847264407552]
 fullview: false

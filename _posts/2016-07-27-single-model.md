@@ -1,8 +1,8 @@
 ---
 layout: post
 title: [单例模式]
-categories: [Java,设计模式]
-tags: [设计模式,单例模式,并发]
+categories: [Java,DesignPattern]
+tags: [DesignPattern,单例模式,并发]
 id: [18838871605248]
 fullview: false
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [VirtualBox安装增强功能]
-categories: [开发工具]
+categories: [devtool]
 tags: [virtualbox,安装增强功能]
 id: [18574626258944]
 fullview: false

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [Dos命令查看端口占用及关闭进程]
-categories: [开发工具]
+categories: [devtool]
 tags: [dos,查看端口占用,关闭进程]
 id: [18671095250944]
 fullview: false

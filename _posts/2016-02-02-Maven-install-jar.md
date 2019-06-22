@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [Maven命令行安装Jar包到本地仓库]
-categories: [开发工具]
+categories: [devtool]
 tags: [maven,本地安装jar,命令行]
 id: [18566237650944]
 fullview: false

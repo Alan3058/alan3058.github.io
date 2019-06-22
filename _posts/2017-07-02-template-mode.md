@@ -1,8 +1,8 @@
 ---
 layout: post
 title: [模板模式]
-categories: [设计模式]
-tags: [设计模式,模版模式,模版方法]
+categories: [DesignPattern]
+tags: [DesignPattern,模版模式,模版方法]
 id: [1576258609610752]
 fullview: false
 ---

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: [mysql数据库用户权限管理]
-categories: [数据库]
-tags: [mysql,数据库用户权限管理]
+categories: [DB]
+tags: [mysql,DB用户权限管理]
 id: [19967786419748864]
 fullview: false
 ---

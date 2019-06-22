@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [Maven——Maven聚合和继承]
-categories: [开发工具]
+categories: [devtool]
 tags: [maven,聚合,继承]
 id: [18729815506944]
 fullview: false

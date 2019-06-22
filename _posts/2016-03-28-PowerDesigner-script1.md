@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [PowerDesigner脚本使用一]
-categories: [开发工具]
+categories: [devtool]
 tags: [powerdesigner,名字备注替换,导出excel,脚本]
 id: [18717232594944]
 fullview: false

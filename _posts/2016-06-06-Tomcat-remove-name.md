@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [Tomcat去除项目名称访问项目]
-categories: [开发工具]
+categories: [devtool]
 tags: [tomcat,根目录访问,去除项目名称]
 id: [18784341458944]
 fullview: false

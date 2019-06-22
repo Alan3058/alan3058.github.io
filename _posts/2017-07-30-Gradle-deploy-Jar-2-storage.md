@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [Gradle发布Jar包到公共Maven仓库]
-categories: [开发工具,Gradle]
+categories: [devtool,Gradle]
 tags: [gradle,发布jar包,公共仓库]
 id: [16262108207382528]
 fullview: false

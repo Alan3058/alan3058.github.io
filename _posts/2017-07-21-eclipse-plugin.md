@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [eclipse常用插件]
-categories: [开发工具]
+categories: [devtool]
 tags: [eclipse,插件,常用插件]
 id: [10558406804897792]
 fullview: false

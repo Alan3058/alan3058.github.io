@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "zookeeper install"
-categories: [中间件,zookeeper]
+categories: [Middleware,zookeeper]
 tags: [java,zookeeper]
 fullview: false
 published: true

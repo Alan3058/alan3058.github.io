@@ -1,8 +1,8 @@
 ---
 layout: post
 title: [自动化发布-9.Gitlab每次pull request触发Jenkins构建，检查代码规范和findbug]
-categories: [自动化发布]
-tags: [自动化发布,代码规范检测,findbug,jenkins,自动]
+categories: [AutoDeploy]
+tags: [AutoDeploy,代码规范检测,findbug,jenkins,自动]
 id: [18901790359552]
 fullview: false
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [dubbo服务环境搭建]
-categories: [大数据]
+categories: [bigdata]
 tags: [java,dubbo,服务,环境搭建]
 id: [18662706642944]
 fullview: false

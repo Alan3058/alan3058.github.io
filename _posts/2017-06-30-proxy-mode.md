@@ -1,8 +1,8 @@
 ---
 layout: post
 title: [代理模式]
-categories: [设计模式]
-tags: [设计模式,代理模式]
+categories: [DesignPattern]
+tags: [DesignPattern,代理模式]
 id: [1486120374239232]
 fullview: false
 ---

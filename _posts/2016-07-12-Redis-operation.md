@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [Redis操作]
-categories: [开发工具]
+categories: [devtool]
 tags: [redis,操作]
 id: [18817900085248]
 fullview: false

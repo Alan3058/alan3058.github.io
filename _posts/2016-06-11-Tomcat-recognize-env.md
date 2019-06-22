@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [Tomcat启动时增加参数区分开发环境和生产环境]
-categories: [开发工具]
+categories: [devtool]
 tags: [tomcat,区分不同环境,增加参数]
 id: [18788535762944]
 fullview: false

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: [自动化发布-3.Nexus仓库搭建]
-categories: [自动化发布]
-tags: [自动化发布,nexus仓库]
+categories: [AutoDeploy]
+tags: [AutoDeploy,nexus仓库]
 id: [18876624535552]
 fullview: false
 ---

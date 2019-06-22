@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [Maven——Maven依赖范围和传递依赖]
-categories: [开发工具]
+categories: [devtool]
 tags: [maven,依赖范围,传递依赖]
 id: [18734009810944]
 fullview: false

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: [装饰者模式]
-categories: [设计模式]
-tags: [设计模式,装饰者模式]
+categories: [DesignPattern]
+tags: [DesignPattern,装饰者模式]
 id: [1629655404642304]
 fullview: false
 ---

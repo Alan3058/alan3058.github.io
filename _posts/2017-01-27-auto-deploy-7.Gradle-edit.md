@@ -1,8 +1,8 @@
 ---
 layout: post
 title: [自动化发布-7.Gradle脚本编写]
-categories: [自动化发布]
-tags: [自动化发布,gradle,gradle脚本编写]
+categories: [AutoDeploy]
+tags: [AutoDeploy,gradle,gradle脚本编写]
 id: [18893401751552]
 fullview: false
 ---

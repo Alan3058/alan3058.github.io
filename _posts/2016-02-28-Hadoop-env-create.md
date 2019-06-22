@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [Hadoop环境搭建]
-categories: [大数据]
+categories: [bigdata]
 tags: [hadoop,java,搭建]
 id: [18654318034944]
 fullview: false

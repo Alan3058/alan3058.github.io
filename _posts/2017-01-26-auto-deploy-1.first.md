@@ -1,8 +1,8 @@
 ---
 layout: post
 title: [自动化发布-1.初探]
-categories: [自动化发布]
-tags: [自动化发布,初探]
+categories: [AutoDeploy]
+tags: [AutoDeploy,初探]
 id: [18868235927552]
 fullview: false
 ---

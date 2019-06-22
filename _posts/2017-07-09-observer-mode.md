@@ -1,8 +1,8 @@
 ---
 layout: post
 title: [观察者模式]
-categories: [设计模式]
-tags: [设计模式,观察者模式]
+categories: [DesignPattern]
+tags: [DesignPattern,观察者模式]
 id: [2224026193756160]
 fullview: false
 ---

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: [自动化发布-2.Gitlab环境搭建]
-categories: [自动化发布]
-tags: [自动化发布,gitlab,环境搭建]
+categories: [AutoDeploy]
+tags: [AutoDeploy,gitlab,环境搭建]
 id: [18872430231552]
 fullview: false
 ---

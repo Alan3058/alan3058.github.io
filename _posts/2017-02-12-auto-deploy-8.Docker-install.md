@@ -1,8 +1,8 @@
 ---
 layout: post
 title: [自动化发布-8.Docker安装]
-categories: [自动化发布]
-tags: [自动化发布,docker,docker安装]
+categories: [AutoDeploy]
+tags: [AutoDeploy,docker,docker安装]
 id: [18897596055552]
 fullview: false
 ---

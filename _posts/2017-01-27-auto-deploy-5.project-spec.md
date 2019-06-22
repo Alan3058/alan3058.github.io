@@ -1,8 +1,8 @@
 ---
 layout: post
 title: [自动化发布-5.项目规范]
-categories: [自动化发布]
-tags: [自动化发布,项目规范,制定]
+categories: [AutoDeploy]
+tags: [AutoDeploy,项目规范,制定]
 id: [18885013143552]
 fullview: false
 ---

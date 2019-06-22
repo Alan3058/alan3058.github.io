@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [Maven——什么是Maven]
-categories: [开发工具]
+categories: [devtool]
 tags: [maven,什么是maven]
 id: [18725621202944]
 fullview: false

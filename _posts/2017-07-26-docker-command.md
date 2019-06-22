@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [docker常用命令]
-categories: [开发工具]
+categories: [devtool]
 tags: [docker,常用命令]
 id: [11219443245907968]
 fullview: false

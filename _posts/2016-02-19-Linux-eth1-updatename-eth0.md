@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [Linux系统下将网卡eth1名称修改为eth0]
-categories: [开发工具]
+categories: [devtool]
 tags: [linux,修改网卡名称,eth1,eth0]
 id: [18645929426944]
 fullview: false
