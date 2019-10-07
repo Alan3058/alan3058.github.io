@@ -39,7 +39,7 @@ kramdown:
   input: GFM
   use_coderay: true
 
-theme: minima
+theme: jekyll-theme-time-machine
 plugins:
   - jekyll-feed
   - jekyll-sitemap
